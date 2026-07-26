@@ -1,0 +1,12 @@
+torch
+torchaudio
+transformers
+librosa
+soundfile
+numpy
+scikit-learn
+matplotlib
+pyannote.audio
+pyannote.metrics
+openai-whisper
+webrtcvad-wheels
