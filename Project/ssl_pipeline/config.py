@@ -77,8 +77,10 @@ class DiarizationConfig:
     separation_fallback_model_name: str = "JorisCos/ConvTasNet_Libri2Mix_sepclean_16k"
     separation_device: str = "auto"
     separation_output_dir: str = "outputs/separated_audio"
-    separation_sample_rate: int = 16_000
+    separation_sample_rate: int = 8_000
     separation_num_speakers: int = 2
+    separation_chunk_duration_seconds: float = 30.0
+    separation_chunk_overlap_seconds: float = 1.0
 
 
 def load_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> DiarizationConfig:
@@ -420,6 +422,18 @@ def load_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> DiarizationCon
             raw_config.get(
                 "separation_num_speakers",
                 DiarizationConfig.separation_num_speakers,
+            )
+        ),
+        separation_chunk_duration_seconds=float(
+            raw_config.get(
+                "separation_chunk_duration_seconds",
+                DiarizationConfig.separation_chunk_duration_seconds,
+            )
+        ),
+        separation_chunk_overlap_seconds=float(
+            raw_config.get(
+                "separation_chunk_overlap_seconds",
+                DiarizationConfig.separation_chunk_overlap_seconds,
             )
         ),
     )

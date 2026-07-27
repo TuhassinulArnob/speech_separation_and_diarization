@@ -55,6 +55,8 @@
   "separation_fallback_model_name": "JorisCos/ConvTasNet_Libri2Mix_sepclean_16k",
   "separation_device": "auto",
   "separation_output_dir": "outputs/separated_audio",
-  "separation_sample_rate": 16000,
-  "separation_num_speakers": 2
+  "separation_sample_rate": 8000,
+  "separation_num_speakers": 2,
+  "separation_chunk_duration_seconds": 30.0,
+  "separation_chunk_overlap_seconds": 1.0
 }

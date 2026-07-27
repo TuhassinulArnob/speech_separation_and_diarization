@@ -59,8 +59,10 @@ class ConfigTests(unittest.TestCase):
         self.assertEqual(config.separation_model_name, "speechbrain/sepformer-whamr")
         self.assertEqual(config.separation_device, "auto")
         self.assertEqual(config.separation_output_dir, "outputs/separated_audio")
-        self.assertEqual(config.separation_sample_rate, 16000)
+        self.assertEqual(config.separation_sample_rate, 8000)
         self.assertEqual(config.separation_num_speakers, 2)
+        self.assertEqual(config.separation_chunk_duration_seconds, 30.0)
+        self.assertEqual(config.separation_chunk_overlap_seconds, 1.0)
 
     def test_missing_token_raises_clear_error(self) -> None:
         env_var = "TEST_HUGGINGFACE_TOKEN"

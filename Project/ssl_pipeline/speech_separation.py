@@ -160,8 +160,22 @@ class SpeechSeparator:
         )
         self.sample_rate = self.config.separation_sample_rate
         self.num_speakers = self.config.separation_num_speakers
+        self.chunk_duration_seconds = self.config.separation_chunk_duration_seconds
+        self.chunk_overlap_seconds = self.config.separation_chunk_overlap_seconds
         if self.num_speakers <= 0:
             raise ValueError("separation_num_speakers must be positive.")
+        if self.chunk_duration_seconds < 0.0:
+            raise ValueError("separation_chunk_duration_seconds cannot be negative.")
+        if self.chunk_overlap_seconds < 0.0:
+            raise ValueError("separation_chunk_overlap_seconds cannot be negative.")
+        if (
+            self.chunk_duration_seconds > 0.0
+            and self.chunk_overlap_seconds >= self.chunk_duration_seconds
+        ):
+            raise ValueError(
+                "separation_chunk_overlap_seconds must be smaller than "
+                "separation_chunk_duration_seconds."
+            )
 
     def separate_file(
         self,
@@ -201,14 +215,21 @@ class SpeechSeparator:
             ]
 
         model = self.model_loader.load_model()
-        separated = _infer_separation(
+        separated = _infer_separation_with_optional_chunking(
             model,
             audio,
             sample_rate,
+            expected_num_speakers=self.num_speakers,
             backend=self.model_loader.loaded_backend,
             device=self.model_loader.device,
+            chunk_duration_seconds=self.chunk_duration_seconds,
+            chunk_overlap_seconds=self.chunk_overlap_seconds,
         )
-        return _format_sources(separated, expected_length=len(audio))
+        return _format_sources(
+            separated,
+            expected_length=len(audio),
+            expected_num_speakers=self.num_speakers,
+        )
 
 
 def separate_speech(
@@ -381,33 +402,187 @@ def _infer_separation(
     raise RuntimeError("Unsupported separation model interface.")
 
 
+def _infer_separation_with_optional_chunking(
+    model: object,
+    audio: np.ndarray,
+    sample_rate: int,
+    *,
+    expected_num_speakers: int,
+    backend: str,
+    device: torch.device,
+    chunk_duration_seconds: float,
+    chunk_overlap_seconds: float,
+) -> np.ndarray:
+    """Run whole-file or chunked separation depending on configured length."""
+
+    chunk_samples = int(round(chunk_duration_seconds * sample_rate))
+    if chunk_samples <= 0 or len(audio) <= chunk_samples:
+        return _infer_separation(
+            model,
+            audio,
+            sample_rate,
+            backend=backend,
+            device=device,
+        )
+
+    overlap_samples = int(round(chunk_overlap_seconds * sample_rate))
+    return _infer_separation_in_chunks(
+        model,
+        audio,
+        sample_rate,
+        expected_num_speakers=expected_num_speakers,
+        backend=backend,
+        device=device,
+        chunk_samples=chunk_samples,
+        overlap_samples=overlap_samples,
+    )
+
+
+def _infer_separation_in_chunks(
+    model: object,
+    audio: np.ndarray,
+    sample_rate: int,
+    *,
+    expected_num_speakers: int,
+    backend: str,
+    device: torch.device,
+    chunk_samples: int,
+    overlap_samples: int,
+) -> np.ndarray:
+    """Separate long audio in overlapped chunks and stitch source streams."""
+
+    if chunk_samples <= 0:
+        raise ValueError("chunk_samples must be positive.")
+    if overlap_samples < 0:
+        raise ValueError("overlap_samples cannot be negative.")
+    if overlap_samples >= chunk_samples:
+        raise ValueError("overlap_samples must be smaller than chunk_samples.")
+
+    hop_samples = chunk_samples - overlap_samples
+    output = np.zeros((expected_num_speakers, len(audio)), dtype=np.float32)
+    weights = np.zeros(len(audio), dtype=np.float32)
+
+    for start in range(0, len(audio), hop_samples):
+        end = min(start + chunk_samples, len(audio))
+        chunk = audio[start:end]
+        raw_sources = _infer_separation(
+            model,
+            chunk,
+            sample_rate,
+            backend=backend,
+            device=device,
+        )
+        sources = _format_sources(
+            raw_sources,
+            expected_length=len(chunk),
+            expected_num_speakers=expected_num_speakers,
+            normalize_peaks=False,
+        )
+        window = _chunk_crossfade_window(
+            len(chunk),
+            overlap_samples=overlap_samples,
+            has_previous=start > 0,
+            has_next=end < len(audio),
+        )
+        for source_index, source in enumerate(sources[:expected_num_speakers]):
+            output[source_index, start:end] += source * window
+        weights[start:end] += window
+        if end >= len(audio):
+            break
+
+    safe_weights = np.maximum(weights, 1e-8)
+    output = output / safe_weights[np.newaxis, :]
+    return output
+
+
+def _chunk_crossfade_window(
+    length: int,
+    *,
+    overlap_samples: int,
+    has_previous: bool,
+    has_next: bool,
+) -> np.ndarray:
+    """Create a linear overlap-add window for one chunk."""
+
+    window = np.ones(length, dtype=np.float32)
+    fade = min(overlap_samples, length)
+    if fade <= 0:
+        return window
+    if has_previous:
+        window[:fade] = np.linspace(0.0, 1.0, fade, endpoint=False, dtype=np.float32)
+    if has_next:
+        window[-fade:] = np.linspace(1.0, 0.0, fade, endpoint=False, dtype=np.float32)
+    return window
+
+
 def _format_sources(
     separated: np.ndarray,
     *,
     expected_length: int,
+    expected_num_speakers: int | None = None,
+    normalize_peaks: bool = True,
 ) -> list[np.ndarray]:
     """Normalize model output shape to a list of one-dimensional sources."""
 
     array = np.asarray(separated, dtype=np.float32)
-    array = np.squeeze(array)
-    if array.ndim == 1:
-        array = np.stack([array, np.zeros_like(array)], axis=0)
-    if array.ndim != 2:
-        raise ValueError(f"Expected separated output with 2 dimensions, got {array.shape}")
 
-    if array.shape[0] > array.shape[1]:
-        array = array.T
+    if array.ndim == 3:
+        if array.shape[0] != 1:
+            raise RuntimeError(
+                f"Expected one separated batch, got output shape {array.shape}."
+            )
+        array = array[0]
+        if expected_num_speakers is not None and array.shape[-1] == expected_num_speakers:
+            array = array.T
+        elif (
+            expected_num_speakers is not None
+            and array.shape[0] == expected_num_speakers
+        ):
+            pass
+        elif array.shape[-1] <= 4:
+            array = array.T
+        elif array.shape[0] <= 4:
+            pass
+        else:
+            raise RuntimeError(
+                f"Cannot determine speaker dimension from output shape {array.shape}."
+            )
+    elif array.ndim == 2:
+        if expected_num_speakers is not None and array.shape[0] == expected_num_speakers:
+            pass
+        elif (
+            expected_num_speakers is not None
+            and array.shape[1] == expected_num_speakers
+        ):
+            array = array.T
+        elif array.shape[0] <= 4 and array.shape[1] > array.shape[0]:
+            pass
+        elif array.shape[1] <= 4 and array.shape[0] > array.shape[1]:
+            array = array.T
+        else:
+            raise RuntimeError(
+                f"Cannot determine speaker dimension from output shape {array.shape}."
+            )
+    elif array.ndim == 1:
+        array = array.reshape(1, -1)
+    else:
+        raise RuntimeError(
+            f"Unexpected separation output shape: {array.shape}"
+        )
+
     sources: list[np.ndarray] = []
     for source in array:
-        source = source.astype(np.float32)
+        source = np.asarray(source, dtype=np.float32)
         if len(source) < expected_length:
             source = np.pad(source, (0, expected_length - len(source)))
         elif len(source) > expected_length:
             source = source[:expected_length]
+
         peak = float(np.max(np.abs(source))) if len(source) else 0.0
-        if peak > 1.0:
+        if normalize_peaks and peak > 1.0:
             source = source / peak
         sources.append(source.astype(np.float32))
+
     return sources
 
 

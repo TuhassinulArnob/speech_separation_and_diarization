@@ -9,8 +9,10 @@ from pathlib import Path
 import numpy as np
 import torch
 
+from Project.ssl_pipeline.config import DiarizationConfig
 from Project.ssl_pipeline.speech_separation import (
     SpeechSeparator,
+    _format_sources,
     load_audio,
     plot_spectrogram_comparison,
     plot_waveform_comparison,
@@ -36,6 +38,56 @@ class SpeechSeparationTests(unittest.TestCase):
         self.assertEqual(sources[0].shape, mixture.shape)
         self.assertEqual(sources[1].shape, mixture.shape)
         self.assertTrue(np.any(sources[0] != 0.0))
+        self.assertFalse(np.allclose(sources[0], sources[1]))
+
+    def test_speechbrain_batch_time_speaker_shape_keeps_distinct_sources(self) -> None:
+        samples = 8
+        source_one = np.linspace(0.0, 0.7, samples, dtype=np.float32)
+        source_two = -source_one
+        speechbrain_output = np.stack([source_one, source_two], axis=1)[np.newaxis, :, :]
+
+        sources = _format_sources(
+            speechbrain_output,
+            expected_length=samples,
+            expected_num_speakers=2,
+        )
+
+        self.assertEqual(len(sources), 2)
+        np.testing.assert_allclose(sources[0], source_one)
+        np.testing.assert_allclose(sources[1], source_two)
+
+    def test_source_first_batch_shape_keeps_distinct_sources(self) -> None:
+        samples = 8
+        source_one = np.linspace(0.0, 0.7, samples, dtype=np.float32)
+        source_two = np.ones(samples, dtype=np.float32) * 0.25
+        source_first_output = np.stack([source_one, source_two], axis=0)[np.newaxis, :, :]
+
+        sources = _format_sources(
+            source_first_output,
+            expected_length=samples,
+            expected_num_speakers=2,
+        )
+
+        self.assertEqual(len(sources), 2)
+        np.testing.assert_allclose(sources[0], source_one)
+        np.testing.assert_allclose(sources[1], source_two)
+
+    def test_long_audio_uses_chunked_inference_without_length_drift(self) -> None:
+        audio = _tone(0.2, 220.0)
+        model = CountingSeparationModel()
+        config = DiarizationConfig(
+            separation_chunk_duration_seconds=0.05,
+            separation_chunk_overlap_seconds=0.01,
+        )
+        separator = SpeechSeparator(config=config, model=model)
+
+        sources = separator.separate_waveform(audio, SAMPLE_RATE)
+
+        self.assertGreater(model.calls, 1)
+        self.assertEqual(len(sources), 2)
+        self.assertEqual(len(sources[0]), len(audio))
+        self.assertEqual(len(sources[1]), len(audio))
+        self.assertFalse(np.allclose(sources[0], sources[1]))
 
     def test_silent_input_returns_silent_sources(self) -> None:
         separator = SpeechSeparator(model=FakeSeparationModel())
@@ -87,7 +139,7 @@ class SpeechSeparationTests(unittest.TestCase):
         self.assertEqual(len(result.output_paths), 2)
         self.assertTrue((output_dir / "speaker1.wav").exists())
         self.assertTrue((output_dir / "speaker2.wav").exists())
-        self.assertEqual(result.sample_rate, SAMPLE_RATE)
+        self.assertEqual(result.sample_rate, 8000)
 
     def test_save_separated_audio_uses_expected_names(self) -> None:
         output_dir = TEST_TMP_ROOT / "manual_separated"
@@ -115,6 +167,20 @@ class FakeSeparationModel:
         source_one = mixture * 0.6
         source_two = mixture * 0.4
         return torch.stack([source_one, source_two], dim=0).unsqueeze(0)
+
+
+class CountingSeparationModel:
+    """SpeechBrain-shaped fake model that records chunked inference calls."""
+
+    def __init__(self) -> None:
+        self.calls = 0
+
+    def separate_batch(self, waveform: torch.Tensor) -> torch.Tensor:
+        self.calls += 1
+        mixture = waveform[0]
+        source_one = mixture * 0.7
+        source_two = mixture * -0.3
+        return torch.stack([source_one, source_two], dim=1).unsqueeze(0)
 
 
 def _tone(duration_seconds: float, frequency: float) -> np.ndarray:

@@ -80,6 +80,56 @@ Run the current unit tests with:
 python -m unittest discover -s tests
 ```
 
+## Complete Diarization Pipeline
+
+Run the end-to-end diarization runner from one input audio file:
+
+```powershell
+python run_diarization.py --input inputs/mixed.wav --output-dir outputs
+```
+
+The module form is also supported:
+
+```powershell
+python -m Project.run_diarization --input inputs/mixed.wav --output-dir outputs
+```
+
+Optional evaluation runs automatically when a reference RTTM is supplied:
+
+```powershell
+python run_diarization.py --input inputs/mixed.wav --output-dir outputs --reference-rttm reference.rttm
+```
+
+Useful overrides:
+
+- `--backend`: VAD backend, such as `energy`, `webrtc`, `pyannote`, or `auto`.
+- `--device`: WavLM embedding device, such as `cpu`, `cuda`, or `auto`.
+- `--num-speakers`: configured speaker count for clustering.
+- `--oracle-num-speakers` / `--no-oracle-num-speakers`: use or estimate the
+  clustering speaker count.
+
+Default outputs:
+
+```text
+outputs/
+  processed.wav
+  vad_regions.json
+  segments.json
+  embeddings/
+    embeddings.npz
+  normalized_embeddings.npz
+  clustering.json
+  timeline.json
+  timeline.csv
+  timeline.txt
+  hypothesis.rttm
+  evaluation.json
+  figures/
+    timeline.png
+    speaker_activity.png
+    duration_histogram.png
+```
+
 ## Voice Activity Detection
 
 VAD is the official speech detection stage of the pipeline. It returns speech
@@ -608,8 +658,13 @@ Configuration options:
 - `separation_fallback_model_name`: Asteroid fallback model.
 - `separation_device`: `auto`, `cpu`, or `cuda`.
 - `separation_output_dir`: default output directory.
-- `separation_sample_rate`: target separation sample rate.
+- `separation_sample_rate`: target separation sample rate. The default is
+  `8000` for `speechbrain/sepformer-whamr`, matching that pretrained model.
 - `separation_num_speakers`: number of silent outputs to create for silent input.
+- `separation_chunk_duration_seconds`: process longer recordings in chunks to
+  reduce peak memory use; set to `0` to disable chunking.
+- `separation_chunk_overlap_seconds`: overlap used when stitching separated
+  chunks.
 
 CLI example:
 
@@ -668,6 +723,8 @@ Limitations:
 - Music, noise, reverberation, and non-speech sounds can reduce separation
   quality.
 - The first run may download model weights unless they are already cached.
+- Chunked inference reduces memory pressure on long recordings, but very hard
+  speaker changes exactly at chunk boundaries can still need listening checks.
 
 ## Next Planned Module
 

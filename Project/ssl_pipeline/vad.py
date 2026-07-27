@@ -12,6 +12,7 @@ Example:
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 import logging
 import wave
@@ -239,12 +240,41 @@ def _detect_with_pyannote(
         raise ImportError("pyannote.audio is not installed.") from exc
 
     token = get_huggingface_token(config.token_env_var, required=False)
-    pipeline = Pipeline.from_pretrained(config.vad_pyannote_model, use_auth_token=token)
+    pipeline = _load_pyannote_pipeline(Pipeline, config.vad_pyannote_model, token)
     if pipeline is None:
         raise RuntimeError(f"Could not load pyannote model: {config.vad_pyannote_model}")
 
     result = pipeline(str(audio_path))
     return _regions_from_pyannote_result(result)
+
+
+def _load_pyannote_pipeline(
+    pipeline_class: object,
+    model_name: str,
+    token: str | None,
+) -> object:
+    """Load pyannote Pipeline across old and new authentication APIs."""
+
+    from_pretrained = getattr(pipeline_class, "from_pretrained")
+    if not token:
+        return from_pretrained(model_name)
+
+    try:
+        parameters = inspect.signature(from_pretrained).parameters
+    except (TypeError, ValueError):
+        parameters = {}
+
+    if "token" in parameters:
+        return from_pretrained(model_name, token=token)
+    if "use_auth_token" in parameters:
+        return from_pretrained(model_name, use_auth_token=token)
+
+    try:
+        return from_pretrained(model_name, token=token)
+    except TypeError as exc:
+        if "token" not in str(exc):
+            raise
+    return from_pretrained(model_name, use_auth_token=token)
 
 
 def _regions_from_pyannote_result(result: object) -> list[SpeechRegion]:

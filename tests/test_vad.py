@@ -9,7 +9,7 @@ from pathlib import Path
 
 import numpy as np
 
-from Project.ssl_pipeline.vad import detect_speech_regions
+from Project.ssl_pipeline.vad import _load_pyannote_pipeline, detect_speech_regions
 
 
 SAMPLE_RATE = 16_000
@@ -88,6 +88,43 @@ class VadTests(unittest.TestCase):
         self.assertEqual(len(exported), 1)
         self.assertIn("start_time", exported[0])
         self.assertIn("end_time", exported[0])
+
+    def test_pyannote_loader_uses_new_token_api_when_available(self) -> None:
+        pipeline = _load_pyannote_pipeline(NewPyannotePipeline, "model-id", "hf_token")
+
+        self.assertEqual(pipeline, ("model-id", "token", "hf_token"))
+
+    def test_pyannote_loader_uses_old_use_auth_token_api_when_available(self) -> None:
+        pipeline = _load_pyannote_pipeline(OldPyannotePipeline, "model-id", "hf_token")
+
+        self.assertEqual(pipeline, ("model-id", "use_auth_token", "hf_token"))
+
+    def test_pyannote_loader_omits_auth_when_token_is_missing(self) -> None:
+        pipeline = _load_pyannote_pipeline(NewPyannotePipeline, "model-id", None)
+
+        self.assertEqual(pipeline, ("model-id", "no_auth", None))
+
+
+class NewPyannotePipeline:
+    """Fake pyannote class with the newer token keyword."""
+
+    @classmethod
+    def from_pretrained(cls, model_name: str, token: str | None = None) -> tuple[str, str, str | None]:
+        auth_mode = "token" if token else "no_auth"
+        return (model_name, auth_mode, token)
+
+
+class OldPyannotePipeline:
+    """Fake pyannote class with the older use_auth_token keyword."""
+
+    @classmethod
+    def from_pretrained(
+        cls,
+        model_name: str,
+        use_auth_token: str | None = None,
+    ) -> tuple[str, str, str | None]:
+        auth_mode = "use_auth_token" if use_auth_token else "no_auth"
+        return (model_name, auth_mode, use_auth_token)
 
 
 def _tone(duration_seconds: float) -> np.ndarray:
