@@ -10,3 +10,14 @@ token.txt
 outputs/
 tmp_tests/
 *.rttm
+
+uploads/*
+results/*
+!uploads/.gitkeep
+!results/.gitkeep
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+backend_api/__pycache__/
+backend_api/*.log
+frontend/*.log

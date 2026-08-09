@@ -1,0 +1,711 @@
+2026-08-03 08:39:15,876 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\aae91dad636149b38233614ddadbe9ab.wav
+2026-08-03 08:39:15,920 WARNING backend_api.main: HTTP error 400: Only wav, mp3, and m4a files are supported.
+2026-08-03 08:39:58,667 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\f8da96ba0ea94dc0ae1f9377e7edc7fc.wav
+2026-08-03 08:39:58,671 INFO backend_api.main: Queued complete job
+2026-08-03 08:39:58,678 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:39:58,678 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\f8da96ba0ea94dc0ae1f9377e7edc7fc.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:39:58,679 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 323, in _run_job
+    await _run_subprocess(
+    ...<10 lines>...
+    )
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 285, in _run_subprocess
+    process = await asyncio.create_subprocess_exec(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+    )
+    ^
+  File "C:\Python314\Lib\asyncio\subprocess.py", line 224, in create_subprocess_exec
+    transport, protocol = await loop.subprocess_exec(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        stderr=stderr, **kwds)
+        ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1809, in subprocess_exec
+    transport = await self._make_subprocess_transport(
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        protocol, popen_args, False, stdin, stdout, stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 401, in _make_subprocess_transport
+    transp = _WindowsSubprocessTransport(self, protocol, args, shell,
+                                         stdin, stdout, stderr, bufsize,
+                                         waiter=waiter, extra=extra,
+                                         **kwargs)
+  File "C:\Python314\Lib\asyncio\base_subprocess.py", line 40, in __init__
+    self._start(args=args, shell=shell, stdin=stdin, stdout=stdout,
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                stderr=stderr, bufsize=bufsize, **kwargs)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 879, in _start
+    self._proc = windows_utils.Popen(
+                 ~~~~~~~~~~~~~~~~~~~^
+        args, shell=shell, stdin=stdin, stdout=stdout, stderr=stderr,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        bufsize=bufsize, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\windows_utils.py", line 148, in __init__
+    stdout_rh, stdout_wh = pipe(overlapped=(True, False))
+                           ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\windows_utils.py", line 70, in pipe
+    h2 = _winapi.CreateFile(
+        address, access, 0, _winapi.NULL, _winapi.OPEN_EXISTING,
+        flags_and_attribs, _winapi.NULL)
+PermissionError: [WinError 5] Access is denied
+2026-08-03 08:39:58,841 INFO backend_api.main: Failed: [WinError 5] Access is denied
+2026-08-03 08:39:58,887 WARNING backend_api.main: HTTP error 404: File not found.
+2026-08-03 08:41:16,906 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\eb5f121b144148b8a73e2f8fb4070c42.wav
+2026-08-03 08:41:16,911 INFO backend_api.main: Queued complete job
+2026-08-03 08:41:16,913 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:41:16,914 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\eb5f121b144148b8a73e2f8fb4070c42.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:41:23,493 INFO backend_api.main: Matplotlib is building the font cache; this may take a moment.
+2026-08-03 08:41:45,013 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-03 08:41:45,013 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 08:41:45,392 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 08:41:46,192 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 08:41:46,192 INFO backend_api.main: warnings.warn(
+2026-08-03 08:41:46,195 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 08:41:46,197 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 08:41:46,199 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 08:41:46,199 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 08:41:54,542 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:41:54,545 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 08:41:54,546 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 08:41:55,947 INFO backend_api.main: Speech Separation finished.
+2026-08-03 08:41:55,948 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-03 08:41:55,948 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.run_diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\eb5f121b144148b8a73e2f8fb4070c42.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:43:06,644 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\fa72107e08ba46e3810746ea9b1a091a.wav
+2026-08-03 08:43:06,650 INFO backend_api.main: Queued complete job
+2026-08-03 08:43:06,655 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:43:06,655 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\fa72107e08ba46e3810746ea9b1a091a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:43:18,814 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-03 08:43:18,814 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 08:43:19,136 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 08:43:19,705 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 08:43:19,705 INFO backend_api.main: warnings.warn(
+2026-08-03 08:43:19,707 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 08:43:19,708 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 08:43:19,710 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 08:43:19,710 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 08:43:30,531 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:43:30,536 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 08:43:30,536 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 08:43:32,885 INFO backend_api.main: Speech Separation finished.
+2026-08-03 08:43:32,885 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-03 08:43:32,886 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.run_diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\fa72107e08ba46e3810746ea9b1a091a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:45:12,737 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\4caa3d78af2f45a0bd91be3f7257825f.wav
+2026-08-03 08:45:12,742 INFO backend_api.main: Queued complete job
+2026-08-03 08:45:12,746 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:45:12,747 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\4caa3d78af2f45a0bd91be3f7257825f.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:45:25,261 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-03 08:45:25,261 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 08:45:25,602 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 08:45:26,246 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 08:45:26,246 INFO backend_api.main: warnings.warn(
+2026-08-03 08:45:26,248 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 08:45:26,250 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 08:45:26,252 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 08:45:26,253 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 08:45:34,655 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:45:34,659 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 08:45:34,659 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 08:45:36,027 INFO backend_api.main: Speech Separation finished.
+2026-08-03 08:45:36,027 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-03 08:45:36,027 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.run_diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\4caa3d78af2f45a0bd91be3f7257825f.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:47:23,280 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\94759352d1994e2bac27fb599bf678e4.wav
+2026-08-03 08:47:23,287 INFO backend_api.main: Queued complete job
+2026-08-03 08:47:23,302 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:47:23,303 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\94759352d1994e2bac27fb599bf678e4.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:47:37,464 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-03 08:47:37,464 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 08:47:37,712 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 08:47:38,327 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 08:47:38,328 INFO backend_api.main: warnings.warn(
+2026-08-03 08:47:38,329 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 08:47:38,330 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 08:47:38,331 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 08:47:38,332 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 08:47:46,606 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:47:46,610 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 08:47:46,610 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 08:47:47,925 INFO backend_api.main: Speech Separation finished.
+2026-08-03 08:47:47,926 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-03 08:47:47,926 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.run_diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\94759352d1994e2bac27fb599bf678e4.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:48:32,865 INFO backend_api.main: Loading audio...
+2026-08-03 08:48:32,870 INFO backend_api.main: Running preprocessing...
+2026-08-03 08:48:37,115 INFO backend_api.main: preprocessing failed.
+2026-08-03 08:48:37,607 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 08:48:37,623 INFO backend_api.main: File "<frozen runpy>", line 198, in _run_module_as_main
+2026-08-03 08:48:37,623 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-03 08:48:37,623 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 381, in <module>
+2026-08-03 08:48:37,624 INFO backend_api.main: main()
+2026-08-03 08:48:37,624 INFO backend_api.main: ~~~~^^
+2026-08-03 08:48:37,624 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 366, in main
+2026-08-03 08:48:37,624 INFO backend_api.main: run_pipeline(
+2026-08-03 08:48:37,624 INFO backend_api.main: ~~~~~~~~~~~~^
+2026-08-03 08:48:37,624 INFO backend_api.main: args.input,
+2026-08-03 08:48:37,624 INFO backend_api.main: ^^^^^^^^^^^
+2026-08-03 08:48:37,624 INFO backend_api.main: ...<8 lines>...
+2026-08-03 08:48:37,625 INFO backend_api.main: save_rttm=args.save_rttm,
+2026-08-03 08:48:37,625 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,625 INFO backend_api.main: )
+2026-08-03 08:48:37,625 INFO backend_api.main: ^
+2026-08-03 08:48:37,625 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 111, in run_pipeline
+2026-08-03 08:48:37,625 INFO backend_api.main: _run_stage(
+2026-08-03 08:48:37,625 INFO backend_api.main: ~~~~~~~~~~^
+2026-08-03 08:48:37,626 INFO backend_api.main: "preprocessing",
+2026-08-03 08:48:37,626 INFO backend_api.main: ^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,626 INFO backend_api.main: lambda: preprocess_audio(source_path, processed_audio_path),
+2026-08-03 08:48:37,626 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,626 INFO backend_api.main: )
+2026-08-03 08:48:37,626 INFO backend_api.main: ^
+2026-08-03 08:48:37,626 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 334, in _run_stage
+2026-08-03 08:48:37,626 INFO backend_api.main: return action()
+2026-08-03 08:48:37,627 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 113, in <lambda>
+2026-08-03 08:48:37,627 INFO backend_api.main: lambda: preprocess_audio(source_path, processed_audio_path),
+2026-08-03 08:48:37,627 INFO backend_api.main: ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,627 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\preprocessing.py", line 26, in preprocess_audio
+2026-08-03 08:48:37,628 INFO backend_api.main: audio, _ = librosa.load(
+2026-08-03 08:48:37,628 INFO backend_api.main: ^^^^^^^^^^^^
+2026-08-03 08:48:37,628 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\lazy_loader\__init__.py", line 79, in __getattr__
+2026-08-03 08:48:37,628 INFO backend_api.main: attr = getattr(submod, name)
+2026-08-03 08:48:37,628 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\lazy_loader\__init__.py", line 78, in __getattr__
+2026-08-03 08:48:37,629 INFO backend_api.main: submod = importlib.import_module(submod_path)
+2026-08-03 08:48:37,629 INFO backend_api.main: File "C:\Python314\Lib\importlib\__init__.py", line 88, in import_module
+2026-08-03 08:48:37,629 INFO backend_api.main: return _bootstrap._gcd_import(name[level:], package, level)
+2026-08-03 08:48:37,629 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,629 INFO backend_api.main: File "<frozen importlib._bootstrap>", line 1406, in _gcd_import
+2026-08-03 08:48:37,630 INFO backend_api.main: File "<frozen importlib._bootstrap>", line 1371, in _find_and_load
+2026-08-03 08:48:37,630 INFO backend_api.main: File "<frozen importlib._bootstrap>", line 1342, in _find_and_load_unlocked
+2026-08-03 08:48:37,630 INFO backend_api.main: File "<frozen importlib._bootstrap>", line 938, in _load_unlocked
+2026-08-03 08:48:37,630 INFO backend_api.main: File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+2026-08-03 08:48:37,630 INFO backend_api.main: File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+2026-08-03 08:48:37,630 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\librosa\core\audio.py", line 1154, in <module>
+2026-08-03 08:48:37,630 INFO backend_api.main: @guvectorize(
+2026-08-03 08:48:37,631 INFO backend_api.main: ~~~~~~~~~~~^
+2026-08-03 08:48:37,631 INFO backend_api.main: [
+2026-08-03 08:48:37,631 INFO backend_api.main: ^
+2026-08-03 08:48:37,631 INFO backend_api.main: ...<5 lines>...
+2026-08-03 08:48:37,631 INFO backend_api.main: nopython=True,
+2026-08-03 08:48:37,631 INFO backend_api.main: ^^^^^^^^^^^^^^
+2026-08-03 08:48:37,631 INFO backend_api.main: )  # type: ignore
+2026-08-03 08:48:37,632 INFO backend_api.main: ^
+2026-08-03 08:48:37,632 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\decorators.py", line 203, in wrap
+2026-08-03 08:48:37,632 INFO backend_api.main: guvec.add(fty)
+2026-08-03 08:48:37,632 INFO backend_api.main: ~~~~~~~~~^^^^^
+2026-08-03 08:48:37,632 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\gufunc.py", line 139, in add
+2026-08-03 08:48:37,632 INFO backend_api.main: self.gufunc_builder.add(fty)
+2026-08-03 08:48:37,632 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+2026-08-03 08:48:37,632 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\ufuncbuilder.py", line 263, in add
+2026-08-03 08:48:37,633 INFO backend_api.main: cres, args, return_type = _compile_element_wise_function(
+2026-08-03 08:48:37,633 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-03 08:48:37,633 INFO backend_api.main: self.nb_func, targetoptions, sig)
+2026-08-03 08:48:37,633 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,633 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\ufuncbuilder.py", line 181, in _compile_element_wise_function
+2026-08-03 08:48:37,633 INFO backend_api.main: cres = nb_func.compile(sig, **targetoptions)
+2026-08-03 08:48:37,633 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\ufuncbuilder.py", line 129, in compile
+2026-08-03 08:48:37,634 INFO backend_api.main: return self._compile_core(sig, flags, locals)
+2026-08-03 08:48:37,634 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,634 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\np\ufunc\ufuncbuilder.py", line 162, in _compile_core
+2026-08-03 08:48:37,634 INFO backend_api.main: cres = compiler.compile_extra(typingctx, targetctx,
+2026-08-03 08:48:37,634 INFO backend_api.main: self.py_func, args=args,
+2026-08-03 08:48:37,634 INFO backend_api.main: return_type=return_type,
+2026-08-03 08:48:37,635 INFO backend_api.main: flags=flags, locals=locals)
+2026-08-03 08:48:37,635 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 739, in compile_extra
+2026-08-03 08:48:37,635 INFO backend_api.main: return pipeline.compile_extra(func)
+2026-08-03 08:48:37,635 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+2026-08-03 08:48:37,635 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 439, in compile_extra
+2026-08-03 08:48:37,635 INFO backend_api.main: return self._compile_bytecode()
+2026-08-03 08:48:37,635 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^
+2026-08-03 08:48:37,636 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 505, in _compile_bytecode
+2026-08-03 08:48:37,636 INFO backend_api.main: return self._compile_core()
+2026-08-03 08:48:37,636 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^
+2026-08-03 08:48:37,636 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 481, in _compile_core
+2026-08-03 08:48:37,636 INFO backend_api.main: raise e
+2026-08-03 08:48:37,636 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 473, in _compile_core
+2026-08-03 08:48:37,637 INFO backend_api.main: pm.run(self.state)
+2026-08-03 08:48:37,637 INFO backend_api.main: ~~~~~~^^^^^^^^^^^^
+2026-08-03 08:48:37,637 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 363, in run
+2026-08-03 08:48:37,637 INFO backend_api.main: raise e
+2026-08-03 08:48:37,638 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 356, in run
+2026-08-03 08:48:37,638 INFO backend_api.main: self._runPass(idx, pass_inst, state)
+2026-08-03 08:48:37,638 INFO backend_api.main: ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,638 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_lock.py", line 35, in _acquire_compile_lock
+2026-08-03 08:48:37,638 INFO backend_api.main: return func(*args, **kwargs)
+2026-08-03 08:48:37,638 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 311, in _runPass
+2026-08-03 08:48:37,638 INFO backend_api.main: mutated |= check(pss.run_pass, internal_state)
+2026-08-03 08:48:37,639 INFO backend_api.main: ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,639 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 272, in check
+2026-08-03 08:48:37,639 INFO backend_api.main: mangled = func(compiler_state)
+2026-08-03 08:48:37,639 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typed_passes.py", line 472, in run_pass
+2026-08-03 08:48:37,639 INFO backend_api.main: lower.lower()
+2026-08-03 08:48:37,639 INFO backend_api.main: ~~~~~~~~~~~^^
+2026-08-03 08:48:37,640 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 193, in lower
+2026-08-03 08:48:37,640 INFO backend_api.main: self.lower_normal_function(self.fndesc)
+2026-08-03 08:48:37,640 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+2026-08-03 08:48:37,640 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 232, in lower_normal_function
+2026-08-03 08:48:37,640 INFO backend_api.main: entry_block_tail = self.lower_function_body()
+2026-08-03 08:48:37,640 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 262, in lower_function_body
+2026-08-03 08:48:37,640 INFO backend_api.main: self.lower_block(block)
+2026-08-03 08:48:37,641 INFO backend_api.main: ~~~~~~~~~~~~~~~~^^^^^^^
+2026-08-03 08:48:37,641 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 276, in lower_block
+2026-08-03 08:48:37,641 INFO backend_api.main: self.lower_inst(inst)
+2026-08-03 08:48:37,641 INFO backend_api.main: ~~~~~~~~~~~~~~~^^^^^^
+2026-08-03 08:48:37,641 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 462, in lower_inst
+2026-08-03 08:48:37,641 INFO backend_api.main: val = self.lower_assign(ty, inst)
+2026-08-03 08:48:37,641 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 674, in lower_assign
+2026-08-03 08:48:37,642 INFO backend_api.main: return self.lower_expr(ty, value)
+2026-08-03 08:48:37,642 INFO backend_api.main: ~~~~~~~~~~~~~~~^^^^^^^^^^^
+2026-08-03 08:48:37,642 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 1268, in lower_expr
+2026-08-03 08:48:37,642 INFO backend_api.main: res = self.lower_call(resty, expr)
+2026-08-03 08:48:37,642 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 939, in lower_call
+2026-08-03 08:48:37,642 INFO backend_api.main: res = self._lower_call_normal(fnty, expr, signature)
+2026-08-03 08:48:37,642 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\lowering.py", line 1239, in _lower_call_normal
+2026-08-03 08:48:37,642 INFO backend_api.main: res = impl(self.builder, argvals, self.loc)
+2026-08-03 08:48:37,643 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\base.py", line 1204, in __call__
+2026-08-03 08:48:37,643 INFO backend_api.main: res = self._imp(self._context, builder, self._sig, args, loc=loc)
+2026-08-03 08:48:37,643 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\base.py", line 1234, in wrapper
+2026-08-03 08:48:37,643 INFO backend_api.main: return fn(*args, **kwargs)
+2026-08-03 08:48:37,643 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\stencils\stencil.py", line 30, in __call__
+2026-08-03 08:48:37,643 INFO backend_api.main: cres = self.stencilFunc.compile_for_argtys(sig.args, {},
+2026-08-03 08:48:37,643 INFO backend_api.main: sig.return_type, None)
+2026-08-03 08:48:37,644 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\stencils\stencil.py", line 369, in compile_for_argtys
+2026-08-03 08:48:37,644 INFO backend_api.main: new_func = self._stencil_wrapper(result, sigret, return_type,
+2026-08-03 08:48:37,644 INFO backend_api.main: typemap, calltypes, *argtys)
+2026-08-03 08:48:37,644 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\stencils\stencil.py", line 760, in _stencil_wrapper
+2026-08-03 08:48:37,644 INFO backend_api.main: new_func = compiler.compile_ir(
+2026-08-03 08:48:37,644 INFO backend_api.main: self._typingctx,
+2026-08-03 08:48:37,644 INFO backend_api.main: ...<4 lines>...
+2026-08-03 08:48:37,645 INFO backend_api.main: compiler.DEFAULT_FLAGS,
+2026-08-03 08:48:37,645 INFO backend_api.main: {})
+2026-08-03 08:48:37,645 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 802, in compile_ir
+2026-08-03 08:48:37,645 INFO backend_api.main: return pipeline.compile_ir(func_ir=func_ir, lifted=lifted,
+2026-08-03 08:48:37,645 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,645 INFO backend_api.main: lifted_from=lifted_from)
+2026-08-03 08:48:37,646 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,646 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 449, in compile_ir
+2026-08-03 08:48:37,646 INFO backend_api.main: return self._compile_ir()
+2026-08-03 08:48:37,646 INFO backend_api.main: ~~~~~~~~~~~~~~~~^^
+2026-08-03 08:48:37,646 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 512, in _compile_ir
+2026-08-03 08:48:37,646 INFO backend_api.main: return self._compile_core()
+2026-08-03 08:48:37,646 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^
+2026-08-03 08:48:37,646 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 481, in _compile_core
+2026-08-03 08:48:37,647 INFO backend_api.main: raise e
+2026-08-03 08:48:37,647 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler.py", line 473, in _compile_core
+2026-08-03 08:48:37,647 INFO backend_api.main: pm.run(self.state)
+2026-08-03 08:48:37,647 INFO backend_api.main: ~~~~~~^^^^^^^^^^^^
+2026-08-03 08:48:37,647 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 363, in run
+2026-08-03 08:48:37,647 INFO backend_api.main: raise e
+2026-08-03 08:48:37,647 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 356, in run
+2026-08-03 08:48:37,647 INFO backend_api.main: self._runPass(idx, pass_inst, state)
+2026-08-03 08:48:37,648 INFO backend_api.main: ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,648 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_lock.py", line 35, in _acquire_compile_lock
+2026-08-03 08:48:37,648 INFO backend_api.main: return func(*args, **kwargs)
+2026-08-03 08:48:37,648 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 311, in _runPass
+2026-08-03 08:48:37,648 INFO backend_api.main: mutated |= check(pss.run_pass, internal_state)
+2026-08-03 08:48:37,648 INFO backend_api.main: ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,648 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\compiler_machinery.py", line 272, in check
+2026-08-03 08:48:37,649 INFO backend_api.main: mangled = func(compiler_state)
+2026-08-03 08:48:37,649 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typed_passes.py", line 114, in run_pass
+2026-08-03 08:48:37,649 INFO backend_api.main: typemap, return_type, calltypes, errs = type_inference_stage(
+2026-08-03 08:48:37,649 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~^
+2026-08-03 08:48:37,649 INFO backend_api.main: state.typingctx,
+2026-08-03 08:48:37,649 INFO backend_api.main: ^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,649 INFO backend_api.main: ...<4 lines>...
+2026-08-03 08:48:37,650 INFO backend_api.main: state.locals,
+2026-08-03 08:48:37,650 INFO backend_api.main: ^^^^^^^^^^^^^
+2026-08-03 08:48:37,650 INFO backend_api.main: raise_errors=self._raise_errors)
+2026-08-03 08:48:37,650 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,650 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typed_passes.py", line 95, in type_inference_stage
+2026-08-03 08:48:37,650 INFO backend_api.main: errs = infer.propagate(raise_errors=raise_errors)
+2026-08-03 08:48:37,650 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typeinfer.py", line 1075, in propagate
+2026-08-03 08:48:37,651 INFO backend_api.main: errors = self.constraints.propagate(self)
+2026-08-03 08:48:37,651 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typeinfer.py", line 160, in propagate
+2026-08-03 08:48:37,651 INFO backend_api.main: constraint(typeinfer)
+2026-08-03 08:48:37,651 INFO backend_api.main: ~~~~~~~~~~^^^^^^^^^^^
+2026-08-03 08:48:37,651 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typeinfer.py", line 572, in __call__
+2026-08-03 08:48:37,651 INFO backend_api.main: self.resolve(typeinfer, typevars, fnty)
+2026-08-03 08:48:37,651 INFO backend_api.main: ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,651 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typeinfer.py", line 595, in resolve
+2026-08-03 08:48:37,652 INFO backend_api.main: sig = typeinfer.resolve_call(fnty, pos_args, kw_args)
+2026-08-03 08:48:37,652 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typeinfer.py", line 1569, in resolve_call
+2026-08-03 08:48:37,652 INFO backend_api.main: return self.context.resolve_function_type(fnty, pos_args, kw_args)
+2026-08-03 08:48:37,652 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,652 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\context.py", line 279, in resolve_function_type
+2026-08-03 08:48:37,652 INFO backend_api.main: res = self._resolve_user_function_type(func, args, kws)
+2026-08-03 08:48:37,652 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\context.py", line 335, in _resolve_user_function_type
+2026-08-03 08:48:37,653 INFO backend_api.main: return func.get_call_type(self, args, kws)
+2026-08-03 08:48:37,653 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,653 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\types\functions.py", line 314, in get_call_type
+2026-08-03 08:48:37,653 INFO backend_api.main: raise e
+2026-08-03 08:48:37,654 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\types\functions.py", line 311, in get_call_type
+2026-08-03 08:48:37,654 INFO backend_api.main: sig = temp.apply(nolitargs, nolitkws)
+2026-08-03 08:48:37,654 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\templates.py", line 358, in apply
+2026-08-03 08:48:37,654 INFO backend_api.main: sig = generic(args, kws)
+2026-08-03 08:48:37,654 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\templates.py", line 621, in generic
+2026-08-03 08:48:37,654 INFO backend_api.main: disp, new_args = self._get_impl(args, kws)
+2026-08-03 08:48:37,654 INFO backend_api.main: ~~~~~~~~~~~~~~^^^^^^^^^^^
+2026-08-03 08:48:37,655 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\templates.py", line 720, in _get_impl
+2026-08-03 08:48:37,655 INFO backend_api.main: impl, args = self._build_impl(cache_key, args, kws)
+2026-08-03 08:48:37,655 INFO backend_api.main: ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,655 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\typing\templates.py", line 824, in _build_impl
+2026-08-03 08:48:37,655 INFO backend_api.main: disp_type.get_call_type(self.context, args, kws)
+2026-08-03 08:48:37,655 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,655 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\numba\core\types\functions.py", line 541, in get_call_type
+2026-08-03 08:48:37,655 INFO backend_api.main: self.dispatcher.get_call_template(args, kws)
+2026-08-03 08:48:37,655 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 08:48:37,655 INFO backend_api.main: AttributeError: 'function' object has no attribute 'get_call_template'
+2026-08-03 08:48:40,045 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 343, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<9 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 289, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-03 08:48:40,048 INFO backend_api.main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-03 08:48:43,702 WARNING backend_api.main: HTTP error 404: File not found.
+2026-08-03 08:53:38,532 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\8f6bb253e42949d5b82dd8b42951c0d7.wav
+2026-08-03 08:53:38,539 INFO backend_api.main: Queued separation job
+2026-08-03 08:53:38,554 INFO backend_api.main: Running Speech Separation...
+2026-08-03 08:53:38,555 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\8f6bb253e42949d5b82dd8b42951c0d7.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:53:54,034 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-03 08:53:54,034 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 08:53:54,330 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 08:53:54,961 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 08:53:54,961 INFO backend_api.main: warnings.warn(
+2026-08-03 08:53:54,968 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 08:53:54,977 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 08:53:54,979 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 08:53:54,980 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 08:54:03,982 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 08:54:03,985 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 08:54:03,986 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 08:54:05,286 INFO backend_api.main: Speech Separation finished.
+2026-08-03 08:54:05,340 INFO backend_api.main: Finished.
+2026-08-03 09:20:18,454 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0038b6bf288041da9c45c68c5d8d8c30.wav
+2026-08-03 09:20:23,592 INFO backend_api.main: Queued separation job
+2026-08-03 09:20:23,600 INFO backend_api.main: Running Speech Separation...
+2026-08-03 09:20:23,602 INFO backend_api.main: Starting subprocess: C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0038b6bf288041da9c45c68c5d8d8c30.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 09:20:39,844 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-03 09:20:39,845 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-03 09:20:40,164 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-03 09:20:40,574 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-03 09:20:40,575 INFO backend_api.main: warnings.warn(
+2026-08-03 09:20:40,576 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-03 09:20:40,578 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-03 09:20:40,579 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-03 09:20:40,579 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-03 09:20:47,049 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 09:20:47,051 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-03 09:20:47,052 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-03 09:20:47,891 INFO backend_api.main: Speech Separation finished.
+2026-08-03 09:20:47,928 INFO backend_api.main: Finished.
+2026-08-03 09:21:06,013 INFO backend_api.main: Queued diarization job
+2026-08-03 09:21:06,028 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-03 09:21:06,031 INFO backend_api.main: Starting subprocess: C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0038b6bf288041da9c45c68c5d8d8c30.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-03 09:21:30,387 INFO backend_api.main: Loading audio...
+2026-08-03 09:21:30,390 INFO backend_api.main: Running preprocessing...
+2026-08-03 09:21:55,645 INFO backend_api.main: Running VAD...
+2026-08-03 09:21:59,131 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\pyannote\audio\core\io.py:47: UserWarning:
+2026-08-03 09:21:59,132 INFO backend_api.main: torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
+2026-08-03 09:21:59,133 INFO backend_api.main: * use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
+2026-08-03 09:21:59,133 INFO backend_api.main: * fix torchcodec installation. Error message was:
+2026-08-03 09:21:59,134 INFO backend_api.main: Could not load libtorchcodec. Likely causes:
+2026-08-03 09:21:59,134 INFO backend_api.main: 1. FFmpeg is not properly installed in your environment. We support
+2026-08-03 09:21:59,135 INFO backend_api.main: versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+2026-08-03 09:21:59,135 INFO backend_api.main: for each of those versions. Errors for versions not installed on
+2026-08-03 09:21:59,136 INFO backend_api.main: your system are expected; only the error for your installed FFmpeg
+2026-08-03 09:21:59,136 INFO backend_api.main: version is relevant. On Windows, ensure you've installed the
+2026-08-03 09:21:59,136 INFO backend_api.main: "full-shared" version which ships DLLs.
+2026-08-03 09:21:59,137 INFO backend_api.main: 2. The PyTorch version (2.11.0+cpu) is not compatible with
+2026-08-03 09:21:59,138 INFO backend_api.main: this version of TorchCodec. Refer to the version compatibility
+2026-08-03 09:21:59,138 INFO backend_api.main: table:
+2026-08-03 09:21:59,139 INFO backend_api.main: https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+2026-08-03 09:21:59,140 INFO backend_api.main: 3. Another runtime dependency; see exceptions below.
+2026-08-03 09:21:59,141 INFO backend_api.main: The following exceptions were raised as we tried to load libtorchcodec:
+2026-08-03 09:21:59,141 INFO backend_api.main: [start of libtorchcodec loading traceback]
+2026-08-03 09:21:59,142 INFO backend_api.main: FFmpeg version 8:
+2026-08-03 09:21:59,143 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,144 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-03 09:21:59,145 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-03 09:21:59,145 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-03 09:21:59,146 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-03 09:21:59,146 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-03 09:21:59,147 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,148 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-03 09:21:59,149 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-03 09:21:59,150 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-03 09:21:59,150 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:21:59,151 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,152 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-03 09:21:59,153 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-03 09:21:59,153 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,154 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-03 09:21:59,154 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-03 09:21:59,155 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll
+2026-08-03 09:21:59,156 INFO backend_api.main: FFmpeg version 7:
+2026-08-03 09:21:59,156 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,157 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-03 09:21:59,157 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-03 09:21:59,158 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-03 09:21:59,158 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-03 09:21:59,159 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-03 09:21:59,159 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,160 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-03 09:21:59,160 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-03 09:21:59,161 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-03 09:21:59,161 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:21:59,161 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,162 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-03 09:21:59,162 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-03 09:21:59,163 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,163 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-03 09:21:59,164 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-03 09:21:59,164 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll
+2026-08-03 09:21:59,165 INFO backend_api.main: FFmpeg version 6:
+2026-08-03 09:21:59,165 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,165 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-03 09:21:59,166 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-03 09:21:59,166 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-03 09:21:59,167 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-03 09:21:59,167 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-03 09:21:59,167 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,168 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-03 09:21:59,168 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-03 09:21:59,169 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-03 09:21:59,170 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:21:59,170 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,171 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-03 09:21:59,172 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-03 09:21:59,172 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,173 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-03 09:21:59,173 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-03 09:21:59,174 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll
+2026-08-03 09:21:59,174 INFO backend_api.main: FFmpeg version 5:
+2026-08-03 09:21:59,175 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,175 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-03 09:21:59,176 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-03 09:21:59,177 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-03 09:21:59,177 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-03 09:21:59,178 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-03 09:21:59,179 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,179 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-03 09:21:59,180 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-03 09:21:59,180 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-03 09:21:59,181 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:21:59,181 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,181 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-03 09:21:59,182 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-03 09:21:59,182 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,182 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-03 09:21:59,183 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-03 09:21:59,183 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll
+2026-08-03 09:21:59,184 INFO backend_api.main: FFmpeg version 4:
+2026-08-03 09:21:59,184 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,185 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-03 09:21:59,185 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-03 09:21:59,185 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-03 09:21:59,186 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-03 09:21:59,186 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-03 09:21:59,187 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,187 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-03 09:21:59,187 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-03 09:21:59,189 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-03 09:21:59,189 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:21:59,190 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:21:59,191 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-03 09:21:59,191 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-03 09:21:59,192 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:21:59,193 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-03 09:21:59,194 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-03 09:21:59,195 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll
+2026-08-03 09:21:59,195 INFO backend_api.main: [end of libtorchcodec loading traceback].
+2026-08-03 09:21:59,196 INFO backend_api.main: warnings.warn(
+2026-08-03 09:22:06,561 INFO backend_api.main: '[WinError 10061] No connection could be made because the target machine actively refused it' thrown while requesting HEAD https://huggingface.co/pyannote/voice-activity-detection/resolve/main/config.yaml
+2026-08-03 09:22:06,562 INFO backend_api.main: Retrying in 1s [Retry 1/5].
+2026-08-03 09:22:07,562 INFO backend_api.main: VAD backend pyannote unavailable: Cannot send a request, as the client has been closed.
+2026-08-03 09:22:07,564 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-03 09:22:07,569 INFO backend_api.main: Running segmentation...
+2026-08-03 09:22:07,571 INFO backend_api.main: Running WavLM embeddings...
+2026-08-03 09:22:13,929 INFO backend_api.main: '[WinError 10061] No connection could be made because the target machine actively refused it' thrown while requesting HEAD https://huggingface.co/microsoft/wavlm-base-plus/resolve/main/processor_config.json
+2026-08-03 09:22:13,930 INFO backend_api.main: Retrying in 1s [Retry 1/5].
+2026-08-03 09:22:14,933 INFO backend_api.main: WavLM embeddings failed.
+2026-08-03 09:22:14,944 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:22:14,947 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\feature_extraction_utils.py", line 477, in get_feature_extractor_dict
+2026-08-03 09:22:14,947 INFO backend_api.main: resolved_processor_file = cached_file(
+2026-08-03 09:22:14,947 INFO backend_api.main: pretrained_model_name_or_path,
+2026-08-03 09:22:14,948 INFO backend_api.main: ...<9 lines>...
+2026-08-03 09:22:14,949 INFO backend_api.main: _raise_exceptions_for_missing_entries=False,
+2026-08-03 09:22:14,949 INFO backend_api.main: )
+2026-08-03 09:22:14,949 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\utils\hub.py", line 278, in cached_file
+2026-08-03 09:22:14,950 INFO backend_api.main: file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+2026-08-03 09:22:14,950 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\utils\hub.py", line 512, in cached_files
+2026-08-03 09:22:14,950 INFO backend_api.main: raise e
+2026-08-03 09:22:14,951 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\utils\hub.py", line 422, in cached_files
+2026-08-03 09:22:14,951 INFO backend_api.main: hf_hub_download(
+2026-08-03 09:22:14,952 INFO backend_api.main: ~~~~~~~~~~~~~~~^
+2026-08-03 09:22:14,952 INFO backend_api.main: path_or_repo_id,
+2026-08-03 09:22:14,953 INFO backend_api.main: ^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,953 INFO backend_api.main: ...<10 lines>...
+2026-08-03 09:22:14,953 INFO backend_api.main: tqdm_class=tqdm_class,
+2026-08-03 09:22:14,954 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,954 INFO backend_api.main: )
+2026-08-03 09:22:14,954 INFO backend_api.main: ^
+2026-08-03 09:22:14,955 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+2026-08-03 09:22:14,955 INFO backend_api.main: return fn(*args, **kwargs)
+2026-08-03 09:22:14,955 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\file_download.py", line 997, in hf_hub_download
+2026-08-03 09:22:14,956 INFO backend_api.main: return _hf_hub_download_to_cache_dir(
+2026-08-03 09:22:14,956 INFO backend_api.main: # Destination
+2026-08-03 09:22:14,956 INFO backend_api.main: ...<15 lines>...
+2026-08-03 09:22:14,957 INFO backend_api.main: dry_run=dry_run,
+2026-08-03 09:22:14,957 INFO backend_api.main: )
+2026-08-03 09:22:14,957 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\file_download.py", line 1130, in _hf_hub_download_to_cache_dir
+2026-08-03 09:22:14,958 INFO backend_api.main: _get_metadata_or_catch_error(
+2026-08-03 09:22:14,958 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-03 09:22:14,959 INFO backend_api.main: repo_id=repo_id,
+2026-08-03 09:22:14,959 INFO backend_api.main: ^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,959 INFO backend_api.main: ...<10 lines>...
+2026-08-03 09:22:14,960 INFO backend_api.main: retry_on_errors=True,
+2026-08-03 09:22:14,960 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,961 INFO backend_api.main: )
+2026-08-03 09:22:14,961 INFO backend_api.main: ^
+2026-08-03 09:22:14,962 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\file_download.py", line 1669, in _get_metadata_or_catch_error
+2026-08-03 09:22:14,962 INFO backend_api.main: metadata = get_hf_file_metadata(
+2026-08-03 09:22:14,963 INFO backend_api.main: url=url,
+2026-08-03 09:22:14,963 INFO backend_api.main: ...<4 lines>...
+2026-08-03 09:22:14,964 INFO backend_api.main: retry_on_errors=retry_on_errors,
+2026-08-03 09:22:14,964 INFO backend_api.main: )
+2026-08-03 09:22:14,965 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\utils\_validators.py", line 88, in _inner_fn
+2026-08-03 09:22:14,966 INFO backend_api.main: return fn(*args, **kwargs)
+2026-08-03 09:22:14,966 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\file_download.py", line 1591, in get_hf_file_metadata
+2026-08-03 09:22:14,966 INFO backend_api.main: response = _httpx_follow_relative_redirects_with_backoff(
+2026-08-03 09:22:14,967 INFO backend_api.main: method="HEAD", url=url, headers=hf_headers, timeout=timeout, retry_on_errors=retry_on_errors
+2026-08-03 09:22:14,967 INFO backend_api.main: )
+2026-08-03 09:22:14,967 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\utils\_http.py", line 685, in _httpx_follow_relative_redirects_with_backoff
+2026-08-03 09:22:14,968 INFO backend_api.main: response = http_backoff(
+2026-08-03 09:22:14,968 INFO backend_api.main: method=method,
+2026-08-03 09:22:14,969 INFO backend_api.main: ...<3 lines>...
+2026-08-03 09:22:14,969 INFO backend_api.main: **no_retry_kwargs,
+2026-08-03 09:22:14,969 INFO backend_api.main: )
+2026-08-03 09:22:14,970 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\utils\_http.py", line 559, in http_backoff
+2026-08-03 09:22:14,970 INFO backend_api.main: return next(
+2026-08-03 09:22:14,971 INFO backend_api.main: _http_backoff_base(
+2026-08-03 09:22:14,971 INFO backend_api.main: ...<9 lines>...
+2026-08-03 09:22:14,971 INFO backend_api.main: )
+2026-08-03 09:22:14,972 INFO backend_api.main: )
+2026-08-03 09:22:14,972 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\huggingface_hub\utils\_http.py", line 467, in _http_backoff_base
+2026-08-03 09:22:14,972 INFO backend_api.main: response = client.request(method=method, url=url, **kwargs)
+2026-08-03 09:22:14,973 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 825, in request
+2026-08-03 09:22:14,974 INFO backend_api.main: return self.send(request, auth=auth, follow_redirects=follow_redirects)
+2026-08-03 09:22:14,974 INFO backend_api.main: ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,974 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 901, in send
+2026-08-03 09:22:14,974 INFO backend_api.main: raise RuntimeError("Cannot send a request, as the client has been closed.")
+2026-08-03 09:22:14,975 INFO backend_api.main: RuntimeError: Cannot send a request, as the client has been closed.
+2026-08-03 09:22:14,976 INFO backend_api.main: During handling of the above exception, another exception occurred:
+2026-08-03 09:22:14,976 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:22:14,976 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\ssl_embedding.py", line 89, in load_model
+2026-08-03 09:22:14,977 INFO backend_api.main: self.feature_extractor = AutoFeatureExtractor.from_pretrained(
+2026-08-03 09:22:14,977 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-03 09:22:14,978 INFO backend_api.main: self.model_name,
+2026-08-03 09:22:14,978 INFO backend_api.main: ^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,978 INFO backend_api.main: **model_kwargs,
+2026-08-03 09:22:14,978 INFO backend_api.main: ^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,979 INFO backend_api.main: )
+2026-08-03 09:22:14,979 INFO backend_api.main: ^
+2026-08-03 09:22:14,979 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\models\auto\feature_extraction_auto.py", line 320, in from_pretrained
+2026-08-03 09:22:14,980 INFO backend_api.main: config_dict, _ = FeatureExtractionMixin.get_feature_extractor_dict(pretrained_model_name_or_path, **kwargs)
+2026-08-03 09:22:14,980 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,981 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\transformers\feature_extraction_utils.py", line 509, in get_feature_extractor_dict
+2026-08-03 09:22:14,982 INFO backend_api.main: raise OSError(
+2026-08-03 09:22:14,982 INFO backend_api.main: ...<4 lines>...
+2026-08-03 09:22:14,982 INFO backend_api.main: )
+2026-08-03 09:22:14,983 INFO backend_api.main: OSError: Can't load feature extractor for 'microsoft/wavlm-base-plus'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'microsoft/wavlm-base-plus' is the correct path to a directory containing a preprocessor_config.json file
+2026-08-03 09:22:14,983 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-03 09:22:14,983 INFO backend_api.main: Traceback (most recent call last):
+2026-08-03 09:22:14,984 INFO backend_api.main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-03 09:22:14,984 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-03 09:22:14,985 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 90, in <module>
+2026-08-03 09:22:14,985 INFO backend_api.main: main()
+2026-08-03 09:22:14,985 INFO backend_api.main: ~~~~^^
+2026-08-03 09:22:14,986 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 86, in main
+2026-08-03 09:22:14,986 INFO backend_api.main: run_diarization(args)
+2026-08-03 09:22:14,987 INFO backend_api.main: ~~~~~~~~~~~~~~~^^^^^^
+2026-08-03 09:22:14,987 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 51, in run_diarization
+2026-08-03 09:22:14,987 INFO backend_api.main: run_pipeline(
+2026-08-03 09:22:14,988 INFO backend_api.main: ~~~~~~~~~~~~^
+2026-08-03 09:22:14,988 INFO backend_api.main: args.input,
+2026-08-03 09:22:14,988 INFO backend_api.main: ^^^^^^^^^^^
+2026-08-03 09:22:14,989 INFO backend_api.main: ...<8 lines>...
+2026-08-03 09:22:14,989 INFO backend_api.main: save_rttm=args.save_rttm,
+2026-08-03 09:22:14,989 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,990 INFO backend_api.main: )
+2026-08-03 09:22:14,990 INFO backend_api.main: ^
+2026-08-03 09:22:14,990 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 130, in run_pipeline
+2026-08-03 09:22:14,991 INFO backend_api.main: embeddings = _run_stage(
+2026-08-03 09:22:14,991 INFO backend_api.main: "WavLM embeddings",
+2026-08-03 09:22:14,991 INFO backend_api.main: ...<4 lines>...
+2026-08-03 09:22:14,992 INFO backend_api.main: ),
+2026-08-03 09:22:14,992 INFO backend_api.main: )
+2026-08-03 09:22:14,992 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 334, in _run_stage
+2026-08-03 09:22:14,993 INFO backend_api.main: return action()
+2026-08-03 09:22:14,993 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 132, in <lambda>
+2026-08-03 09:22:14,993 INFO backend_api.main: lambda: _extract_embeddings_with_config(
+2026-08-03 09:22:14,993 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-03 09:22:14,994 INFO backend_api.main: processed_audio_path,
+2026-08-03 09:22:14,996 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:14,997 INFO backend_api.main: segments,
+2026-08-03 09:22:14,997 INFO backend_api.main: ^^^^^^^^^
+2026-08-03 09:22:14,997 INFO backend_api.main: config,
+2026-08-03 09:22:14,998 INFO backend_api.main: ^^^^^^^
+2026-08-03 09:22:14,998 INFO backend_api.main: ),
+2026-08-03 09:22:14,998 INFO backend_api.main: ^
+2026-08-03 09:22:14,999 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 233, in _extract_embeddings_with_config
+2026-08-03 09:22:14,999 INFO backend_api.main: return extractor.extract_embeddings(audio_path, segments, use_cache=False)
+2026-08-03 09:22:14,999 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-03 09:22:15,000 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\ssl_embedding.py", line 124, in extract_embeddings
+2026-08-03 09:22:15,000 INFO backend_api.main: self.load_model()
+2026-08-03 09:22:15,000 INFO backend_api.main: ~~~~~~~~~~~~~~~^^
+2026-08-03 09:22:15,001 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\ssl_embedding.py", line 95, in load_model
+2026-08-03 09:22:15,001 INFO backend_api.main: raise OSError(
+2026-08-03 09:22:15,001 INFO backend_api.main: ...<2 lines>...
+2026-08-03 09:22:15,002 INFO backend_api.main: ) from exc
+2026-08-03 09:22:15,002 INFO backend_api.main: OSError: Could not load WavLM model. Set HUGGINGFACE_TOKEN in the environment or a .env file if the model requires authentication.
+2026-08-03 09:22:18,356 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 341, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 287, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-03 09:22:18,391 INFO backend_api.main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-07 12:48:38,127 ERROR backend_api.main: Upload failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 412, in upload_audio
+    _clean_dir(UPLOAD_DIR)
+    ~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 134, in _clean_dir
+    child.unlink()
+    ~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\pathlib\__init__.py", line 1042, in unlink
+    os.unlink(self)
+    ~~~~~~~~~^^^^^^
+PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization\\uploads\\test_upload.wav'
+2026-08-07 12:48:38,146 WARNING backend_api.main: HTTP error 500: Upload failed: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization\\uploads\\test_upload.wav'

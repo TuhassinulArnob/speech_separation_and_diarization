@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.audio-grid {
+  background-image:
+    linear-gradient(rgba(24, 24, 27, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 27, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.dark .audio-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+.glass-card {
+  @apply rounded-xl border border-black/10 bg-white/65 shadow-2xl shadow-zinc-950/5 backdrop-blur-2xl dark:border-white/10 dark:bg-white/[0.06] dark:shadow-black/30;
+}
+
+.nav-link {
+  @apply rounded-lg px-3 py-2 text-sm text-zinc-600 transition hover:bg-black/5 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white;
+}
+
+.nav-link-active {
+  @apply bg-black/5 text-zinc-950 dark:bg-white/10 dark:text-white;
+}
+
+.icon-btn {
+  @apply inline-grid h-10 w-10 place-items-center rounded-lg border border-black/10 bg-white/60 text-zinc-700 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-200 dark:hover:bg-white/[0.12];
+}
+
+.primary-btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg bg-teal-400 px-4 py-2.5 text-sm font-semibold text-zinc-950 shadow-glow transition hover:bg-teal-300 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.secondary-btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-black/10 bg-white/65 px-4 py-2.5 text-sm font-semibold text-zinc-800 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-50 dark:border-white/10 dark:bg-white/[0.06] dark:text-zinc-100 dark:hover:bg-white/[0.12];
+}
+
+.danger-btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-500/15 dark:text-red-300;
+}
+
+.skeleton-block {
+  @apply rounded-xl bg-zinc-200/80 dark:bg-white/[0.06];
+}
+
+.toast-surface {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(12, 14, 20, 0.92);
+  color: white;
+  backdrop-filter: blur(18px);
+}
+
+.wave-bars span {
+  animation: wave-pulse 1.4s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
+.wave-bars span:nth-child(2n) {
+  animation-delay: 0.12s;
+}
+
+.wave-bars span:nth-child(3n) {
+  animation-delay: 0.24s;
+}
+
+@keyframes wave-pulse {
+  0%, 100% {
+    transform: scaleY(0.35);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
