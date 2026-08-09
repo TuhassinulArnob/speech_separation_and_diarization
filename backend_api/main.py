@@ -427,7 +427,6 @@ async def upload_audio(file: UploadFile = File(...)) -> dict[str, Any]:
         LOGGER.info("Uploaded %s to %s", file.filename, upload_path)
 
         return {
-            "success": True,
             "filename": file.filename,
             "storedName": upload_path.name,
             "size": upload_path.stat().st_size,

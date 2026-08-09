@@ -13,7 +13,9 @@ export const uploadUrl = (storedName) => `${apiBase}/download-upload/${encodeURI
 export async function uploadAudio(file) {
   const data = new FormData();
   data.append("file", file);
-  const response = await api.post("/upload", data);
+  const response = await api.post("/upload", data, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return response.data;
 }
 
