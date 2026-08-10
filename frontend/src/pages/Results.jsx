@@ -57,7 +57,11 @@ export default function Results() {
         </div>
         <div className="flex gap-2">
           <button className="secondary-btn" onClick={() => load()}><RefreshCw size={18} /> Refresh</button>
-          <a className="primary-btn" href={downloadUrl("results.zip")} onClick={() => toast.success("Preparing download")}><FileArchive size={18} /> Download All</a>
+          <a
+            className="primary-btn"
+            href={downloadUrl(results.files.find((file) => file.name === "results.zip")?.path || "results.zip")}
+            onClick={() => toast.success("Preparing download")}
+          ><FileArchive size={18} /> Download All</a>
         </div>
       </div>
 

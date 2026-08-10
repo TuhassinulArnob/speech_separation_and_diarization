@@ -1611,3 +1611,998 @@ RuntimeError: Running Diarization Pipeline... failed with exit code 1.
 2026-08-09 22:27:30,401 INFO backend_api.main: Done.
 2026-08-09 22:27:32,789 INFO backend_api.main: Diarization finished.
 2026-08-09 22:27:33,041 INFO backend_api.main: Finished.
+2026-08-10 00:09:37,185 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\f3675dbb65a346048357de63d54fd5b6.wav
+2026-08-10 00:09:47,878 INFO main: Queued complete job
+2026-08-10 00:09:47,922 INFO main: Running Speech Separation...
+2026-08-10 00:09:47,922 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\f3675dbb65a346048357de63d54fd5b6.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:09:48,184 INFO main: Traceback (most recent call last):
+2026-08-10 00:09:48,185 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:09:48,185 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:09:48,185 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 17, in <module>
+2026-08-10 00:09:48,186 INFO main: import matplotlib.pyplot as plt
+2026-08-10 00:09:48,186 INFO main: ModuleNotFoundError: No module named 'matplotlib'
+2026-08-10 00:09:48,222 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 332, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<8 lines>...
+        progress=18 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:09:48,224 INFO main: Failed: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:14:42,628 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\9a4a852032864f279c566e384dd5171f.wav
+2026-08-10 00:14:45,631 INFO main: Queued complete job
+2026-08-10 00:14:45,635 INFO main: Running Speech Separation...
+2026-08-10 00:14:45,637 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\9a4a852032864f279c566e384dd5171f.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:14:55,246 INFO main: Matplotlib is building the font cache; this may take a moment.
+2026-08-10 00:15:02,608 INFO main: Traceback (most recent call last):
+2026-08-10 00:15:02,609 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:15:02,609 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:15:02,610 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 19, in <module>
+2026-08-10 00:15:02,610 INFO main: import soundfile as sf
+2026-08-10 00:15:02,611 INFO main: ModuleNotFoundError: No module named 'soundfile'
+2026-08-10 00:15:02,885 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 332, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<8 lines>...
+        progress=18 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:15:02,887 INFO main: Failed: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:15:52,852 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\ef6ee43ea48a45e6bb390aa0dd135060.wav
+2026-08-10 00:15:55,181 INFO main: Queued complete job
+2026-08-10 00:15:55,185 INFO main: Running Speech Separation...
+2026-08-10 00:15:55,185 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\ef6ee43ea48a45e6bb390aa0dd135060.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:15:57,396 INFO main: Traceback (most recent call last):
+2026-08-10 00:15:57,396 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:15:57,397 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:15:57,397 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 20, in <module>
+2026-08-10 00:15:57,397 INFO main: import torch
+2026-08-10 00:15:57,398 INFO main: ModuleNotFoundError: No module named 'torch'
+2026-08-10 00:15:57,622 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 332, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<8 lines>...
+        progress=18 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:15:57,626 INFO main: Failed: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:27:35,339 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\9b60231304544f70b5cc16b3fd888ec0.wav
+2026-08-10 00:27:38,817 INFO main: Queued complete job
+2026-08-10 00:27:38,820 INFO main: Running Speech Separation...
+2026-08-10 00:27:38,820 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\9b60231304544f70b5cc16b3fd888ec0.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:27:50,926 INFO main: Traceback (most recent call last):
+2026-08-10 00:27:50,927 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:27:50,928 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:27:50,928 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 21, in <module>
+2026-08-10 00:27:50,929 INFO main: from scipy.signal import resample_poly, spectrogram
+2026-08-10 00:27:50,929 INFO main: ModuleNotFoundError: No module named 'scipy'
+2026-08-10 00:27:52,084 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 332, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<8 lines>...
+        progress=18 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:27:52,086 INFO main: Failed: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:29:30,627 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\6c376f5bed594ce08cf5b8f0c923368e.wav
+2026-08-10 00:29:33,387 INFO main: Queued complete job
+2026-08-10 00:29:33,390 INFO main: Running Speech Separation...
+2026-08-10 00:29:33,391 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\6c376f5bed594ce08cf5b8f0c923368e.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:30:10,772 INFO main: Traceback (most recent call last):
+2026-08-10 00:30:10,773 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 112, in _load_speechbrain
+2026-08-10 00:30:10,774 INFO main: from speechbrain.inference.separation import SepformerSeparation
+2026-08-10 00:30:10,774 INFO main: ModuleNotFoundError: No module named 'speechbrain'
+2026-08-10 00:30:10,775 INFO main: During handling of the above exception, another exception occurred:
+2026-08-10 00:30:10,776 INFO main: Traceback (most recent call last):
+2026-08-10 00:30:10,776 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 80, in load_model
+2026-08-10 00:30:10,776 INFO main: self.model = self._load_speechbrain(self.model_name)
+2026-08-10 00:30:10,777 INFO main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+2026-08-10 00:30:10,777 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 114, in _load_speechbrain
+2026-08-10 00:30:10,777 INFO main: from speechbrain.pretrained import SepformerSeparation
+2026-08-10 00:30:10,778 INFO main: ModuleNotFoundError: No module named 'speechbrain'
+2026-08-10 00:30:10,778 INFO main: The above exception was the direct cause of the following exception:
+2026-08-10 00:30:10,778 INFO main: Traceback (most recent call last):
+2026-08-10 00:30:10,779 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:30:10,779 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:30:10,779 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 632, in <module>
+2026-08-10 00:30:10,780 INFO main: main()
+2026-08-10 00:30:10,780 INFO main: ~~~~^^
+2026-08-10 00:30:10,780 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 620, in main
+2026-08-10 00:30:10,781 INFO main: result = separate_speech(
+2026-08-10 00:30:10,781 INFO main: args.audio_path,
+2026-08-10 00:30:10,781 INFO main: ...<3 lines>...
+2026-08-10 00:30:10,781 INFO main: device=args.device,
+2026-08-10 00:30:10,781 INFO main: )
+2026-08-10 00:30:10,782 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 247, in separate_speech
+2026-08-10 00:30:10,782 INFO main: return separator.separate_file(audio_path, output_dir=output_dir)
+2026-08-10 00:30:10,782 INFO main: ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 00:30:10,782 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 190, in separate_file
+2026-08-10 00:30:10,783 INFO main: separated = self.separate_waveform(audio, sample_rate)
+2026-08-10 00:30:10,783 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 217, in separate_waveform
+2026-08-10 00:30:10,783 INFO main: model = self.model_loader.load_model()
+2026-08-10 00:30:10,783 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\speech_separation.py", line 86, in load_model
+2026-08-10 00:30:10,784 INFO main: raise RuntimeError(
+2026-08-10 00:30:10,784 INFO main: ...<3 lines>...
+2026-08-10 00:30:10,784 INFO main: ) from exc
+2026-08-10 00:30:10,784 INFO main: RuntimeError: SpeechBrain SepFormer could not be loaded. Install speechbrain and set HUGGINGFACE_TOKEN if the selected model requires access.
+2026-08-10 00:30:12,044 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 332, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<8 lines>...
+        progress=18 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:30:12,047 INFO main: Failed: Running Speech Separation... failed with exit code 1.
+2026-08-10 00:34:24,547 WARNING main: HTTP error 400: Upload an audio file before running the pipeline.
+2026-08-10 00:34:29,698 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\a095c32da1f54cd2be027c3a59248ca2.wav
+2026-08-10 00:34:31,954 INFO main: Queued complete job
+2026-08-10 00:34:31,956 INFO main: Running Speech Separation...
+2026-08-10 00:34:31,957 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\a095c32da1f54cd2be027c3a59248ca2.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:34:45,247 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 00:34:45,248 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:34:45,664 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:34:46,405 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:34:46,406 INFO main: warnings.warn(
+2026-08-10 00:34:46,412 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:34:46,416 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:34:46,419 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:34:46,420 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:34:59,731 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:34:59,741 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:34:59,742 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:35:01,099 INFO main: Speech Separation finished.
+2026-08-10 00:35:01,100 INFO main: Running Diarization Pipeline...
+2026-08-10 00:35:01,101 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\a095c32da1f54cd2be027c3a59248ca2.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:35:03,446 INFO main: Traceback (most recent call last):
+2026-08-10 00:35:03,448 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:35:03,448 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:35:03,449 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 90, in <module>
+2026-08-10 00:35:03,449 INFO main: main()
+2026-08-10 00:35:03,449 INFO main: ~~~~^^
+2026-08-10 00:35:03,450 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 86, in main
+2026-08-10 00:35:03,450 INFO main: run_diarization(args)
+2026-08-10 00:35:03,450 INFO main: ~~~~~~~~~~~~~~~^^^^^^
+2026-08-10 00:35:03,450 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 49, in run_diarization
+2026-08-10 00:35:03,451 INFO main: from Project.run_diarization import run_pipeline
+2026-08-10 00:35:03,451 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 16, in <module>
+2026-08-10 00:35:03,451 INFO main: from Project.ssl_pipeline.embedding_normalization import (
+2026-08-10 00:35:03,452 INFO main: ...<2 lines>...
+2026-08-10 00:35:03,452 INFO main: )
+2026-08-10 00:35:03,452 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\embedding_normalization.py", line 18, in <module>
+2026-08-10 00:35:03,453 INFO main: from sklearn.decomposition import PCA
+2026-08-10 00:35:03,453 INFO main: ModuleNotFoundError: No module named 'sklearn'
+2026-08-10 00:35:03,684 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 347, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:35:03,686 INFO main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:40:22,105 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\cdf9e5ed1be24f099b38624d157c7b42.wav
+2026-08-10 00:40:24,455 INFO main: Queued complete job
+2026-08-10 00:40:24,463 INFO main: Running Speech Separation...
+2026-08-10 00:40:24,464 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\cdf9e5ed1be24f099b38624d157c7b42.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:40:37,726 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 00:40:37,726 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:40:38,108 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:40:38,726 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:40:38,727 INFO main: warnings.warn(
+2026-08-10 00:40:38,728 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:40:38,729 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:40:38,731 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:40:38,731 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:40:49,896 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:40:49,906 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:40:49,907 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:40:51,250 INFO main: Speech Separation finished.
+2026-08-10 00:40:51,251 INFO main: Running Diarization Pipeline...
+2026-08-10 00:40:51,251 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\cdf9e5ed1be24f099b38624d157c7b42.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:41:05,550 INFO main: Traceback (most recent call last):
+2026-08-10 00:41:05,589 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:41:05,589 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:41:05,590 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 90, in <module>
+2026-08-10 00:41:05,590 INFO main: main()
+2026-08-10 00:41:05,590 INFO main: ~~~~^^
+2026-08-10 00:41:05,590 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 86, in main
+2026-08-10 00:41:05,591 INFO main: run_diarization(args)
+2026-08-10 00:41:05,591 INFO main: ~~~~~~~~~~~~~~~^^^^^^
+2026-08-10 00:41:05,591 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 49, in run_diarization
+2026-08-10 00:41:05,591 INFO main: from Project.run_diarization import run_pipeline
+2026-08-10 00:41:05,591 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 16, in <module>
+2026-08-10 00:41:05,592 INFO main: from Project.ssl_pipeline.embedding_normalization import (
+2026-08-10 00:41:05,592 INFO main: ...<2 lines>...
+2026-08-10 00:41:05,592 INFO main: )
+2026-08-10 00:41:05,592 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\embedding_normalization.py", line 22, in <module>
+2026-08-10 00:41:05,592 INFO main: from Project.ssl_pipeline.ssl_embedding import SegmentEmbedding, load_embedding_cache
+2026-08-10 00:41:05,593 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\ssl_embedding.py", line 24, in <module>
+2026-08-10 00:41:05,593 INFO main: from transformers import AutoFeatureExtractor, WavLMModel
+2026-08-10 00:41:05,593 INFO main: ModuleNotFoundError: No module named 'transformers'
+2026-08-10 00:41:06,595 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 347, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:41:06,598 INFO main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:44:16,091 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d2370ac82c8d4fcd9b9708917e9ff87a.wav
+2026-08-10 00:44:20,383 INFO main: Queued complete job
+2026-08-10 00:44:20,392 INFO main: Running Speech Separation...
+2026-08-10 00:44:20,393 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d2370ac82c8d4fcd9b9708917e9ff87a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:44:33,046 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 00:44:33,047 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:44:33,426 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:44:34,112 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:44:34,113 INFO main: warnings.warn(
+2026-08-10 00:44:34,118 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:44:34,123 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:44:34,128 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:44:34,130 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:44:45,318 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:44:45,328 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:44:45,328 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:44:46,567 INFO main: Speech Separation finished.
+2026-08-10 00:44:46,567 INFO main: Running Diarization Pipeline...
+2026-08-10 00:44:46,568 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d2370ac82c8d4fcd9b9708917e9ff87a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:45:20,792 INFO main: Traceback (most recent call last):
+2026-08-10 00:45:20,795 INFO main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-10 00:45:20,796 INFO main: File "<frozen runpy>", line 88, in _run_code
+2026-08-10 00:45:20,796 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 90, in <module>
+2026-08-10 00:45:20,797 INFO main: main()
+2026-08-10 00:45:20,797 INFO main: ~~~~^^
+2026-08-10 00:45:20,797 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 86, in main
+2026-08-10 00:45:20,798 INFO main: run_diarization(args)
+2026-08-10 00:45:20,798 INFO main: ~~~~~~~~~~~~~~~^^^^^^
+2026-08-10 00:45:20,798 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\pipeline_runner.py", line 49, in run_diarization
+2026-08-10 00:45:20,799 INFO main: from Project.run_diarization import run_pipeline
+2026-08-10 00:45:20,799 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\run_diarization.py", line 25, in <module>
+2026-08-10 00:45:20,799 INFO main: from Project.ssl_pipeline.preprocessing import preprocess_audio
+2026-08-10 00:45:20,800 INFO main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\Project\ssl_pipeline\preprocessing.py", line 10, in <module>
+2026-08-10 00:45:20,800 INFO main: import audioread
+2026-08-10 00:45:20,800 INFO main: ModuleNotFoundError: No module named 'audioread'
+2026-08-10 00:45:22,547 ERROR main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 347, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\backend_api\main.py", line 293, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:45:22,550 INFO main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-10 00:45:59,424 INFO main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d9e4a5f687bb42da8c7233b003409263.wav
+2026-08-10 00:46:02,783 INFO main: Queued complete job
+2026-08-10 00:46:02,788 INFO main: Running Speech Separation...
+2026-08-10 00:46:02,791 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d9e4a5f687bb42da8c7233b003409263.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:46:14,797 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 00:46:14,797 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:46:15,145 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:46:15,801 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:46:15,801 INFO main: warnings.warn(
+2026-08-10 00:46:15,805 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:46:15,807 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:46:15,809 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:46:15,811 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:46:29,220 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:46:29,233 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:46:29,233 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:46:30,481 INFO main: Speech Separation finished.
+2026-08-10 00:46:30,481 INFO main: Running Diarization Pipeline...
+2026-08-10 00:46:30,482 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\d9e4a5f687bb42da8c7233b003409263.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:47:00,726 INFO main: Loading audio...
+2026-08-10 00:47:00,732 INFO main: Running preprocessing...
+2026-08-10 00:47:00,762 INFO main: Running VAD...
+2026-08-10 00:47:00,800 INFO main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 00:47:00,802 INFO main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 00:47:00,810 INFO main: Running segmentation...
+2026-08-10 00:47:00,816 INFO main: Running WavLM embeddings...
+2026-08-10 00:47:01,627 INFO main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 00:47:01,628 INFO main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 9496.57it/s]
+2026-08-10 00:47:02,468 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 00:47:02,469 INFO main: key_padding_mask = _canonical_mask(
+2026-08-10 00:47:04,087 INFO main: Running embedding normalization...
+2026-08-10 00:47:04,094 INFO main: Running spectral clustering...
+2026-08-10 00:47:08,929 INFO main: Running timeline reconstruction...
+2026-08-10 00:47:10,087 INFO main: Running RTTM generation...
+2026-08-10 00:47:10,090 INFO main: Done.
+2026-08-10 00:47:12,579 INFO main: Diarization finished.
+2026-08-10 00:47:13,005 INFO main: Finished.
+2026-08-10 00:48:19,002 INFO main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\39f72e86f6314d0f951e7ba49d1c9c4b.mp3
+2026-08-10 00:48:21,760 INFO main: Queued complete job
+2026-08-10 00:48:21,785 INFO main: Running Speech Separation...
+2026-08-10 00:48:21,786 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\39f72e86f6314d0f951e7ba49d1c9c4b.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:48:34,793 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-10 00:48:34,794 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:48:35,178 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:48:35,834 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:48:35,835 INFO main: warnings.warn(
+2026-08-10 00:48:35,838 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:48:35,839 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:48:35,841 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:48:35,841 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:48:49,653 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:48:49,660 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:48:49,661 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:48:51,092 INFO main: Speech Separation finished.
+2026-08-10 00:48:51,093 INFO main: Running Diarization Pipeline...
+2026-08-10 00:48:51,093 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\39f72e86f6314d0f951e7ba49d1c9c4b.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:49:18,443 INFO main: Loading audio...
+2026-08-10 00:49:18,447 INFO main: Running preprocessing...
+2026-08-10 00:49:18,520 INFO main: Running VAD...
+2026-08-10 00:49:18,555 INFO main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 00:49:18,557 INFO main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 00:49:18,565 INFO main: Running segmentation...
+2026-08-10 00:49:18,569 INFO main: Running WavLM embeddings...
+2026-08-10 00:49:19,187 INFO main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 00:49:19,187 INFO main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 12021.95it/s]
+2026-08-10 00:49:19,917 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 00:49:19,918 INFO main: key_padding_mask = _canonical_mask(
+2026-08-10 00:49:21,553 INFO main: Running embedding normalization...
+2026-08-10 00:49:21,560 INFO main: Running spectral clustering...
+2026-08-10 00:49:25,588 INFO main: Running timeline reconstruction...
+2026-08-10 00:49:26,399 INFO main: Running RTTM generation...
+2026-08-10 00:49:26,403 INFO main: Done.
+2026-08-10 00:49:28,471 INFO main: Diarization finished.
+2026-08-10 00:49:28,865 INFO main: Finished.
+2026-08-10 00:52:12,091 INFO main: Uploaded mixed_old.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\aac4d5325ced43bcbdc10d1efd054135.wav
+2026-08-10 00:52:17,265 INFO main: Queued complete job
+2026-08-10 00:52:17,298 INFO main: Running Speech Separation...
+2026-08-10 00:52:17,299 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\aac4d5325ced43bcbdc10d1efd054135.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:52:30,487 INFO main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 00:52:30,488 INFO main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 00:52:30,887 INFO main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 00:52:31,545 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 00:52:31,546 INFO main: warnings.warn(
+2026-08-10 00:52:31,548 INFO main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 00:52:31,550 INFO main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 00:52:31,552 INFO main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 00:52:31,553 INFO main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 00:52:41,914 INFO main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:52:41,919 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker1.wav
+2026-08-10 00:52:41,920 INFO main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\speaker2.wav
+2026-08-10 00:52:43,263 INFO main: Speech Separation finished.
+2026-08-10 00:52:43,264 INFO main: Running Diarization Pipeline...
+2026-08-10 00:52:43,264 INFO main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\aac4d5325ced43bcbdc10d1efd054135.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results
+2026-08-10 00:53:10,871 INFO main: Loading audio...
+2026-08-10 00:53:10,875 INFO main: Running preprocessing...
+2026-08-10 00:53:10,932 INFO main: Running VAD...
+2026-08-10 00:53:10,962 INFO main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 00:53:10,964 INFO main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 00:53:10,969 INFO main: Running segmentation...
+2026-08-10 00:53:10,972 INFO main: Running WavLM embeddings...
+2026-08-10 00:53:11,519 INFO main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 00:53:11,520 INFO main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 11967.04it/s]
+2026-08-10 00:53:12,153 INFO main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 00:53:12,154 INFO main: key_padding_mask = _canonical_mask(
+2026-08-10 00:53:12,787 INFO main: Running embedding normalization...
+2026-08-10 00:53:12,797 INFO main: Running spectral clustering...
+2026-08-10 00:53:12,800 INFO main: Running timeline reconstruction...
+2026-08-10 00:53:13,826 INFO main: Running RTTM generation...
+2026-08-10 00:53:13,833 INFO main: Done.
+2026-08-10 00:53:16,418 INFO main: Diarization finished.
+2026-08-10 00:53:16,845 INFO main: Finished.
+2026-08-10 01:19:39,349 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\406899410f7546c6b12075c8efb3eb73\0f92f1cc83b44f5fb5fe2cc0617b21ed.wav
+2026-08-10 01:23:07,282 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\69536635e8f649de8465e670c56145c9\07dc327657bb4be4b438ee2d9978388d.wav
+2026-08-10 01:25:12,652 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\318805aee4bb420f8a6c877fd55a8a74\f7869cea1ccf4c20973380bd27daab9e.wav
+2026-08-10 01:25:12,664 INFO backend_api.main: Queued diarization job
+2026-08-10 01:25:12,699 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 01:25:12,699 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\318805aee4bb420f8a6c877fd55a8a74\f7869cea1ccf4c20973380bd27daab9e.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\318805aee4bb420f8a6c877fd55a8a74
+2026-08-10 01:26:31,727 INFO backend_api.main: Loading audio...
+2026-08-10 01:26:31,732 INFO backend_api.main: Running preprocessing...
+2026-08-10 01:26:31,778 INFO backend_api.main: Running VAD...
+2026-08-10 01:26:35,199 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\pyannote\audio\core\io.py:47: UserWarning:
+2026-08-10 01:26:35,199 INFO backend_api.main: torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
+2026-08-10 01:26:35,200 INFO backend_api.main: * use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
+2026-08-10 01:26:35,200 INFO backend_api.main: * fix torchcodec installation. Error message was:
+2026-08-10 01:26:35,200 INFO backend_api.main: Could not load libtorchcodec. Likely causes:
+2026-08-10 01:26:35,200 INFO backend_api.main: 1. FFmpeg is not properly installed in your environment. We support
+2026-08-10 01:26:35,201 INFO backend_api.main: versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+2026-08-10 01:26:35,201 INFO backend_api.main: for each of those versions. Errors for versions not installed on
+2026-08-10 01:26:35,201 INFO backend_api.main: your system are expected; only the error for your installed FFmpeg
+2026-08-10 01:26:35,202 INFO backend_api.main: version is relevant. On Windows, ensure you've installed the
+2026-08-10 01:26:35,202 INFO backend_api.main: "full-shared" version which ships DLLs.
+2026-08-10 01:26:35,202 INFO backend_api.main: 2. The PyTorch version (2.11.0+cpu) is not compatible with
+2026-08-10 01:26:35,202 INFO backend_api.main: this version of TorchCodec. Refer to the version compatibility
+2026-08-10 01:26:35,202 INFO backend_api.main: table:
+2026-08-10 01:26:35,203 INFO backend_api.main: https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+2026-08-10 01:26:35,203 INFO backend_api.main: 3. Another runtime dependency; see exceptions below.
+2026-08-10 01:26:35,203 INFO backend_api.main: The following exceptions were raised as we tried to load libtorchcodec:
+2026-08-10 01:26:35,204 INFO backend_api.main: [start of libtorchcodec loading traceback]
+2026-08-10 01:26:35,204 INFO backend_api.main: FFmpeg version 8:
+2026-08-10 01:26:35,204 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,205 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:26:35,205 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:26:35,206 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:26:35,206 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:26:35,206 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:26:35,206 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,207 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:26:35,207 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:26:35,207 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:26:35,208 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:26:35,208 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,208 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:26:35,209 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:26:35,209 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,209 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:26:35,209 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:26:35,210 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll
+2026-08-10 01:26:35,210 INFO backend_api.main: FFmpeg version 7:
+2026-08-10 01:26:35,210 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,210 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:26:35,211 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:26:35,211 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:26:35,211 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:26:35,211 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:26:35,212 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,212 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:26:35,213 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:26:35,213 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:26:35,213 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:26:35,213 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,214 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:26:35,214 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:26:35,214 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,215 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:26:35,215 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:26:35,215 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll
+2026-08-10 01:26:35,216 INFO backend_api.main: FFmpeg version 6:
+2026-08-10 01:26:35,216 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,216 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:26:35,217 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:26:35,217 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:26:35,217 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:26:35,217 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:26:35,218 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,218 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:26:35,218 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:26:35,218 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:26:35,219 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:26:35,219 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,219 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:26:35,220 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:26:35,220 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,220 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:26:35,220 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:26:35,221 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll
+2026-08-10 01:26:35,221 INFO backend_api.main: FFmpeg version 5:
+2026-08-10 01:26:35,221 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,221 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:26:35,222 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:26:35,222 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:26:35,222 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:26:35,223 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:26:35,223 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,223 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:26:35,223 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:26:35,224 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:26:35,224 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:26:35,224 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,224 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:26:35,225 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:26:35,225 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,225 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:26:35,225 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:26:35,226 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll
+2026-08-10 01:26:35,226 INFO backend_api.main: FFmpeg version 4:
+2026-08-10 01:26:35,226 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,227 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:26:35,227 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:26:35,227 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:26:35,228 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:26:35,228 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:26:35,228 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,229 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:26:35,229 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:26:35,229 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:26:35,230 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:26:35,230 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:26:35,230 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:26:35,230 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:26:35,231 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:26:35,231 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:26:35,231 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:26:35,232 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll
+2026-08-10 01:26:35,232 INFO backend_api.main: [end of libtorchcodec loading traceback].
+2026-08-10 01:26:35,232 INFO backend_api.main: warnings.warn(
+2026-08-10 01:26:37,024 INFO backend_api.main: VAD backend pyannote unavailable: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+2026-08-10 01:26:37,025 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 01:26:37,041 INFO backend_api.main: Running segmentation...
+2026-08-10 01:26:37,044 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 01:26:37,567 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 01:26:37,567 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 15256.71it/s]
+2026-08-10 01:26:38,421 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\nn\functional.py:6409: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 01:26:38,421 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 01:26:39,968 INFO backend_api.main: Running embedding normalization...
+2026-08-10 01:26:39,973 INFO backend_api.main: Running spectral clustering...
+2026-08-10 01:26:42,983 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 01:26:43,839 INFO backend_api.main: Running RTTM generation...
+2026-08-10 01:26:43,843 INFO backend_api.main: Done.
+2026-08-10 01:26:46,301 INFO backend_api.main: Diarization finished.
+2026-08-10 01:26:46,547 INFO backend_api.main: Finished.
+2026-08-10 01:27:00,441 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\4d3a5bb48ef848e189252fe190787402\15dc9d85d4bb44bab293ad41ca77b3b8.wav
+2026-08-10 01:33:30,339 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\ec8f78198e1e4c02ad85b6f8b174e236\fd8c41fc6769409ca138122b4ceccbba.wav
+2026-08-10 01:33:30,352 INFO backend_api.main: Queued diarization job
+2026-08-10 01:33:30,355 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 01:33:30,356 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\ec8f78198e1e4c02ad85b6f8b174e236\fd8c41fc6769409ca138122b4ceccbba.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\ec8f78198e1e4c02ad85b6f8b174e236
+2026-08-10 01:33:55,755 INFO backend_api.main: Loading audio...
+2026-08-10 01:33:55,759 INFO backend_api.main: Running preprocessing...
+2026-08-10 01:33:55,803 INFO backend_api.main: Running VAD...
+2026-08-10 01:33:57,614 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\pyannote\audio\core\io.py:47: UserWarning:
+2026-08-10 01:33:57,615 INFO backend_api.main: torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
+2026-08-10 01:33:57,615 INFO backend_api.main: * use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
+2026-08-10 01:33:57,615 INFO backend_api.main: * fix torchcodec installation. Error message was:
+2026-08-10 01:33:57,616 INFO backend_api.main: Could not load libtorchcodec. Likely causes:
+2026-08-10 01:33:57,616 INFO backend_api.main: 1. FFmpeg is not properly installed in your environment. We support
+2026-08-10 01:33:57,616 INFO backend_api.main: versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+2026-08-10 01:33:57,617 INFO backend_api.main: for each of those versions. Errors for versions not installed on
+2026-08-10 01:33:57,617 INFO backend_api.main: your system are expected; only the error for your installed FFmpeg
+2026-08-10 01:33:57,617 INFO backend_api.main: version is relevant. On Windows, ensure you've installed the
+2026-08-10 01:33:57,617 INFO backend_api.main: "full-shared" version which ships DLLs.
+2026-08-10 01:33:57,617 INFO backend_api.main: 2. The PyTorch version (2.11.0+cpu) is not compatible with
+2026-08-10 01:33:57,618 INFO backend_api.main: this version of TorchCodec. Refer to the version compatibility
+2026-08-10 01:33:57,618 INFO backend_api.main: table:
+2026-08-10 01:33:57,618 INFO backend_api.main: https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+2026-08-10 01:33:57,618 INFO backend_api.main: 3. Another runtime dependency; see exceptions below.
+2026-08-10 01:33:57,619 INFO backend_api.main: The following exceptions were raised as we tried to load libtorchcodec:
+2026-08-10 01:33:57,619 INFO backend_api.main: [start of libtorchcodec loading traceback]
+2026-08-10 01:33:57,619 INFO backend_api.main: FFmpeg version 8:
+2026-08-10 01:33:57,619 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,620 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:33:57,620 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:33:57,620 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:33:57,620 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:33:57,620 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:33:57,620 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,621 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:33:57,621 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:33:57,621 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:33:57,621 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:33:57,622 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,622 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:33:57,622 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:33:57,622 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,622 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:33:57,623 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:33:57,623 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll
+2026-08-10 01:33:57,623 INFO backend_api.main: FFmpeg version 7:
+2026-08-10 01:33:57,623 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,624 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:33:57,624 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:33:57,624 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:33:57,624 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:33:57,624 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:33:57,625 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,625 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:33:57,625 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:33:57,625 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:33:57,626 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:33:57,626 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,626 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:33:57,626 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:33:57,627 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,628 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:33:57,629 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:33:57,629 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll
+2026-08-10 01:33:57,629 INFO backend_api.main: FFmpeg version 6:
+2026-08-10 01:33:57,629 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,630 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:33:57,630 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:33:57,630 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:33:57,630 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:33:57,630 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:33:57,631 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,631 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:33:57,631 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:33:57,631 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:33:57,632 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:33:57,632 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,632 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:33:57,633 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:33:57,633 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,633 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:33:57,633 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:33:57,633 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll
+2026-08-10 01:33:57,634 INFO backend_api.main: FFmpeg version 5:
+2026-08-10 01:33:57,634 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,634 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:33:57,634 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:33:57,635 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:33:57,635 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:33:57,635 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:33:57,635 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,636 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:33:57,636 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:33:57,636 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:33:57,636 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:33:57,636 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,637 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:33:57,637 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:33:57,637 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,637 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:33:57,638 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:33:57,638 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll
+2026-08-10 01:33:57,638 INFO backend_api.main: FFmpeg version 4:
+2026-08-10 01:33:57,638 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,639 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:33:57,639 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:33:57,639 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:33:57,639 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:33:57,639 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:33:57,640 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,640 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:33:57,640 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:33:57,640 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:33:57,640 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:33:57,641 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:33:57,641 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:33:57,641 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:33:57,641 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:33:57,642 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:33:57,642 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:33:57,642 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll
+2026-08-10 01:33:57,643 INFO backend_api.main: [end of libtorchcodec loading traceback].
+2026-08-10 01:33:57,643 INFO backend_api.main: warnings.warn(
+2026-08-10 01:33:58,898 INFO backend_api.main: VAD backend pyannote unavailable: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+2026-08-10 01:33:58,900 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 01:33:58,907 INFO backend_api.main: Running segmentation...
+2026-08-10 01:33:58,911 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 01:33:59,246 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 01:33:59,246 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 17006.53it/s]
+2026-08-10 01:33:59,706 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\nn\functional.py:6409: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 01:33:59,707 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 01:34:00,172 INFO backend_api.main: Running embedding normalization...
+2026-08-10 01:34:00,210 INFO backend_api.main: Running spectral clustering...
+2026-08-10 01:34:02,731 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 01:34:03,327 INFO backend_api.main: Running RTTM generation...
+2026-08-10 01:34:03,367 INFO backend_api.main: Done.
+2026-08-10 01:34:05,571 INFO backend_api.main: Diarization finished.
+2026-08-10 01:34:05,737 INFO backend_api.main: Finished.
+2026-08-10 01:34:28,980 INFO backend_api.main: Uploaded mixed_old.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\738048508d7a442f9dc63dad075c9fdb\724d322938774967b24c7af082fda1dd.wav
+2026-08-10 01:34:28,994 INFO backend_api.main: Queued diarization job
+2026-08-10 01:34:28,998 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 01:34:28,998 INFO backend_api.main: Starting subprocess: C:\Python314\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\738048508d7a442f9dc63dad075c9fdb\724d322938774967b24c7af082fda1dd.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\738048508d7a442f9dc63dad075c9fdb
+2026-08-10 01:34:50,953 INFO backend_api.main: Loading audio...
+2026-08-10 01:34:50,958 INFO backend_api.main: Running preprocessing...
+2026-08-10 01:34:50,998 INFO backend_api.main: Running VAD...
+2026-08-10 01:34:52,770 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\pyannote\audio\core\io.py:47: UserWarning:
+2026-08-10 01:34:52,771 INFO backend_api.main: torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
+2026-08-10 01:34:52,771 INFO backend_api.main: * use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
+2026-08-10 01:34:52,771 INFO backend_api.main: * fix torchcodec installation. Error message was:
+2026-08-10 01:34:52,771 INFO backend_api.main: Could not load libtorchcodec. Likely causes:
+2026-08-10 01:34:52,772 INFO backend_api.main: 1. FFmpeg is not properly installed in your environment. We support
+2026-08-10 01:34:52,772 INFO backend_api.main: versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+2026-08-10 01:34:52,772 INFO backend_api.main: for each of those versions. Errors for versions not installed on
+2026-08-10 01:34:52,773 INFO backend_api.main: your system are expected; only the error for your installed FFmpeg
+2026-08-10 01:34:52,773 INFO backend_api.main: version is relevant. On Windows, ensure you've installed the
+2026-08-10 01:34:52,773 INFO backend_api.main: "full-shared" version which ships DLLs.
+2026-08-10 01:34:52,774 INFO backend_api.main: 2. The PyTorch version (2.11.0+cpu) is not compatible with
+2026-08-10 01:34:52,774 INFO backend_api.main: this version of TorchCodec. Refer to the version compatibility
+2026-08-10 01:34:52,774 INFO backend_api.main: table:
+2026-08-10 01:34:52,774 INFO backend_api.main: https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+2026-08-10 01:34:52,775 INFO backend_api.main: 3. Another runtime dependency; see exceptions below.
+2026-08-10 01:34:52,775 INFO backend_api.main: The following exceptions were raised as we tried to load libtorchcodec:
+2026-08-10 01:34:52,775 INFO backend_api.main: [start of libtorchcodec loading traceback]
+2026-08-10 01:34:52,775 INFO backend_api.main: FFmpeg version 8:
+2026-08-10 01:34:52,776 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,776 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:34:52,776 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:34:52,777 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:34:52,777 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:34:52,777 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:34:52,778 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,778 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:34:52,778 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:34:52,779 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:34:52,779 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:34:52,779 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,780 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:34:52,780 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:34:52,780 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,780 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:34:52,781 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:34:52,781 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core8.dll
+2026-08-10 01:34:52,781 INFO backend_api.main: FFmpeg version 7:
+2026-08-10 01:34:52,781 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,782 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:34:52,782 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:34:52,782 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:34:52,783 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:34:52,783 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:34:52,784 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,784 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:34:52,784 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:34:52,785 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:34:52,785 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:34:52,785 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,786 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:34:52,786 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:34:52,786 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,786 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:34:52,787 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:34:52,787 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core7.dll
+2026-08-10 01:34:52,787 INFO backend_api.main: FFmpeg version 6:
+2026-08-10 01:34:52,787 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,788 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:34:52,788 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:34:52,788 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:34:52,789 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:34:52,789 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:34:52,789 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,790 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:34:52,790 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:34:52,790 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:34:52,791 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:34:52,791 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,792 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:34:52,793 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:34:52,793 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,793 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:34:52,794 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:34:52,794 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core6.dll
+2026-08-10 01:34:52,794 INFO backend_api.main: FFmpeg version 5:
+2026-08-10 01:34:52,795 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,795 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:34:52,795 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:34:52,796 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:34:52,796 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:34:52,797 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:34:52,797 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,797 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:34:52,798 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:34:52,798 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:34:52,798 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:34:52,799 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,799 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:34:52,799 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:34:52,800 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,800 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:34:52,800 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:34:52,801 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core5.dll
+2026-08-10 01:34:52,801 INFO backend_api.main: FFmpeg version 4:
+2026-08-10 01:34:52,801 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,801 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1503, in load_library
+2026-08-10 01:34:52,802 INFO backend_api.main: ctypes.CDLL(path)
+2026-08-10 01:34:52,802 INFO backend_api.main: ~~~~~~~~~~~^^^^^^
+2026-08-10 01:34:52,802 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 433, in __init__
+2026-08-10 01:34:52,803 INFO backend_api.main: self._handle = self._load_library(name, mode, handle, winmode)
+2026-08-10 01:34:52,803 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,804 INFO backend_api.main: File "C:\Python314\Lib\ctypes\__init__.py", line 451, in _load_library
+2026-08-10 01:34:52,804 INFO backend_api.main: return _LoadLibrary(self._name, winmode)
+2026-08-10 01:34:52,804 INFO backend_api.main: FileNotFoundError: Could not find module 'C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+2026-08-10 01:34:52,804 INFO backend_api.main: The above exception was the direct cause of the following exception:
+2026-08-10 01:34:52,805 INFO backend_api.main: Traceback (most recent call last):
+2026-08-10 01:34:52,805 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\_internally_replaced_utils.py", line 93, in load_torchcodec_shared_libraries
+2026-08-10 01:34:52,805 INFO backend_api.main: torch.ops.load_library(core_library_path)
+2026-08-10 01:34:52,806 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+2026-08-10 01:34:52,806 INFO backend_api.main: File "C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\_ops.py", line 1505, in load_library
+2026-08-10 01:34:52,806 INFO backend_api.main: raise OSError(f"Could not load this library: {path}") from e
+2026-08-10 01:34:52,807 INFO backend_api.main: OSError: Could not load this library: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torchcodec\libtorchcodec_core4.dll
+2026-08-10 01:34:52,807 INFO backend_api.main: [end of libtorchcodec loading traceback].
+2026-08-10 01:34:52,807 INFO backend_api.main: warnings.warn(
+2026-08-10 01:34:54,095 INFO backend_api.main: VAD backend pyannote unavailable: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.
+2026-08-10 01:34:54,096 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 01:34:54,101 INFO backend_api.main: Running segmentation...
+2026-08-10 01:34:54,104 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 01:34:54,443 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 01:34:54,443 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 16232.64it/s]
+2026-08-10 01:34:54,861 INFO backend_api.main: C:\Users\USER\AppData\Roaming\Python\Python314\site-packages\torch\nn\functional.py:6409: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 01:34:54,862 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 01:34:55,276 INFO backend_api.main: Running embedding normalization...
+2026-08-10 01:34:55,280 INFO backend_api.main: Running spectral clustering...
+2026-08-10 01:34:55,283 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 01:34:55,863 INFO backend_api.main: Running RTTM generation...
+2026-08-10 01:34:55,867 INFO backend_api.main: Done.
+2026-08-10 01:34:57,839 INFO backend_api.main: Diarization finished.
+2026-08-10 01:34:58,062 INFO backend_api.main: Finished.
+2026-08-10 09:05:49,684 INFO backend_api.main: Uploaded mixed.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\86ff646b58b945a19ae254fb2ee6430f\2548639586b446f4a89f781563ade16a.wav
+2026-08-10 09:05:53,204 INFO backend_api.main: Queued complete job
+2026-08-10 09:05:53,207 INFO backend_api.main: Running Speech Separation...
+2026-08-10 09:05:53,208 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\86ff646b58b945a19ae254fb2ee6430f\2548639586b446f4a89f781563ade16a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\86ff646b58b945a19ae254fb2ee6430f
+2026-08-10 09:06:13,916 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-10 09:06:13,917 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 09:06:14,153 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 09:06:14,563 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 09:06:14,564 INFO backend_api.main: warnings.warn(
+2026-08-10 09:06:14,564 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 09:06:14,565 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 09:06:14,565 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 09:06:14,566 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 09:06:23,708 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\86ff646b58b945a19ae254fb2ee6430f
+2026-08-10 09:06:23,716 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\86ff646b58b945a19ae254fb2ee6430f\speaker1.wav
+2026-08-10 09:06:23,716 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\86ff646b58b945a19ae254fb2ee6430f\speaker2.wav
+2026-08-10 09:06:24,837 INFO backend_api.main: Speech Separation finished.
+2026-08-10 09:06:24,838 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 09:06:24,838 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\86ff646b58b945a19ae254fb2ee6430f\2548639586b446f4a89f781563ade16a.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\86ff646b58b945a19ae254fb2ee6430f
+2026-08-10 09:07:05,150 INFO backend_api.main: Loading audio...
+2026-08-10 09:07:05,153 INFO backend_api.main: Running preprocessing...
+2026-08-10 09:07:05,166 INFO backend_api.main: Running VAD...
+2026-08-10 09:07:05,178 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 09:07:05,179 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 09:07:05,182 INFO backend_api.main: Running segmentation...
+2026-08-10 09:07:05,183 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 09:07:05,506 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 09:07:05,507 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 19672.95it/s]
+2026-08-10 09:07:05,973 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 09:07:05,973 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 09:07:07,112 INFO backend_api.main: Running embedding normalization...
+2026-08-10 09:07:07,115 INFO backend_api.main: Running spectral clustering...
+2026-08-10 09:07:10,132 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 09:07:10,556 INFO backend_api.main: Running RTTM generation...
+2026-08-10 09:07:10,558 INFO backend_api.main: Done.
+2026-08-10 09:07:11,784 INFO backend_api.main: Diarization finished.
+2026-08-10 09:07:11,960 INFO backend_api.main: Finished.
+2026-08-10 09:08:32,764 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0aec4559aa24443680de0d71d0a598e8\73e5454e80f34b9cb91b46449a88d58e.mp3
+2026-08-10 09:08:39,275 INFO backend_api.main: Queued complete job
+2026-08-10 09:08:39,276 INFO backend_api.main: Running Speech Separation...
+2026-08-10 09:08:39,277 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0aec4559aa24443680de0d71d0a598e8\73e5454e80f34b9cb91b46449a88d58e.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\0aec4559aa24443680de0d71d0a598e8
+2026-08-10 09:08:45,113 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 09:08:45,113 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 09:08:45,300 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 09:08:45,626 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 09:08:45,626 INFO backend_api.main: warnings.warn(
+2026-08-10 09:08:45,627 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 09:08:45,628 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 09:08:45,629 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 09:08:45,629 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 09:08:54,570 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\0aec4559aa24443680de0d71d0a598e8
+2026-08-10 09:08:54,572 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\0aec4559aa24443680de0d71d0a598e8\speaker1.wav
+2026-08-10 09:08:54,572 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\0aec4559aa24443680de0d71d0a598e8\speaker2.wav
+2026-08-10 09:08:55,269 INFO backend_api.main: Speech Separation finished.
+2026-08-10 09:08:55,269 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 09:08:55,269 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\0aec4559aa24443680de0d71d0a598e8\73e5454e80f34b9cb91b46449a88d58e.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\0aec4559aa24443680de0d71d0a598e8
+2026-08-10 09:09:06,184 INFO backend_api.main: Loading audio...
+2026-08-10 09:09:06,187 INFO backend_api.main: Running preprocessing...
+2026-08-10 09:09:06,202 INFO backend_api.main: Running VAD...
+2026-08-10 09:09:06,215 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 09:09:06,216 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 09:09:06,218 INFO backend_api.main: Running segmentation...
+2026-08-10 09:09:06,221 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 09:09:06,430 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 09:09:06,430 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 17117.07it/s]
+2026-08-10 09:09:06,845 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 09:09:06,845 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 09:09:07,251 INFO backend_api.main: Running embedding normalization...
+2026-08-10 09:09:07,254 INFO backend_api.main: Running spectral clustering...
+2026-08-10 09:09:09,193 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 09:09:09,501 INFO backend_api.main: Running RTTM generation...
+2026-08-10 09:09:09,504 INFO backend_api.main: Done.
+2026-08-10 09:09:10,728 INFO backend_api.main: Diarization finished.
+2026-08-10 09:09:10,915 INFO backend_api.main: Finished.
+2026-08-10 09:10:31,314 INFO backend_api.main: Uploaded mixed_old.wav to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\746b965088fe4563877b3ca2fea22afe\6914699912ac4caa9b0abf0128c32a18.wav
+2026-08-10 09:10:33,941 INFO backend_api.main: Queued complete job
+2026-08-10 09:10:33,943 INFO backend_api.main: Running Speech Separation...
+2026-08-10 09:10:33,943 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\746b965088fe4563877b3ca2fea22afe\6914699912ac4caa9b0abf0128c32a18.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\746b965088fe4563877b3ca2fea22afe
+2026-08-10 09:10:39,730 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-10 09:10:39,731 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 09:10:39,891 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 09:10:40,154 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 09:10:40,154 INFO backend_api.main: warnings.warn(
+2026-08-10 09:10:40,155 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 09:10:40,156 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 09:10:40,156 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 09:10:40,157 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 09:10:46,098 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\746b965088fe4563877b3ca2fea22afe
+2026-08-10 09:10:46,100 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\746b965088fe4563877b3ca2fea22afe\speaker1.wav
+2026-08-10 09:10:46,101 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\746b965088fe4563877b3ca2fea22afe\speaker2.wav
+2026-08-10 09:10:46,863 INFO backend_api.main: Speech Separation finished.
+2026-08-10 09:10:46,863 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 09:10:46,863 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\746b965088fe4563877b3ca2fea22afe\6914699912ac4caa9b0abf0128c32a18.wav --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\746b965088fe4563877b3ca2fea22afe
+2026-08-10 09:10:58,532 INFO backend_api.main: Loading audio...
+2026-08-10 09:10:58,536 INFO backend_api.main: Running preprocessing...
+2026-08-10 09:10:58,546 INFO backend_api.main: Running VAD...
+2026-08-10 09:10:58,562 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 09:10:58,563 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 09:10:58,566 INFO backend_api.main: Running segmentation...
+2026-08-10 09:10:58,570 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 09:10:58,763 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 09:10:58,764 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 15759.70it/s]
+2026-08-10 09:10:59,106 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 09:10:59,107 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 09:10:59,487 INFO backend_api.main: Running embedding normalization...
+2026-08-10 09:10:59,491 INFO backend_api.main: Running spectral clustering...
+2026-08-10 09:10:59,492 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 09:10:59,944 INFO backend_api.main: Running RTTM generation...
+2026-08-10 09:10:59,947 INFO backend_api.main: Done.
+2026-08-10 09:11:01,417 INFO backend_api.main: Diarization finished.
+2026-08-10 09:11:01,609 INFO backend_api.main: Finished.
+2026-08-10 09:11:46,710 INFO backend_api.main: Uploaded test2.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\392a75b0efac4d57810e5a8c202f4d90\98797159a0cf4b278a90ec9240ec8c07.mp3
+2026-08-10 09:11:49,807 INFO backend_api.main: Queued complete job
+2026-08-10 09:11:49,809 INFO backend_api.main: Running Speech Separation...
+2026-08-10 09:11:49,810 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\392a75b0efac4d57810e5a8c202f4d90\98797159a0cf4b278a90ec9240ec8c07.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\392a75b0efac4d57810e5a8c202f4d90
+2026-08-10 09:11:55,568 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-10 09:11:55,568 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-10 09:11:55,730 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-10 09:11:55,980 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-10 09:11:55,980 INFO backend_api.main: warnings.warn(
+2026-08-10 09:11:55,981 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-10 09:11:55,982 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-10 09:11:55,983 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-10 09:11:55,983 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-10 09:12:04,116 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\392a75b0efac4d57810e5a8c202f4d90
+2026-08-10 09:12:04,139 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\392a75b0efac4d57810e5a8c202f4d90\speaker1.wav
+2026-08-10 09:12:04,140 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\392a75b0efac4d57810e5a8c202f4d90\speaker2.wav
+2026-08-10 09:12:04,838 INFO backend_api.main: Speech Separation finished.
+2026-08-10 09:12:04,838 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-10 09:12:04,838 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\392a75b0efac4d57810e5a8c202f4d90\98797159a0cf4b278a90ec9240ec8c07.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\392a75b0efac4d57810e5a8c202f4d90
+2026-08-10 09:12:15,809 INFO backend_api.main: Loading audio...
+2026-08-10 09:12:15,812 INFO backend_api.main: Running preprocessing...
+2026-08-10 09:12:15,824 INFO backend_api.main: Running VAD...
+2026-08-10 09:12:15,838 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-10 09:12:15,839 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-10 09:12:15,842 INFO backend_api.main: Running segmentation...
+2026-08-10 09:12:15,844 INFO backend_api.main: Running WavLM embeddings...
+2026-08-10 09:12:16,018 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-10 09:12:16,019 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 24677.06it/s]
+2026-08-10 09:12:16,343 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-10 09:12:16,344 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-10 09:12:16,677 INFO backend_api.main: Running embedding normalization...
+2026-08-10 09:12:16,679 INFO backend_api.main: Running spectral clustering...
+2026-08-10 09:12:18,279 INFO backend_api.main: Running timeline reconstruction...
+2026-08-10 09:12:18,600 INFO backend_api.main: Running RTTM generation...
+2026-08-10 09:12:18,602 INFO backend_api.main: Done.
+2026-08-10 09:12:19,769 INFO backend_api.main: Diarization finished.
+2026-08-10 09:12:19,881 INFO backend_api.main: Finished.

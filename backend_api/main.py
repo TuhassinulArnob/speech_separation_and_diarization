@@ -52,6 +52,7 @@ class JobState:
     stage: str = "Waiting for audio"
     progress: int = 0
     logs: list[str] = field(default_factory=list)
+    job_id: str | None = None
     upload_path: Path | None = None
     original_filename: str | None = None
     result_dir: Path | None = None
@@ -83,6 +84,7 @@ class StatusResponse(BaseModel):
     stage: str
     progress: int
     uploaded_file: str | None
+    job_id: str | None
     processing_time: float | None
     error: str | None
 
@@ -96,6 +98,7 @@ class FileInfo(BaseModel):
 
 
 class ResultsResponse(BaseModel):
+    job_id: str | None
     original_audio: FileInfo | None
     separated_audio: list[FileInfo]
     figures: list[FileInfo]
@@ -161,9 +164,10 @@ def _file_info(path: Path) -> FileInfo:
 
 def _upload_file_info(path: Path) -> FileInfo:
     kind = _file_kind(path)
+    relative = path.relative_to(UPLOAD_DIR).as_posix()
     return FileInfo(
         name=path.name,
-        path=path.name,
+        path=relative,
         size=path.stat().st_size,
         kind=kind,
         previewable=kind == "audio",
@@ -180,6 +184,7 @@ def _collect_results() -> ResultsResponse:
     original = _upload_file_info(STATE.upload_path) if STATE.upload_path and STATE.upload_path.exists() else None
 
     return ResultsResponse(
+        job_id=STATE.job_id,
         original_audio=original,
         separated_audio=separated,
         figures=figures,
@@ -245,14 +250,14 @@ def _embedding_dimension(result_dir: Path) -> int | None:
     return None
 
 
-def _zip_results() -> Path:
-    zip_path = RESULTS_DIR / "results.zip"
+def _zip_results(result_dir: Path) -> Path:
+    zip_path = result_dir / "results.zip"
     if zip_path.exists():
         zip_path.unlink()
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as archive:
-        for path in RESULTS_DIR.rglob("*"):
+        for path in result_dir.rglob("*"):
             if path.is_file() and path.name not in {".gitkeep", "results.zip"}:
-                archive.write(path, path.relative_to(RESULTS_DIR))
+                archive.write(path, path.relative_to(result_dir))
     return zip_path
 
 
@@ -315,7 +320,7 @@ def _run_subprocess_blocking(command: list[str]) -> int:
 
 def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
     with LOCK:
-        if STATE.upload_path is None:
+        if STATE.upload_path is None or STATE.job_id is None:
             STATE.status = "error"
             STATE.error = "Upload an audio file before running the pipeline."
             return
@@ -324,8 +329,8 @@ def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
         STATE.error = None
         STATE.started_at = time.time()
         STATE.finished_at = None
-        _clean_dir(RESULTS_DIR)
-        STATE.result_dir = RESULTS_DIR
+        STATE.result_dir = RESULTS_DIR / STATE.job_id
+        _clean_dir(STATE.result_dir)
 
         try:
             if mode in {"separation", "complete"}:
@@ -336,7 +341,7 @@ def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
                         "Project.ssl_pipeline.speech_separation",
                         str(STATE.upload_path),
                         "--output-dir",
-                        str(RESULTS_DIR),
+                        str(STATE.result_dir),
                     ],
                     label="Running Speech Separation...",
                     progress=18 if mode == "complete" else 10,
@@ -353,14 +358,14 @@ def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
                         "--input",
                         str(STATE.upload_path),
                         "--output-dir",
-                        str(RESULTS_DIR),
+                        str(STATE.result_dir),
                     ],
                     label="Running Diarization Pipeline...",
                     progress=42 if mode == "complete" else 10,
                 )
                 _log("Diarization finished.", 96)
 
-            _zip_results()
+            _zip_results(STATE.result_dir)
             STATE.finished_at = time.time()
             STATE.status = "complete"
             _log("Finished.", 100)
@@ -409,18 +414,21 @@ async def upload_audio(file: UploadFile = File(...)) -> dict[str, Any]:
         if suffix not in ALLOWED_EXTENSIONS:
             raise HTTPException(status_code=400, detail="Only wav, mp3, and m4a files are supported.")
 
+        job_id = uuid4().hex
         _clean_dir(UPLOAD_DIR)
-        upload_path = UPLOAD_DIR / f"{uuid4().hex}{suffix}"
+        upload_path = UPLOAD_DIR / job_id / f"{uuid4().hex}{suffix}"
+        upload_path.parent.mkdir(parents=True, exist_ok=True)
         with upload_path.open("wb") as target:
             shutil.copyfileobj(file.file, target)
 
+        STATE.job_id = job_id
         STATE.status = "uploaded"
         STATE.stage = "Audio uploaded"
         STATE.progress = 0
         STATE.logs = [f"[{time.strftime('%H:%M:%S')}] Uploaded {file.filename}"]
         STATE.upload_path = upload_path
         STATE.original_filename = file.filename
-        STATE.result_dir = RESULTS_DIR
+        STATE.result_dir = RESULTS_DIR / job_id
         STATE.started_at = None
         STATE.finished_at = None
         STATE.error = None
@@ -428,9 +436,10 @@ async def upload_audio(file: UploadFile = File(...)) -> dict[str, Any]:
 
         return {
             "filename": file.filename,
-            "storedName": upload_path.name,
+            "storedName": upload_path.relative_to(UPLOAD_DIR).as_posix(),
             "size": upload_path.stat().st_size,
-            "url": f"/download-upload/{upload_path.name}",
+            "url": f"/download-upload/{upload_path.relative_to(UPLOAD_DIR).as_posix()}",
+            "jobId": job_id,
         }
     except HTTPException:
         raise
@@ -477,6 +486,7 @@ def get_status() -> StatusResponse:
         stage=STATE.stage,
         progress=STATE.progress,
         uploaded_file=STATE.original_filename,
+        job_id=STATE.job_id,
         processing_time=_current_processing_time(),
         error=STATE.error,
     )
@@ -489,7 +499,9 @@ def get_logs() -> dict[str, list[str]]:
 
 @app.get("/results", response_model=ResultsResponse)
 def get_results() -> ResultsResponse:
-    if STATE.status not in {"complete", "error"} and not any(RESULTS_DIR.rglob("*")):
+    if STATE.job_id is None or STATE.result_dir is None:
+        raise HTTPException(status_code=404, detail="No results are available yet.")
+    if STATE.status not in {"complete", "error"} and not any(STATE.result_dir.rglob("*")):
         raise HTTPException(status_code=404, detail="No results are available yet.")
     return _collect_results()
 
@@ -504,7 +516,7 @@ def download_result(filename: str) -> FileResponse:
     return FileResponse(path, filename=path.name)
 
 
-@app.get("/download-upload/{filename}")
+@app.get("/download-upload/{filename:path}")
 def download_upload(filename: str) -> FileResponse:
     path = (UPLOAD_DIR / filename).resolve()
     if UPLOAD_DIR.resolve() not in path.parents:
@@ -519,6 +531,9 @@ def clear_results() -> dict[str, str]:
     if STATE.status == "running":
         raise HTTPException(status_code=409, detail="Cannot clear results while processing.")
     _clean_dir(RESULTS_DIR)
-    STATE.result_dir = RESULTS_DIR
+    STATE.job_id = None
+    STATE.result_dir = None
+    STATE.upload_path = None
+    STATE.original_filename = None
     STATE.logs.append(f"[{time.strftime('%H:%M:%S')}] Cleared results")
     return {"status": "cleared"}

@@ -8,7 +8,7 @@ export const api = axios.create({
 const apiBase = api.defaults.baseURL.replace(/\/$/, "");
 
 export const downloadUrl = (path) => `${apiBase}/download/${encodeURI(path)}`;
-export const uploadUrl = (storedName) => `${apiBase}/download-upload/${encodeURIComponent(storedName)}`;
+export const uploadUrl = (storedName) => `${apiBase}/download-upload/${storedName.split("/").map(encodeURIComponent).join("/")}`;
 
 export async function uploadAudio(file) {
   const data = new FormData();
