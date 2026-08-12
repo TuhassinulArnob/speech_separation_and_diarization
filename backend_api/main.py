@@ -104,6 +104,7 @@ class ResultsResponse(BaseModel):
     figures: list[FileInfo]
     files: list[FileInfo]
     statistics: dict[str, Any]
+    transcript: dict[str, Any] | None = None
 
 
 def _safe_error(exc: Exception) -> str:
@@ -183,6 +184,14 @@ def _collect_results() -> ResultsResponse:
     figures = [item for item in infos if item.kind == "image"]
     original = _upload_file_info(STATE.upload_path) if STATE.upload_path and STATE.upload_path.exists() else None
 
+    transcript_data = None
+    transcript_json = result_dir / "transcript.json"
+    if transcript_json.exists():
+        try:
+            transcript_data = json.loads(transcript_json.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            transcript_data = None
+
     return ResultsResponse(
         job_id=STATE.job_id,
         original_audio=original,
@@ -190,6 +199,7 @@ def _collect_results() -> ResultsResponse:
         figures=figures,
         files=infos,
         statistics=_statistics(result_dir, infos),
+        transcript=transcript_data,
     )
 
 
@@ -222,12 +232,16 @@ def _statistics(result_dir: Path, files: list[FileInfo]) -> dict[str, Any]:
     ]
     embedding_dim = _embedding_dimension(result_dir)
 
+    models = ["SpeechBrain SepFormer", "WavLM", "Spectral Clustering"]
+    if any(path.name.startswith("transcript") for path in files):
+        models.append("Whisper")
+
     return {
         "numberOfSpeakers": len([speaker for speaker in speakers if speaker is not None]),
         "speechSegments": len(timeline),
         "embeddingDimension": embedding_dim,
         "processingTime": _current_processing_time(),
-        "modelsUsed": ["SpeechBrain SepFormer", "WavLM", "Spectral Clustering"],
+        "modelsUsed": models,
         "outputFilesGenerated": len(files),
         "totalSpeechDuration": round(sum(max(duration, 0.0) for duration in durations), 2),
         "evaluation": evaluation,
@@ -318,7 +332,7 @@ def _run_subprocess_blocking(command: list[str]) -> int:
     return process.wait()
 
 
-def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
+def _run_job(mode: Literal["separation", "diarization", "complete", "transcription"]) -> None:
     with LOCK:
         if STATE.upload_path is None or STATE.job_id is None:
             STATE.status = "error"
@@ -330,7 +344,9 @@ def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
         STATE.started_at = time.time()
         STATE.finished_at = None
         STATE.result_dir = RESULTS_DIR / STATE.job_id
-        _clean_dir(STATE.result_dir)
+
+        if mode in {"separation", "diarization", "complete"}:
+            _clean_dir(STATE.result_dir)
 
         try:
             if mode in {"separation", "complete"}:
@@ -364,6 +380,28 @@ def _run_job(mode: Literal["separation", "diarization", "complete"]) -> None:
                     progress=42 if mode == "complete" else 10,
                 )
                 _log("Diarization finished.", 96)
+
+            if mode in {"complete", "transcription"}:
+                timeline_path = STATE.result_dir / "timeline.json"
+                if not timeline_path.exists():
+                    raise RuntimeError("Diarization timeline not found. Run diarization before transcription.")
+                _run_subprocess(
+                    [
+                        sys.executable,
+                        "-m",
+                        "backend_api.pipeline_runner",
+                        "transcription",
+                        "--input",
+                        str(STATE.result_dir / "processed.wav"),
+                        "--timeline",
+                        str(timeline_path),
+                        "--output-dir",
+                        str(STATE.result_dir),
+                    ],
+                    label="Running Whisper Transcription...",
+                    progress=80 if mode == "complete" else 60,
+                )
+                _log("Transcription finished.", 98)
 
             _zip_results(STATE.result_dir)
             STATE.finished_at = time.time()
@@ -448,11 +486,13 @@ async def upload_audio(file: UploadFile = File(...)) -> dict[str, Any]:
         raise HTTPException(status_code=500, detail=f"Upload failed: {_safe_error(exc)}") from exc
 
 
-def _start_job(mode: Literal["separation", "diarization", "complete"]) -> StatusResponse:
+def _start_job(mode: Literal["separation", "diarization", "complete", "transcription"]) -> StatusResponse:
     if STATE.status == "running":
         raise HTTPException(status_code=409, detail="A job is already running.")
     if STATE.upload_path is None or not STATE.upload_path.exists():
         raise HTTPException(status_code=400, detail="Upload an audio file before running the pipeline.")
+    if mode == "transcription" and (STATE.result_dir is None or not (STATE.result_dir / "timeline.json").exists()):
+        raise HTTPException(status_code=400, detail="Diarization results are required before transcription.")
     STATE.status = "running"
     STATE.error = None
     STATE.started_at = time.time()
@@ -477,6 +517,11 @@ async def run_diarization(_background_tasks: BackgroundTasks) -> StatusResponse:
 @app.post("/run-complete")
 async def run_complete(_background_tasks: BackgroundTasks) -> StatusResponse:
     return _start_job("complete")
+
+
+@app.post("/run-transcription")
+async def run_transcription(_background_tasks: BackgroundTasks) -> StatusResponse:
+    return _start_job("transcription")
 
 
 @app.get("/status", response_model=StatusResponse)

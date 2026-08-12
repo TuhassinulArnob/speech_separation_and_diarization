@@ -66,6 +66,10 @@ class DiarizationConfig:
     rttm_decimal_places: int = 2
     evaluation_collar_seconds: float = 0.0
     evaluation_use_pyannote: bool = True
+    whisper_enabled: bool = True
+    whisper_model: str = "base"
+    whisper_language: str = "auto"
+    whisper_device: str = "cpu"
     baseline_mfcc_coefficients: int = 13
     baseline_frame_length_seconds: float = 0.025
     baseline_frame_hop_seconds: float = 0.010
@@ -344,6 +348,30 @@ def load_config(config_path: str | Path = DEFAULT_CONFIG_PATH) -> DiarizationCon
             raw_config.get(
                 "evaluation_use_pyannote",
                 DiarizationConfig.evaluation_use_pyannote,
+            )
+        ),
+        whisper_enabled=bool(
+            raw_config.get(
+                "whisper_enabled",
+                DiarizationConfig.whisper_enabled,
+            )
+        ),
+        whisper_model=str(
+            raw_config.get(
+                "whisper_model",
+                DiarizationConfig.whisper_model,
+            )
+        ),
+        whisper_language=str(
+            raw_config.get(
+                "whisper_language",
+                DiarizationConfig.whisper_language,
+            )
+        ),
+        whisper_device=str(
+            raw_config.get(
+                "whisper_device",
+                DiarizationConfig.whisper_device,
             )
         ),
         baseline_mfcc_coefficients=int(

@@ -2606,3 +2606,383 @@ RuntimeError: Running Diarization Pipeline... failed with exit code 1.
 2026-08-10 09:12:18,602 INFO backend_api.main: Done.
 2026-08-10 09:12:19,769 INFO backend_api.main: Diarization finished.
 2026-08-10 09:12:19,881 INFO backend_api.main: Finished.
+2026-08-11 19:15:18,533 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\8dd8997402394a68b53f8544812739ca\01a073c5ca624fe9b3cdf2f4085da8a1.mp3
+2026-08-11 19:15:22,763 INFO backend_api.main: Queued complete job
+2026-08-11 19:15:22,766 INFO backend_api.main: Running Speech Separation...
+2026-08-11 19:15:22,766 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\8dd8997402394a68b53f8544812739ca\01a073c5ca624fe9b3cdf2f4085da8a1.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\8dd8997402394a68b53f8544812739ca
+2026-08-11 19:15:29,743 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-11 19:15:29,744 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-11 19:15:30,011 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-11 19:15:30,548 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-11 19:15:30,549 INFO backend_api.main: warnings.warn(
+2026-08-11 19:15:30,551 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-11 19:15:30,554 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-11 19:15:30,562 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using symlink found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-11 19:15:30,563 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-11 19:15:42,180 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\8dd8997402394a68b53f8544812739ca
+2026-08-11 19:15:42,185 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\8dd8997402394a68b53f8544812739ca\speaker1.wav
+2026-08-11 19:15:42,185 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\8dd8997402394a68b53f8544812739ca\speaker2.wav
+2026-08-11 19:15:43,204 INFO backend_api.main: Speech Separation finished.
+2026-08-11 19:15:43,204 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-11 19:15:43,205 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\uploads\8dd8997402394a68b53f8544812739ca\01a073c5ca624fe9b3cdf2f4085da8a1.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\results\8dd8997402394a68b53f8544812739ca
+2026-08-11 19:16:02,596 INFO backend_api.main: Loading audio...
+2026-08-11 19:16:02,627 INFO backend_api.main: Running preprocessing...
+2026-08-11 19:16:02,668 INFO backend_api.main: Running VAD...
+2026-08-11 19:16:02,681 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-11 19:16:02,682 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-11 19:16:02,687 INFO backend_api.main: Running segmentation...
+2026-08-11 19:16:02,691 INFO backend_api.main: Running WavLM embeddings...
+2026-08-11 19:16:03,068 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-11 19:16:03,069 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 17325.77it/s]
+2026-08-11 19:16:03,629 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-11 19:16:03,630 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-11 19:16:04,982 INFO backend_api.main: Running embedding normalization...
+2026-08-11 19:16:04,985 INFO backend_api.main: Running spectral clustering...
+2026-08-11 19:16:07,279 INFO backend_api.main: Running timeline reconstruction...
+2026-08-11 19:16:07,765 INFO backend_api.main: Running RTTM generation...
+2026-08-11 19:16:07,773 INFO backend_api.main: Done.
+2026-08-11 19:16:09,126 INFO backend_api.main: Diarization finished.
+2026-08-11 19:16:09,297 INFO backend_api.main: Finished.
+2026-08-12 12:04:00,586 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\56e36b894afa4ed7b35c6253c2881ecc\0365d71f8b1e4a3292ad54f86573ae48.mp3
+2026-08-12 12:04:05,158 INFO backend_api.main: Queued complete job
+2026-08-12 12:04:05,161 INFO backend_api.main: Running Speech Separation...
+2026-08-12 12:04:05,161 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\56e36b894afa4ed7b35c6253c2881ecc\0365d71f8b1e4a3292ad54f86573ae48.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\56e36b894afa4ed7b35c6253c2881ecc
+2026-08-12 12:04:23,903 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-12 12:04:23,904 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-12 12:04:24,183 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-12 12:04:24,677 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-12 12:04:24,678 INFO backend_api.main: warnings.warn(
+2026-08-12 12:04:24,678 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-12 12:04:24,679 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-12 12:04:24,680 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-12 12:04:24,680 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-12 12:04:36,373 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\56e36b894afa4ed7b35c6253c2881ecc
+2026-08-12 12:04:36,379 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\56e36b894afa4ed7b35c6253c2881ecc\speaker1.wav
+2026-08-12 12:04:36,379 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\56e36b894afa4ed7b35c6253c2881ecc\speaker2.wav
+2026-08-12 12:04:37,371 INFO backend_api.main: Speech Separation finished.
+2026-08-12 12:04:37,372 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-12 12:04:37,372 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\56e36b894afa4ed7b35c6253c2881ecc\0365d71f8b1e4a3292ad54f86573ae48.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\56e36b894afa4ed7b35c6253c2881ecc
+2026-08-12 12:04:37,642 INFO backend_api.main: Traceback (most recent call last):
+2026-08-12 12:04:37,643 INFO backend_api.main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-12 12:04:37,644 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-12 12:04:37,644 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 123, in <module>
+2026-08-12 12:04:37,644 INFO backend_api.main: main()
+2026-08-12 12:04:37,644 INFO backend_api.main: ~~~~^^
+2026-08-12 12:04:37,644 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 96, in main
+2026-08-12 12:04:37,645 INFO backend_api.main: args = _parse_args()
+2026-08-12 12:04:37,645 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 88, in _parse_args
+2026-08-12 12:04:37,645 INFO backend_api.main: transcription.add_argument("--no-json", action=argparse.BooleanOptionalAction, default=False)
+2026-08-12 12:04:37,645 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:04:37,645 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\argparse.py", line 1539, in add_argument
+2026-08-12 12:04:37,645 INFO backend_api.main: action = action_class(**kwargs)
+2026-08-12 12:04:37,645 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\argparse.py", line 942, in __init__
+2026-08-12 12:04:37,645 INFO backend_api.main: raise ValueError(f'invalid option name {option_string!r} '
+2026-08-12 12:04:37,645 INFO backend_api.main: f'for BooleanOptionalAction')
+2026-08-12 12:04:37,645 INFO backend_api.main: ValueError: invalid option name '--no-json' for BooleanOptionalAction
+2026-08-12 12:04:37,662 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 368, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<10 lines>...
+        progress=42 if mode == "complete" else 10,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 312, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Diarization Pipeline... failed with exit code 1.
+2026-08-12 12:04:37,664 INFO backend_api.main: Failed: Running Diarization Pipeline... failed with exit code 1.
+2026-08-12 12:06:15,458 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\97484860c3d940099c85411c9f58506d\09fd50f4de354940897bc54dde17c07e.mp3
+2026-08-12 12:06:18,564 INFO backend_api.main: Queued complete job
+2026-08-12 12:06:18,567 INFO backend_api.main: Running Speech Separation...
+2026-08-12 12:06:18,567 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\97484860c3d940099c85411c9f58506d\09fd50f4de354940897bc54dde17c07e.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d
+2026-08-12 12:06:25,380 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-12 12:06:25,380 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-12 12:06:25,569 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-12 12:06:25,894 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-12 12:06:25,894 INFO backend_api.main: warnings.warn(
+2026-08-12 12:06:25,895 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-12 12:06:25,895 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-12 12:06:25,896 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-12 12:06:25,896 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-12 12:06:36,252 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d
+2026-08-12 12:06:36,254 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d\speaker1.wav
+2026-08-12 12:06:36,254 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d\speaker2.wav
+2026-08-12 12:06:37,067 INFO backend_api.main: Speech Separation finished.
+2026-08-12 12:06:37,067 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-12 12:06:37,067 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\97484860c3d940099c85411c9f58506d\09fd50f4de354940897bc54dde17c07e.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d
+2026-08-12 12:07:20,309 INFO backend_api.main: Loading audio...
+2026-08-12 12:07:20,312 INFO backend_api.main: Running preprocessing...
+2026-08-12 12:07:20,328 INFO backend_api.main: Running VAD...
+2026-08-12 12:07:20,338 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-12 12:07:20,339 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-12 12:07:20,345 INFO backend_api.main: Running segmentation...
+2026-08-12 12:07:20,347 INFO backend_api.main: Running WavLM embeddings...
+2026-08-12 12:07:20,690 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-12 12:07:20,691 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 17154.33it/s]
+2026-08-12 12:07:21,315 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-12 12:07:21,315 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-12 12:07:23,252 INFO backend_api.main: Running embedding normalization...
+2026-08-12 12:07:23,256 INFO backend_api.main: Running spectral clustering...
+2026-08-12 12:07:26,442 INFO backend_api.main: Running timeline reconstruction...
+2026-08-12 12:07:27,091 INFO backend_api.main: Running RTTM generation...
+2026-08-12 12:07:27,093 INFO backend_api.main: Done.
+2026-08-12 12:07:28,711 INFO backend_api.main: Diarization finished.
+2026-08-12 12:07:28,711 INFO backend_api.main: Running Whisper Transcription...
+2026-08-12 12:07:28,712 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner transcription --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d\processed.wav --timeline C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d\timeline.json --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\97484860c3d940099c85411c9f58506d
+2026-08-12 12:07:31,669 INFO backend_api.main: Traceback (most recent call last):
+2026-08-12 12:07:31,670 INFO backend_api.main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-12 12:07:31,671 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-12 12:07:31,671 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 123, in <module>
+2026-08-12 12:07:31,671 INFO backend_api.main: main()
+2026-08-12 12:07:31,671 INFO backend_api.main: ~~~~^^
+2026-08-12 12:07:31,671 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 100, in main
+2026-08-12 12:07:31,671 INFO backend_api.main: run_transcription(args)
+2026-08-12 12:07:31,671 INFO backend_api.main: ~~~~~~~~~~~~~~~~~^^^^^^
+2026-08-12 12:07:31,671 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 109, in run_transcription
+2026-08-12 12:07:31,672 INFO backend_api.main: transcribe_speaker_timeline(
+2026-08-12 12:07:31,672 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-12 12:07:31,672 INFO backend_api.main: audio_path=args.input,
+2026-08-12 12:07:31,672 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:07:31,672 INFO backend_api.main: ...<7 lines>...
+2026-08-12 12:07:31,672 INFO backend_api.main: save_srt=not args.no_srt,
+2026-08-12 12:07:31,672 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:07:31,672 INFO backend_api.main: )
+2026-08-12 12:07:31,672 INFO backend_api.main: ^
+2026-08-12 12:07:31,672 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\Project\transcription\whisper_transcription.py", line 118, in transcribe_speaker_timeline
+2026-08-12 12:07:31,672 INFO backend_api.main: model = load_whisper_model(model_name, device=device)
+2026-08-12 12:07:31,673 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\Project\transcription\whisper_transcription.py", line 54, in load_whisper_model
+2026-08-12 12:07:31,673 INFO backend_api.main: raise WhisperUnavailableError(
+2026-08-12 12:07:31,673 INFO backend_api.main: "Whisper transcription is unavailable. Install openai-whisper in the Python environment."
+2026-08-12 12:07:31,673 INFO backend_api.main: )
+2026-08-12 12:07:31,673 INFO backend_api.main: Project.transcription.whisper_transcription.WhisperUnavailableError: Whisper transcription is unavailable. Install openai-whisper in the Python environment.
+2026-08-12 12:07:32,198 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 388, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<12 lines>...
+        progress=80 if mode == "complete" else 60,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 312, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:07:32,201 INFO backend_api.main: Failed: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:09:08,533 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\83821eec1d9a436ca326b6768ea46db7\ed32df58984a441b84e7fbd042b439a8.mp3
+2026-08-12 12:09:10,935 INFO backend_api.main: Queued complete job
+2026-08-12 12:09:10,937 INFO backend_api.main: Running Speech Separation...
+2026-08-12 12:09:10,937 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\83821eec1d9a436ca326b6768ea46db7\ed32df58984a441b84e7fbd042b439a8.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7
+2026-08-12 12:09:17,456 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [allow_tf32, disable_jit_profiling]
+2026-08-12 12:09:17,457 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-12 12:09:17,692 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-12 12:09:18,038 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-12 12:09:18,038 INFO backend_api.main: warnings.warn(
+2026-08-12 12:09:18,039 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-12 12:09:18,039 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-12 12:09:18,040 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-12 12:09:18,041 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-12 12:09:28,964 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7
+2026-08-12 12:09:28,970 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7\speaker1.wav
+2026-08-12 12:09:28,970 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7\speaker2.wav
+2026-08-12 12:09:29,839 INFO backend_api.main: Speech Separation finished.
+2026-08-12 12:09:29,839 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-12 12:09:29,840 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\83821eec1d9a436ca326b6768ea46db7\ed32df58984a441b84e7fbd042b439a8.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7
+2026-08-12 12:09:46,049 INFO backend_api.main: Loading audio...
+2026-08-12 12:09:46,054 INFO backend_api.main: Running preprocessing...
+2026-08-12 12:09:46,068 INFO backend_api.main: Running VAD...
+2026-08-12 12:09:46,081 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-12 12:09:46,082 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-12 12:09:46,086 INFO backend_api.main: Running segmentation...
+2026-08-12 12:09:46,089 INFO backend_api.main: Running WavLM embeddings...
+2026-08-12 12:09:46,405 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-12 12:09:46,405 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 16010.27it/s]
+2026-08-12 12:09:47,008 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-12 12:09:47,008 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-12 12:09:48,355 INFO backend_api.main: Running embedding normalization...
+2026-08-12 12:09:48,358 INFO backend_api.main: Running spectral clustering...
+2026-08-12 12:09:50,221 INFO backend_api.main: Running timeline reconstruction...
+2026-08-12 12:09:50,580 INFO backend_api.main: Running RTTM generation...
+2026-08-12 12:09:50,583 INFO backend_api.main: Done.
+2026-08-12 12:09:52,004 INFO backend_api.main: Diarization finished.
+2026-08-12 12:09:52,004 INFO backend_api.main: Running Whisper Transcription...
+2026-08-12 12:09:52,005 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner transcription --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7\processed.wav --timeline C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7\timeline.json --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\83821eec1d9a436ca326b6768ea46db7
+2026-08-12 12:09:56,944 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\whisper\transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+2026-08-12 12:09:56,945 INFO backend_api.main: warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+2026-08-12 12:09:57,239 INFO backend_api.main: Traceback (most recent call last):
+2026-08-12 12:09:57,240 INFO backend_api.main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-12 12:09:57,241 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-12 12:09:57,241 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 123, in <module>
+2026-08-12 12:09:57,241 INFO backend_api.main: main()
+2026-08-12 12:09:57,241 INFO backend_api.main: ~~~~^^
+2026-08-12 12:09:57,242 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 100, in main
+2026-08-12 12:09:57,242 INFO backend_api.main: run_transcription(args)
+2026-08-12 12:09:57,242 INFO backend_api.main: ~~~~~~~~~~~~~~~~~^^^^^^
+2026-08-12 12:09:57,243 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 109, in run_transcription
+2026-08-12 12:09:57,243 INFO backend_api.main: transcribe_speaker_timeline(
+2026-08-12 12:09:57,243 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-12 12:09:57,243 INFO backend_api.main: audio_path=args.input,
+2026-08-12 12:09:57,243 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:09:57,244 INFO backend_api.main: ...<7 lines>...
+2026-08-12 12:09:57,244 INFO backend_api.main: save_srt=not args.no_srt,
+2026-08-12 12:09:57,244 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:09:57,244 INFO backend_api.main: )
+2026-08-12 12:09:57,244 INFO backend_api.main: ^
+2026-08-12 12:09:57,245 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\Project\transcription\whisper_transcription.py", line 133, in transcribe_speaker_timeline
+2026-08-12 12:09:57,245 INFO backend_api.main: result = model.transcribe(str(slice_path), language=language, task="transcribe")
+2026-08-12 12:09:57,245 INFO backend_api.main: File "c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\whisper\transcribe.py", line 161, in transcribe
+2026-08-12 12:09:57,245 INFO backend_api.main: tokenizer = get_tokenizer(
+2026-08-12 12:09:57,245 INFO backend_api.main: model.is_multilingual,
+2026-08-12 12:09:57,245 INFO backend_api.main: ...<2 lines>...
+2026-08-12 12:09:57,245 INFO backend_api.main: task=task,
+2026-08-12 12:09:57,245 INFO backend_api.main: )
+2026-08-12 12:09:57,246 INFO backend_api.main: File "c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\whisper\tokenizer.py", line 380, in get_tokenizer
+2026-08-12 12:09:57,246 INFO backend_api.main: raise ValueError(f"Unsupported language: {language}")
+2026-08-12 12:09:57,246 INFO backend_api.main: ValueError: Unsupported language: auto
+2026-08-12 12:09:57,870 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 388, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<12 lines>...
+        progress=80 if mode == "complete" else 60,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 312, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:09:57,872 INFO backend_api.main: Failed: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:12:04,000 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\c4bda23be99f4c1c838bb59be0d0327b\6b247a6efb21439fa09b903970fbfe32.mp3
+2026-08-12 12:12:07,462 INFO backend_api.main: Queued complete job
+2026-08-12 12:12:07,465 INFO backend_api.main: Running Speech Separation...
+2026-08-12 12:12:07,465 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\c4bda23be99f4c1c838bb59be0d0327b\6b247a6efb21439fa09b903970fbfe32.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b
+2026-08-12 12:12:14,933 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-12 12:12:14,933 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-12 12:12:15,158 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-12 12:12:15,521 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-12 12:12:15,521 INFO backend_api.main: warnings.warn(
+2026-08-12 12:12:15,522 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-12 12:12:15,523 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-12 12:12:15,523 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-12 12:12:15,523 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-12 12:12:25,933 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b
+2026-08-12 12:12:25,936 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b\speaker1.wav
+2026-08-12 12:12:25,937 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b\speaker2.wav
+2026-08-12 12:12:26,762 INFO backend_api.main: Speech Separation finished.
+2026-08-12 12:12:26,762 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-12 12:12:26,762 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\c4bda23be99f4c1c838bb59be0d0327b\6b247a6efb21439fa09b903970fbfe32.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b
+2026-08-12 12:12:41,176 INFO backend_api.main: Loading audio...
+2026-08-12 12:12:41,178 INFO backend_api.main: Running preprocessing...
+2026-08-12 12:12:41,193 INFO backend_api.main: Running VAD...
+2026-08-12 12:12:41,204 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-12 12:12:41,205 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-12 12:12:41,209 INFO backend_api.main: Running segmentation...
+2026-08-12 12:12:41,211 INFO backend_api.main: Running WavLM embeddings...
+2026-08-12 12:12:41,476 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-12 12:12:41,476 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 15956.73it/s]
+2026-08-12 12:12:42,009 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-12 12:12:42,009 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-12 12:12:43,262 INFO backend_api.main: Running embedding normalization...
+2026-08-12 12:12:43,264 INFO backend_api.main: Running spectral clustering...
+2026-08-12 12:12:45,537 INFO backend_api.main: Running timeline reconstruction...
+2026-08-12 12:12:45,941 INFO backend_api.main: Running RTTM generation...
+2026-08-12 12:12:45,943 INFO backend_api.main: Done.
+2026-08-12 12:12:47,394 INFO backend_api.main: Diarization finished.
+2026-08-12 12:12:47,395 INFO backend_api.main: Running Whisper Transcription...
+2026-08-12 12:12:47,395 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner transcription --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b\processed.wav --timeline C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b\timeline.json --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\c4bda23be99f4c1c838bb59be0d0327b
+2026-08-12 12:12:51,769 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\whisper\transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+2026-08-12 12:12:51,769 INFO backend_api.main: warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+2026-08-12 12:12:57,679 INFO backend_api.main: Traceback (most recent call last):
+2026-08-12 12:12:57,680 INFO backend_api.main: File "<frozen runpy>", line 203, in _run_module_as_main
+2026-08-12 12:12:57,680 INFO backend_api.main: File "<frozen runpy>", line 88, in _run_code
+2026-08-12 12:12:57,681 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 123, in <module>
+2026-08-12 12:12:57,681 INFO backend_api.main: main()
+2026-08-12 12:12:57,681 INFO backend_api.main: ~~~~^^
+2026-08-12 12:12:57,681 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 100, in main
+2026-08-12 12:12:57,682 INFO backend_api.main: run_transcription(args)
+2026-08-12 12:12:57,682 INFO backend_api.main: ~~~~~~~~~~~~~~~~~^^^^^^
+2026-08-12 12:12:57,682 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\pipeline_runner.py", line 109, in run_transcription
+2026-08-12 12:12:57,682 INFO backend_api.main: transcribe_speaker_timeline(
+2026-08-12 12:12:57,682 INFO backend_api.main: ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+2026-08-12 12:12:57,682 INFO backend_api.main: audio_path=args.input,
+2026-08-12 12:12:57,682 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:12:57,682 INFO backend_api.main: ...<7 lines>...
+2026-08-12 12:12:57,683 INFO backend_api.main: save_srt=not args.no_srt,
+2026-08-12 12:12:57,683 INFO backend_api.main: ^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:12:57,683 INFO backend_api.main: )
+2026-08-12 12:12:57,683 INFO backend_api.main: ^
+2026-08-12 12:12:57,683 INFO backend_api.main: File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\Project\transcription\whisper_transcription.py", line 147, in transcribe_speaker_timeline
+2026-08-12 12:12:57,683 INFO backend_api.main: json.dump({"segments": [item.to_dict() for item in segments]}, json_path, indent=2, ensure_ascii=False)
+2026-08-12 12:12:57,683 INFO backend_api.main: ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-08-12 12:12:57,683 INFO backend_api.main: File "C:\Users\USER\AppData\Local\Python\pythoncore-3.14-64\Lib\json\__init__.py", line 182, in dump
+2026-08-12 12:12:57,683 INFO backend_api.main: fp.write(chunk)
+2026-08-12 12:12:57,684 INFO backend_api.main: ^^^^^^^^
+2026-08-12 12:12:57,684 INFO backend_api.main: AttributeError: 'WindowsPath' object has no attribute 'write'. Did you mean: 'drive'?
+2026-08-12 12:12:58,269 ERROR backend_api.main: Pipeline job failed
+Traceback (most recent call last):
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 388, in _run_job
+    _run_subprocess(
+    ~~~~~~~~~~~~~~~^
+        [
+        ^
+    ...<12 lines>...
+        progress=80 if mode == "complete" else 60,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\backend_api\main.py", line 312, in _run_subprocess
+    raise RuntimeError(f"{label} failed with exit code {return_code}.")
+RuntimeError: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:12:58,272 INFO backend_api.main: Failed: Running Whisper Transcription... failed with exit code 1.
+2026-08-12 12:14:00,934 INFO backend_api.main: Uploaded 3part.mp3 to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\5bf6fe120c8f494aa4f0d45f0d9a6ff8\087aa52192c64eb3ae8f0e65a87ce548.mp3
+2026-08-12 12:14:03,296 WARNING backend_api.main: HTTP error 400: Diarization results are required before transcription.
+2026-08-12 12:14:06,918 INFO backend_api.main: Queued complete job
+2026-08-12 12:14:06,922 INFO backend_api.main: Running Speech Separation...
+2026-08-12 12:14:06,923 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m Project.ssl_pipeline.speech_separation C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\5bf6fe120c8f494aa4f0d45f0d9a6ff8\087aa52192c64eb3ae8f0e65a87ce548.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8
+2026-08-12 12:14:12,268 INFO backend_api.main: INFO:speechbrain.utils.quirks:Applied quirks (see `speechbrain.utils.quirks`): [disable_jit_profiling, allow_tf32]
+2026-08-12 12:14:12,269 INFO backend_api.main: INFO:speechbrain.utils.quirks:Excluded quirks specified by the `SB_DISABLE_QUIRKS` environment (comma-separated list): []
+2026-08-12 12:14:12,416 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch hyperparams.yaml: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\hyperparams.yaml'
+2026-08-12 12:14:12,680 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\speechbrain\utils\parameter_transfer.py:234: UserWarning: Requested Pretrainer collection using symlinks on Windows. This might not work; see `LocalStrategy` documentation. Consider unsetting `collect_in` in Pretrainer to avoid symlinking altogether.
+2026-08-12 12:14:12,680 INFO backend_api.main: warnings.warn(
+2026-08-12 12:14:12,680 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch masknet.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\masknet.ckpt'
+2026-08-12 12:14:12,681 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch encoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\encoder.ckpt'
+2026-08-12 12:14:12,681 INFO backend_api.main: INFO:speechbrain.utils.fetching:Fetch decoder.ckpt: Using file found at 'C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\outputs\model_cache\speechbrain_sepformer\decoder.ckpt'
+2026-08-12 12:14:12,681 INFO backend_api.main: INFO:speechbrain.utils.parameter_transfer:Loading pretrained files for: masknet, encoder, decoder
+2026-08-12 12:14:23,138 INFO backend_api.main: INFO:__main__:Saved 2 separated sources to C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8
+2026-08-12 12:14:23,140 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8\speaker1.wav
+2026-08-12 12:14:23,140 INFO backend_api.main: C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8\speaker2.wav
+2026-08-12 12:14:23,888 INFO backend_api.main: Speech Separation finished.
+2026-08-12 12:14:23,888 INFO backend_api.main: Running Diarization Pipeline...
+2026-08-12 12:14:23,889 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner diarization --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\uploads\5bf6fe120c8f494aa4f0d45f0d9a6ff8\087aa52192c64eb3ae8f0e65a87ce548.mp3 --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8
+2026-08-12 12:14:38,476 INFO backend_api.main: Loading audio...
+2026-08-12 12:14:38,479 INFO backend_api.main: Running preprocessing...
+2026-08-12 12:14:38,492 INFO backend_api.main: Running VAD...
+2026-08-12 12:14:38,502 INFO backend_api.main: VAD backend pyannote unavailable: pyannote.audio is not installed.
+2026-08-12 12:14:38,503 INFO backend_api.main: VAD backend webrtc unavailable: webrtcvad is not installed.
+2026-08-12 12:14:38,506 INFO backend_api.main: Running segmentation...
+2026-08-12 12:14:38,509 INFO backend_api.main: Running WavLM embeddings...
+2026-08-12 12:14:38,702 INFO backend_api.main: Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]
+2026-08-12 12:14:38,702 INFO backend_api.main: Loading weights: 100%|██████████| 248/248 [00:00<00:00, 24797.07it/s]
+2026-08-12 12:14:39,197 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\torch\nn\functional.py:6802: UserWarning: Support for mismatched key_padding_mask and attn_mask is deprecated. Use same type for both instead.
+2026-08-12 12:14:39,198 INFO backend_api.main: key_padding_mask = _canonical_mask(
+2026-08-12 12:14:39,670 INFO backend_api.main: Running embedding normalization...
+2026-08-12 12:14:39,673 INFO backend_api.main: Running spectral clustering...
+2026-08-12 12:14:41,710 INFO backend_api.main: Running timeline reconstruction...
+2026-08-12 12:14:42,148 INFO backend_api.main: Running RTTM generation...
+2026-08-12 12:14:42,151 INFO backend_api.main: Done.
+2026-08-12 12:14:43,631 INFO backend_api.main: Diarization finished.
+2026-08-12 12:14:43,632 INFO backend_api.main: Running Whisper Transcription...
+2026-08-12 12:14:43,632 INFO backend_api.main: Starting subprocess: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Scripts\python.exe -m backend_api.pipeline_runner transcription --input C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8\processed.wav --timeline C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8\timeline.json --output-dir C:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization - Final\results\5bf6fe120c8f494aa4f0d45f0d9a6ff8
+2026-08-12 12:14:49,209 INFO backend_api.main: c:\Users\USER\Desktop\Projects\SpeechSepatarion_and_Diarization\.venv\Lib\site-packages\whisper\transcribe.py:132: UserWarning: FP16 is not supported on CPU; using FP32 instead
+2026-08-12 12:14:49,209 INFO backend_api.main: warnings.warn("FP16 is not supported on CPU; using FP32 instead")
+2026-08-12 12:14:57,721 INFO backend_api.main: Transcription finished.
+2026-08-12 12:14:57,983 INFO backend_api.main: Finished.

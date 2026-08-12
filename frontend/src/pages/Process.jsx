@@ -48,6 +48,7 @@ export default function Process() {
   const actions = useMemo(() => [
     { key: "separation", label: "Run Speech Separation", icon: Split },
     { key: "diarization", label: "Run Speaker Diarization", icon: AudioWaveform },
+    { key: "transcription", label: "Run Transcript Only", icon: PlayCircle },
     { key: "complete", label: "Run Complete Pipeline", icon: Bot },
   ], []);
 

@@ -27,7 +27,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link className="primary-btn" to="/process"><UploadCloud size={18} /> Upload Audio</Link>
               <Link className="secondary-btn" to="/process">Try Demo</Link>
-              <a className="secondary-btn" href="https://github.com/" target="_blank" rel="noreferrer"><Github size={18} /> GitHub Repository</a>
+              <a className="secondary-btn" href="https://github.com/TuhassinulArnob" target="_blank" rel="noreferrer"><Github size={18} /> GitHub Repository</a>
               <Link className="secondary-btn" to="/about">Documentation</Link>
             </div>
           </motion.div>

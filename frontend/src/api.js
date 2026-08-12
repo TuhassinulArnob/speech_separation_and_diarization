@@ -23,6 +23,7 @@ export async function runJob(kind) {
   const endpoint = {
     separation: "/run-separation",
     diarization: "/run-diarization",
+    transcription: "/run-transcription",
     complete: "/run-complete",
   }[kind];
   const response = await api.post(endpoint);

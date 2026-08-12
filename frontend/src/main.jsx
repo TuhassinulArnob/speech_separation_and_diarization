@@ -44,7 +44,7 @@ function App() {
               <span className="grid h-9 w-9 place-items-center rounded-lg bg-teal-500 text-zinc-950">
                 <Activity size={20} />
               </span>
-              <span>VoiceLab</span>
+              <span>ArnobSpeechAI</span>
             </NavLink>
             <nav className="hidden items-center gap-1 md:flex">
               {navItems.map((item) => (
@@ -54,7 +54,7 @@ function App() {
               ))}
             </nav>
             <div className="flex items-center gap-2">
-              <a className="icon-btn" href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub Repository">
+              <a className="icon-btn" href="https://github.com/TuhassinulArnob" target="_blank" rel="noreferrer" aria-label="GitHub Repository">
                 <Github size={18} />
               </a>
               <a className="icon-btn" href="/about" aria-label="Documentation">

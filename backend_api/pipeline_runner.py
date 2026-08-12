@@ -77,6 +77,18 @@ def _parse_args() -> argparse.Namespace:
     diarization.add_argument("--save-json", action=argparse.BooleanOptionalAction, default=True)
     diarization.add_argument("--save-csv", action=argparse.BooleanOptionalAction, default=True)
     diarization.add_argument("--save-rttm", action=argparse.BooleanOptionalAction, default=True)
+
+    transcription = subparsers.add_parser("transcription")
+    transcription.add_argument("--input", required=True, type=Path)
+    transcription.add_argument("--timeline", required=True, type=Path)
+    transcription.add_argument("--output-dir", required=True, type=Path)
+    transcription.add_argument("--model", default="base")
+    transcription.add_argument("--language", default="auto")
+    transcription.add_argument("--device", choices=["auto", "cpu", "cuda"], default="auto")
+    transcription.add_argument("--no-json", action="store_true", default=False)
+    transcription.add_argument("--no-txt", action="store_true", default=False)
+    transcription.add_argument("--no-srt", action="store_true", default=False)
+
     return parser.parse_args()
 
 
@@ -84,6 +96,27 @@ def main() -> None:
     args = _parse_args()
     if args.command == "diarization":
         run_diarization(args)
+    elif args.command == "transcription":
+        run_transcription(args)
+
+
+def run_transcription(args: argparse.Namespace) -> None:
+    _disable_numba_disk_cache()
+
+    from Project.transcription.whisper_transcription import transcribe_speaker_timeline
+
+    device = None if args.device == "auto" else args.device
+    transcribe_speaker_timeline(
+        audio_path=args.input,
+        timeline_path=args.timeline,
+        output_dir=args.output_dir,
+        model_name=args.model,
+        language=args.language,
+        device=device,
+        save_json=not args.no_json,
+        save_txt=not args.no_txt,
+        save_srt=not args.no_srt,
+    )
 
 
 if __name__ == "__main__":

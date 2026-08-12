@@ -115,6 +115,23 @@ export default function Results() {
       </section>
 
       <section className="glass-card p-6">
+        <h2 className="text-xl font-semibold">Transcript</h2>
+        {results.transcript?.segments?.length ? (
+          <div className="space-y-3">
+            {results.transcript.segments.map((segment, index) => (
+              <div key={`${segment.speaker}-${segment.start}-${index}`} className="rounded-2xl border border-zinc-200 bg-white/70 p-4 text-sm shadow-sm dark:border-white/10 dark:bg-white/[0.04]">
+                <p className="font-semibold text-zinc-800 dark:text-zinc-100">{segment.speaker}</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-zinc-500 dark:text-zinc-400">{segment.start.toFixed(2)}s - {segment.end.toFixed(2)}s</p>
+                <p className="mt-2 text-zinc-700 dark:text-zinc-200">{segment.text || "[No recognized text]"}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p className="text-sm text-zinc-500">Transcript has not been generated yet. Run speaker diarization and transcription from the backend.</p>
+        )}
+      </section>
+
+      <section className="glass-card p-6">
         <h2 className="text-xl font-semibold">Generated Files</h2>
         <div className="mt-5 grid gap-3 md:grid-cols-2">
           {results.files.map((file) => (
