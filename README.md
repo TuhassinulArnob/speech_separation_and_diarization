@@ -51,6 +51,7 @@ POST /upload
 POST /run-separation
 POST /run-diarization
 POST /run-complete
+POST /run-transcription
 GET  /status
 GET  /results
 GET  /download/{filename}
@@ -59,7 +60,19 @@ GET  /health
 DELETE /results
 ```
 
-The API calls `Project.ssl_pipeline.speech_separation.separate_speech` and `Project.run_diarization.run_pipeline`. It does not duplicate or rewrite the existing algorithms.
+The API calls `Project.ssl_pipeline.speech_separation.separate_speech`, `Project.run_diarization.run_pipeline`, and `Project.transcription.whisper_transcription.transcribe_speaker_timeline`. It does not duplicate or rewrite the existing algorithms.
+
+## Whisper Transcription
+
+A speaker-attributed Whisper transcription stage is available after diarization. It consumes `timeline.json` and the processed audio file to produce transcript artifacts using the existing diarization speaker labels.
+
+Transcript outputs include:
+
+```text
+transcript.json
+transcript.txt
+transcript.srt
+```
 
 ## Frontend
 
