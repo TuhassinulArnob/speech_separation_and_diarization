@@ -1,0 +1,23 @@
+# Production requirements for Speech Separation and Speaker Diarization API
+# Compatible with Python 3.10 and 3.11 on Linux (Render) and Windows
+
+# FastAPI Web Framework & Server
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0
+python-multipart>=0.0.6
+aiofiles>=23.0.0
+
+# Numerical & Audio Processing
+numpy>=1.24.0
+scipy>=1.10.0
+soundfile>=0.12.0
+audioread>=3.0.0
+matplotlib>=3.7.0
+scikit-learn>=1.2.0
+
+# Deep Learning Models (Speech Separation, Diarization, Transcription)
+torch>=2.0.0
+torchaudio>=2.0.0
+transformers>=4.30.0
+speechbrain>=1.0.0
+openai-whisper>=20231117

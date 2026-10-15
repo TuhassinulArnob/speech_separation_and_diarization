@@ -363,9 +363,12 @@ def _runtime_env() -> dict[str, str]:
     env.setdefault("MPLCONFIGDIR", str(RUNTIME_DIR / "matplotlib"))
     env.setdefault("PYTHONIOENCODING", "utf-8")
     env.setdefault("PYTHONUNBUFFERED", "1")
-    env["HF_HUB_OFFLINE"] = "1"
-    env["TRANSFORMERS_OFFLINE"] = "1"
+    if "HF_HUB_OFFLINE" in os.environ:
+        env["HF_HUB_OFFLINE"] = os.environ["HF_HUB_OFFLINE"]
+    if "TRANSFORMERS_OFFLINE" in os.environ:
+        env["TRANSFORMERS_OFFLINE"] = os.environ["TRANSFORMERS_OFFLINE"]
     return env
+
 
 
 def _run_subprocess(
@@ -921,3 +924,12 @@ def _resolve_evaluation_path(relative_path: str) -> Path:
     if path != root and root not in path.parents:
         raise HTTPException(status_code=400, detail="Invalid file path.")
     return path
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    port = int(os.getenv("PORT", "8000"))
+    host = os.getenv("HOST", "0.0.0.0")
+    uvicorn.run("backend_api.main:app", host=host, port=port)
+

@@ -1,4 +1,2 @@
-fastapi
-uvicorn[standard]
-python-multipart
-aiofiles
+# Subdirectory requirements redirect to root requirements.txt
+-r ../requirements.txt

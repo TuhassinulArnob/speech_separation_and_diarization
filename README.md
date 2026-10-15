@@ -103,6 +103,9 @@ Input Audio (.wav / .flac / .mp3 / .m4a / .ogg / .opus / .sph)
 ├── inputs/                              # Sample audio files for testing and demo runs
 ├── tests/                               # Comprehensive unit tests (130 automated tests)
 ├── run_diarization.py                   # Standalone CLI entry point for diarization
+├── requirements.txt                     # Unified production Python dependencies
+├── .python-version                      # Pinned Python version (3.11.9) for Render
+├── render.yaml                          # Render Blueprint deployment configuration
 └── README.md                            # Complete project documentation
 ```
 
@@ -122,8 +125,7 @@ python -m venv .venv
 Install dependencies:
 
 ```powershell
-python -m pip install -r Project/requirements.txt
-python -m pip install -r backend_api/requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 Start the FastAPI backend:
@@ -152,6 +154,28 @@ npm run dev
 ```
 
 - **Frontend URL**: `http://127.0.0.1:5173`
+
+### 3.3 Render Deployment (Cloud Production)
+
+The repository is configured for automated deployment on **Render** as a Python Web Service.
+
+| Setting | Value |
+|---|---|
+| **Environment** | `Python` |
+| **Python Version** | `3.11.9` (automatically set via `.python-version` or `PYTHON_VERSION=3.11.9`) |
+| **Root Directory** | `.` (repository root) |
+| **Build Command** | `pip install -r requirements.txt` |
+| **Start Command** | `uvicorn backend_api.main:app --host 0.0.0.0 --port $PORT` |
+| **Health Check Path** | `/health` |
+
+#### Environment Variables (Render Dashboard):
+- `PYTHON_VERSION`: `3.11.9` (prevents default selection of unsupported Python 3.14.x)
+- `NUMBA_DISABLE_JIT`: `1` (prevents numba cache conflicts in containerized environments)
+- `MPLBACKEND`: `Agg` (headless matplotlib rendering)
+- `CORS_ORIGINS`: Your frontend URL (e.g. `https://your-frontend.onrender.com`)
+
+Render Blueprints are also supported via the included [`render.yaml`](render.yaml).
+
 
 ---
 
