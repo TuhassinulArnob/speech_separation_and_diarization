@@ -623,6 +623,15 @@ async def unhandled_exception_handler(_request: Request, exc: Exception) -> JSON
     )
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {
+        "status": "ok",
+        "service": "Speech Separation and Diarization API",
+        "docs": "/docs",
+    }
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
