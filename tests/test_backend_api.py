@@ -33,6 +33,36 @@ class BackendApiTests(unittest.TestCase):
         response = self.client.get("/docs")
         self.assertEqual(response.status_code, 200)
 
+    def test_cors_allows_vercel_production_origin(self) -> None:
+        response = self.client.get("/health", headers={"Origin": "https://speechlabarnob.vercel.app"})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers.get("access-control-allow-origin"), "https://speechlabarnob.vercel.app")
+        self.assertEqual(response.headers.get("access-control-allow-credentials"), "true")
+
+    def test_cors_preflight_options(self) -> None:
+        response = self.client.options(
+            "/health",
+            headers={
+                "Origin": "https://speechlabarnob.vercel.app",
+                "Access-Control-Request-Method": "GET",
+                "Access-Control-Request-Headers": "content-type",
+            },
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers.get("access-control-allow-origin"), "https://speechlabarnob.vercel.app")
+        methods = response.headers.get("access-control-allow-methods", "")
+        self.assertIn("GET", methods)
+
+    def test_cors_allows_preview_branch_domains(self) -> None:
+        response = self.client.get("/health", headers={"Origin": "https://speechlabarnob-preview-xyz.vercel.app"})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.headers.get("access-control-allow-origin"), "https://speechlabarnob-preview-xyz.vercel.app")
+
+    def test_cors_rejects_unauthorized_origin(self) -> None:
+        response = self.client.get("/health", headers={"Origin": "https://unauthorized-domain.com"})
+        self.assertEqual(response.status_code, 200)
+        self.assertIsNone(response.headers.get("access-control-allow-origin"))
+
 
 if __name__ == "__main__":
     unittest.main()

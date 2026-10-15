@@ -98,9 +98,26 @@ app = FastAPI(
     description="Thin FastAPI wrapper around the completed Python audio pipeline.",
 )
 
+def _get_cors_origins() -> list[str]:
+    origins = {
+        "https://speechlabarnob.vercel.app",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    }
+    custom_origins = os.getenv("CORS_ORIGINS", "")
+    for origin in custom_origins.split(","):
+        trimmed = origin.strip().rstrip("/")
+        if trimmed:
+            origins.add(trimmed)
+    return sorted(origins)
+
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.getenv("CORS_ORIGINS", "http://localhost:5173,http://127.0.0.1:5173").split(","),
+    allow_origins=_get_cors_origins(),
+    allow_origin_regex=r"^https://speechlabarnob(-[a-z0-9-]+)?\.vercel\.app$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -1,18 +1,30 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { CheckCircle2, RefreshCw, Trash2 } from "lucide-react";
-import { api, clearResults, getStatus } from "../api";
+import { api, checkHealth, clearResults, getStatus } from "../api";
 
 export default function Settings() {
   const [health, setHealth] = useState("checking");
   const [status, setStatus] = useState(null);
 
   async function refresh() {
+    setHealth("checking");
     try {
-      await api.get("/health");
-      setHealth("online");
-      setStatus(await getStatus());
-    } catch {
+      const healthData = await checkHealth();
+      if (healthData?.status === "ok") {
+        setHealth("online");
+      } else {
+        setHealth("offline");
+      }
+
+      try {
+        const jobStatus = await getStatus();
+        setStatus(jobStatus);
+      } catch (statusError) {
+        console.warn("Could not fetch pipeline job status:", statusError);
+      }
+    } catch (healthError) {
+      console.error("Backend health check failed:", healthError);
       setHealth("offline");
     }
   }

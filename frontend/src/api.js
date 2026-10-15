@@ -1,14 +1,20 @@
 import axios from "axios";
 
+const rawBase = (import.meta.env.VITE_API_BASE_URL || "/api").trim();
+export const apiBase = rawBase.replace(/\/+$/, "");
+
 export const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "/api",
+  baseURL: apiBase,
   timeout: 120000,
 });
 
-const apiBase = api.defaults.baseURL.replace(/\/$/, "");
-
 export const downloadUrl = (path) => `${apiBase}/download/${encodeURI(path)}`;
 export const uploadUrl = (storedName) => `${apiBase}/download-upload/${storedName.split("/").map(encodeURIComponent).join("/")}`;
+
+export async function checkHealth() {
+  const response = await api.get("/health");
+  return response.data;
+}
 
 export async function uploadAudio(file) {
   const data = new FormData();
