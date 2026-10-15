@@ -49,3 +49,43 @@ export async function clearResults() {
   const response = await api.delete("/results");
   return response.data;
 }
+
+// --- Diarization evaluation (DER / JER) ---
+
+export const evaluationDownloadUrl = (path) =>
+  `${apiBase}/evaluation/download/${path.split("/").map(encodeURIComponent).join("/")}`;
+
+export async function getEvaluationFiles() {
+  const response = await api.get("/evaluation/files");
+  return response.data;
+}
+
+export async function runEvaluation() {
+  const response = await api.post("/run-evaluation");
+  return response.data;
+}
+
+export async function getEvaluationStatus() {
+  const response = await api.get("/evaluation/status");
+  return response.data;
+}
+
+export async function getEvaluationLogs() {
+  const response = await api.get("/evaluation/logs");
+  return response.data.logs;
+}
+
+export async function getEvaluationResults() {
+  const response = await api.get("/evaluation/results");
+  return response.data;
+}
+
+export async function getEvaluationResult(name) {
+  const response = await api.get(`/evaluation/results/${encodeURIComponent(name)}`);
+  return response.data;
+}
+
+export async function clearEvaluationResults() {
+  const response = await api.delete("/evaluation/results");
+  return response.data;
+}

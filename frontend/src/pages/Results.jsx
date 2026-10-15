@@ -1,15 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import Skeleton from "react-loading-skeleton";
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
-import { Download, FileArchive, Image as ImageIcon, RefreshCw } from "lucide-react";
-import { downloadUrl, getResults, uploadUrl } from "../api";
+import { Download, FileArchive, Gauge, Image as ImageIcon, RefreshCw } from "lucide-react";
+import { downloadUrl, evaluationDownloadUrl, getEvaluationResults, getResults, uploadUrl } from "../api";
 import EmptyState from "../components/EmptyState";
 import MetricCard from "../components/MetricCard";
 import WaveformPlayer from "../components/WaveformPlayer";
 
 export default function Results() {
   const [results, setResults] = useState(null);
+  const [evaluation, setEvaluation] = useState(null);
   const [loading, setLoading] = useState(true);
 
   async function load() {
@@ -20,6 +22,11 @@ export default function Results() {
       setResults(null);
     } finally {
       setLoading(false);
+    }
+    try {
+      setEvaluation(await getEvaluationResults());
+    } catch {
+      setEvaluation(null);
     }
   }
 
@@ -142,8 +149,103 @@ export default function Results() {
           ))}
         </div>
       </section>
+
+      <EvaluationSection payload={evaluation} />
     </div>
   );
+}
+
+function EvaluationSection({ payload }) {
+  const records = payload?.results || [];
+  const summary = payload?.summary || null;
+  const downloads = payload?.downloads || {};
+
+  return (
+    <section className="glass-card p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="flex items-center gap-2 text-xl font-semibold">
+          <Gauge className="text-teal-400" size={20} /> Evaluation
+        </h2>
+        <Link className="secondary-btn" to="/evaluation">
+          Open Evaluation page
+        </Link>
+      </div>
+      {records.length ? (
+        <>
+          {summary ? (
+            <p className="mt-4 text-sm text-zinc-500 dark:text-zinc-400">
+              Overall DER {formatPercent(summary.overall_der_percent)}
+              {summary.jer_available ? ` · Overall JER ${formatPercent(summary.overall_jer_percent)}` : " · JER unavailable"}
+              {" "}across {summary.file_count} file(s), duration-weighted. Scored with {summary.metrics_backend}
+              {summary.metrics_backend_version ? ` ${summary.metrics_backend_version}` : ""} at collar{" "}
+              {summary.protocol?.collar}s.
+            </p>
+          ) : null}
+          <div className="mt-5 space-y-4">
+            {records.map((record) => (
+              <article
+                key={record.name}
+                className="rounded-lg border border-black/10 bg-white/50 p-5 dark:border-white/10 dark:bg-white/[0.04]"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="font-semibold">{record.file}</h3>
+                  <div className="flex gap-2">
+                    {downloads[record.name]?.evaluation ? (
+                      <a className="secondary-btn" href={evaluationDownloadUrl(downloads[record.name].evaluation)}>
+                        <Download size={16} /> evaluation.json
+                      </a>
+                    ) : null}
+                    {downloads[record.name]?.hypothesis ? (
+                      <a className="secondary-btn" href={evaluationDownloadUrl(downloads[record.name].hypothesis)}>
+                        <Download size={16} /> hypothesis.rttm
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+                <dl className="mt-4 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2 lg:grid-cols-4">
+                  <EvaluationField label="DER" value={formatPercent(record.der_percent)} highlight />
+                  <EvaluationField
+                    label="JER"
+                    value={record.jer_available ? formatPercent(record.jer_percent) : "Unavailable"}
+                    highlight={record.jer_available}
+                  />
+                  <EvaluationField label="Reference Speakers" value={record.reference_speakers ?? "--"} />
+                  <EvaluationField label="Detected Speakers" value={record.detected_speakers ?? "--"} />
+                  <EvaluationField label="False Alarm" value={formatSeconds(record.false_alarm)} />
+                  <EvaluationField label="Missed Speech" value={formatSeconds(record.missed_speech)} />
+                  <EvaluationField label="Speaker Confusion" value={formatSeconds(record.speaker_confusion)} />
+                  <EvaluationField label="Duration" value={formatSeconds(record.duration)} />
+                </dl>
+              </article>
+            ))}
+          </div>
+        </>
+      ) : (
+        <p className="mt-4 text-sm text-zinc-500">
+          No diarization evaluation has been run yet. Place reference audio and RTTM files in the{" "}
+          <code className="rounded bg-black/5 px-1 dark:bg-white/10">evaluation/</code> folder, then run the evaluation
+          from the Evaluation page.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function EvaluationField({ label, value, highlight }) {
+  return (
+    <div>
+      <dt className="text-xs uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">{label}</dt>
+      <dd className={`mt-1 font-semibold ${highlight ? "text-teal-600 dark:text-teal-300" : ""}`}>{value}</dd>
+    </div>
+  );
+}
+
+function formatPercent(value) {
+  return value === null || value === undefined ? "--" : `${Number(value).toFixed(2)}%`;
+}
+
+function formatSeconds(value) {
+  return value === null || value === undefined ? "--" : `${Number(value).toFixed(2)}s`;
 }
 
 function FigureCard({ title, file }) {

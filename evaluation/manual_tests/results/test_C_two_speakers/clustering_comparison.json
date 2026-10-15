@@ -1,0 +1,72 @@
+[
+  {
+    "method": "Baseline: Spectral (kmeans)",
+    "cluster_sizes": [
+      30,
+      38
+    ],
+    "unambiguous_accuracy_percent": 54.55,
+    "der_percent": 133.09,
+    "jer_percent": 80.86,
+    "missed_seconds": 15.374,
+    "false_alarm_seconds": 44.442,
+    "confusion_seconds": 15.966,
+    "turn_count": 46
+  },
+  {
+    "method": "Alt 1: Spectral (discretize)",
+    "cluster_sizes": [
+      38,
+      30
+    ],
+    "unambiguous_accuracy_percent": 54.55,
+    "der_percent": 133.09,
+    "jer_percent": 80.86,
+    "missed_seconds": 15.374,
+    "false_alarm_seconds": 44.442,
+    "confusion_seconds": 15.966,
+    "turn_count": 46
+  },
+  {
+    "method": "Alt 2: AHC (cosine, average)",
+    "cluster_sizes": [
+      26,
+      42
+    ],
+    "unambiguous_accuracy_percent": 51.52,
+    "der_percent": 136.58,
+    "jer_percent": 83.76,
+    "missed_seconds": 15.374,
+    "false_alarm_seconds": 44.442,
+    "confusion_seconds": 17.953,
+    "turn_count": 44
+  },
+  {
+    "method": "Alt 3: AHC (cosine, complete)",
+    "cluster_sizes": [
+      41,
+      27
+    ],
+    "unambiguous_accuracy_percent": 57.58,
+    "der_percent": 135.76,
+    "jer_percent": 79.98,
+    "missed_seconds": 15.374,
+    "false_alarm_seconds": 44.452,
+    "confusion_seconds": 17.477,
+    "turn_count": 49
+  },
+  {
+    "method": "Alt 4: KMeans (L2 normalized)",
+    "cluster_sizes": [
+      31,
+      37
+    ],
+    "unambiguous_accuracy_percent": 54.55,
+    "der_percent": 132.03,
+    "jer_percent": 79.97,
+    "missed_seconds": 15.374,
+    "false_alarm_seconds": 44.442,
+    "confusion_seconds": 15.366,
+    "turn_count": 46
+  }
+]

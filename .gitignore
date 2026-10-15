@@ -15,6 +15,17 @@ uploads/*
 results/*
 !uploads/.gitkeep
 !results/.gitkeep
+
+# Evaluation datasets are placed manually and are not committed.
+# evaluation/README.md documents where they go; see also the README Evaluation section.
+evaluation/*
+!evaluation/README.md
+!evaluation/manual_tests/
+evaluation/manual_tests/**/*.flac
+evaluation/manual_tests/**/*.wav
+evaluation/manual_tests/**/*.npz
+evaluation/manual_tests/**/temp/
+evaluation/manual_tests/**/pipeline/
 frontend/node_modules/
 frontend/dist/
 frontend/.env.local

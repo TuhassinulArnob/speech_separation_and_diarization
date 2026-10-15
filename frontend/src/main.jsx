@@ -10,6 +10,7 @@ const Home = lazy(() => import("./pages/Home.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Process = lazy(() => import("./pages/Process.jsx"));
 const Results = lazy(() => import("./pages/Results.jsx"));
+const EvaluationPage = lazy(() => import("./pages/Evaluation.jsx"));
 const SettingsPage = lazy(() => import("./pages/Settings.jsx"));
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       { to: "/about", label: "About" },
       { to: "/process", label: "Process" },
       { to: "/results", label: "Results" },
+      { to: "/evaluation", label: "Evaluation" },
       { to: "/settings", label: "Settings" },
     ],
     [],
@@ -80,6 +82,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/process" element={<Process />} />
               <Route path="/results" element={<Results />} />
+              <Route path="/evaluation" element={<EvaluationPage />} />
               <Route path="/settings" element={<SettingsPage />} />
             </Routes>
           </Suspense>

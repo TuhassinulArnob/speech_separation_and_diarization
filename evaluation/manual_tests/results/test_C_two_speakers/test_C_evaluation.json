@@ -1,0 +1,219 @@
+{
+  "test": "Test C: Two-Speaker Diarization Evaluation",
+  "audio_file": "LDC2021S10.flac",
+  "reference_rttm_file": "LDC2021S10.rttm",
+  "recording_id": "DH_0052",
+  "audio_duration_seconds": 120.0,
+  "sample_rate": 16000,
+  "reference_analysis": {
+    "speaker_count": 2,
+    "speakers": [
+      "speaker117",
+      "speaker118"
+    ],
+    "turn_count": 56,
+    "total_speech_duration_seconds": 58.432,
+    "speech_ratio": 0.4869,
+    "overlapping_intervals_count": 8,
+    "overlapping_speech_duration_seconds": 2.649,
+    "overlapping_speech_ratio": 0.0221,
+    "timestamp_consistency": false
+  },
+  "hypothesis_analysis": {
+    "hypothesis_rttm_file": "hypothesis.rttm",
+    "detected_speaker_count": 2,
+    "detected_speakers": [
+      "speaker_0",
+      "speaker_1"
+    ],
+    "turn_count": 46,
+    "total_speech_duration_seconds": 86.01,
+    "hypothesis_overlap_duration_seconds": 0.0,
+    "speaker_mapping": {
+      "speaker_0": "speaker117",
+      "speaker_1": "speaker118"
+    }
+  },
+  "pipeline_execution": {
+    "backend": "WavLM + Spectral Clustering",
+    "vad_backend": "energy (adaptive threshold)",
+    "pipeline_elapsed_seconds": 22.53
+  },
+  "scoring_results": {
+    "primary_protocol_collar_0_0s_overlap_scored": {
+      "collar_seconds": 0.0,
+      "skip_overlap": false,
+      "scoring_backend": "local-fallback",
+      "der": 1.330863,
+      "der_percent": 133.09,
+      "jer": 0.808621,
+      "jer_percent": 80.86,
+      "missed_speech_seconds": 15.374,
+      "missed_speech_percent": 27.0,
+      "false_alarm_seconds": 44.442,
+      "false_alarm_percent": 78.05,
+      "speaker_confusion_seconds": 15.966,
+      "speaker_confusion_percent": 28.04,
+      "scored_duration_seconds": 56.942,
+      "total_error_seconds": 75.782
+    },
+    "comparison_protocol_collar_0_25s": {
+      "collar_seconds": 0.25,
+      "skip_overlap": false,
+      "der_percent": 179.31,
+      "jer_percent": 84.64,
+      "missed_speech_seconds": 12.227,
+      "false_alarm_seconds": 42.292,
+      "speaker_confusion_seconds": 6.492
+    },
+    "comparison_protocol_skip_overlap_true": {
+      "collar_seconds": 0.0,
+      "skip_overlap": true,
+      "der_percent": 139.78,
+      "jer_percent": 80.86,
+      "missed_speech_seconds": 12.774,
+      "false_alarm_seconds": 44.442,
+      "speaker_confusion_seconds": 15.966,
+      "scored_duration_seconds": 52.354
+    }
+  },
+  "overlap_handling_documentation": {
+    "supported": false,
+    "explanation": "The pipeline reconstructs timelines via Project.ssl_pipeline.timeline_reconstruction._resolve_overlaps, which forcibly clamps cross-speaker overlapping intervals to single-speaker hard partitions (current.start = resolved[-1].end). Consequently, any simultaneous speech in the recording is assigned to at most one speaker, causing the secondary overlapping speaker to be classified as missed speech. The system therefore does NOT support overlapping-speaker diarization.",
+    "reference_overlap_lost_seconds": 2.649
+  },
+  "diagnostic_analysis": {
+    "false_alarm_diagnosis": {
+      "total_false_alarm_seconds": 44.442,
+      "fa_in_ground_truth_lab_speech_seconds": 38.675,
+      "fa_in_ground_truth_lab_speech_percent": 87.02,
+      "fa_in_acoustic_silence_seconds": 5.767,
+      "fa_in_acoustic_silence_percent": 12.98,
+      "vad_vs_rttm_root_cause": "87.0% (38.675s) of the False Alarm corresponds to audible, intelligible human speech that is explicitly annotated in the ground-truth Speech Activity Detection file (LDC2021S10.lab, 88.696s total speech) and confirmed by Whisper ASR, but is omitted from the reference speaker turn annotation (LDC2021S10.rttm, 58.432s total speech). Only 13.0% (5.767s) represents false detection in true acoustic silence. VAD correctly detects speech present in the audio container, but NIST scoring against the incomplete RTTM labels all unannotated speech as False Alarm.",
+      "top_false_alarm_intervals": [
+        {
+          "start": 31.36,
+          "end": 34.79,
+          "duration": 3.43,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 89.07,
+          "end": 90.93,
+          "duration": 1.86,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 28.92,
+          "end": 30.57,
+          "duration": 1.65,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 82.32,
+          "end": 83.82,
+          "duration": 1.5,
+          "hypothesis_speakers": [
+            "speaker_1"
+          ]
+        },
+        {
+          "start": 86.63,
+          "end": 88.07,
+          "duration": 1.44,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 69.563,
+          "end": 70.89,
+          "duration": 1.327,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 52.06,
+          "end": 53.37,
+          "duration": 1.31,
+          "hypothesis_speakers": [
+            "speaker_1"
+          ]
+        },
+        {
+          "start": 79.59,
+          "end": 80.82,
+          "duration": 1.23,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 3.798,
+          "end": 4.899,
+          "duration": 1.101,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        },
+        {
+          "start": 106.872,
+          "end": 107.877,
+          "duration": 1.005,
+          "hypothesis_speakers": [
+            "speaker_0"
+          ]
+        }
+      ]
+    },
+    "missed_speech_diagnosis": {
+      "total_missed_seconds": 15.374,
+      "missed_due_to_vad_silence_seconds": 11.095,
+      "missed_due_to_vad_silence_percent": 72.17,
+      "missed_due_to_overlap_collapse_seconds": 1.988,
+      "missed_due_to_overlap_collapse_percent": 12.93,
+      "missed_due_to_windowing_trim_seconds": 2.291,
+      "missed_due_to_windowing_trim_percent": 14.9
+    },
+    "speaker_confusion_diagnosis": {
+      "total_confusion_seconds": 15.966,
+      "ref_117_misclassified_as_118_seconds": 3.637,
+      "ref_118_misclassified_as_117_seconds": 12.329,
+      "pure_117_segments_cluster_distribution": {
+        "cluster_0": 15,
+        "cluster_1": 8
+      },
+      "pure_118_segments_cluster_distribution": {
+        "cluster_0": 7,
+        "cluster_1": 3
+      },
+      "representation_root_cause": "Pretrained WavLM-base-plus representations without speaker-discriminative fine-tuning or metric projection (e.g. ECAPA-TDNN / x-vector loss) capture predominantly phonetic and acoustic room properties. Under natural single-microphone conversational conditions, inter-speaker cosine distance is smaller than intra-speaker phonetic variation, resulting in cluster overlap."
+    },
+    "diagnostic_timeline_plot": "C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\manual_tests\\results\\test_C_two_speakers\\diagnostic_timeline.png"
+  },
+  "logs": [
+    "Starting Test C on C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\LDC2021S10.flac and C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\LDC2021S10.rttm",
+    "Audio: 16000 Hz, 1 ch, 120.00s",
+    "Reference RTTM: 56 turns, 2 speakers ['speaker117', 'speaker118'], recording_id=DH_0052",
+    "Reference speech duration: 58.432s (48.7% of audio)",
+    "Overlapping intervals: 8 regions, total 2.649s (2.21% of audio)",
+    "Timestamp consistency: max reference end=121.230s <= audio duration=120.000s (False)",
+    "Executing diarization pipeline on LDC2021S10...",
+    "Pipeline finished in 22.53s",
+    "Saved separate hypothesis RTTM to C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\manual_tests\\results\\test_C_two_speakers\\hypothesis.rttm (46 turns, 2 speakers)",
+    "Hypothesis overlap duration: 0.000s (pipeline timeline reconstruction enforces hard non-overlapping partitions)",
+    "Primary Scoring (collar=0.0s, overlap=included): DER=133.09%, JER=80.86%",
+    "  Missed Speech: 15.374s (27.00%)",
+    "  False Alarm: 44.442s (78.05%)",
+    "  Speaker Confusion: 15.966s (28.04%)",
+    "  Scored Duration: 56.942s",
+    "Optimal speaker mapping: {'speaker_0': 'speaker117', 'speaker_1': 'speaker118'}"
+  ]
+}

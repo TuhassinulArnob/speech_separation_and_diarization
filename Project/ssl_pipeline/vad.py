@@ -350,13 +350,20 @@ def _detect_with_energy(
     """Detect speech-like regions with frame energy.
 
     This lightweight backend keeps tests deterministic and provides a local
-    fallback when pyannote and WebRTC are unavailable. It is not intended to be
-    the final research backend.
+    fallback when pyannote and WebRTC are unavailable. It adaptively raises the
+    threshold above the background noise floor when dynamic range is present,
+    avoiding classifying an entire noisy or peak-normalized recording as speech.
     """
 
     frame_size = int(sample_rate * config.vad_frame_duration_ms / 1000)
     if frame_size <= 0:
         raise ValueError("VAD frame duration must produce at least one sample.")
+
+    threshold = _compute_adaptive_energy_threshold(
+        audio,
+        frame_size,
+        config.vad_energy_threshold,
+    )
 
     regions: list[SpeechRegion] = []
     active_start: float | None = None
@@ -365,7 +372,7 @@ def _detect_with_energy(
         start_time = index * frame_size / sample_rate
         end_time = min((index + 1) * frame_size / sample_rate, len(audio) / sample_rate)
         rms = float(np.sqrt(np.mean(np.square(frame)))) if len(frame) else 0.0
-        is_speech = rms >= config.vad_energy_threshold
+        is_speech = rms >= threshold
 
         if is_speech and active_start is None:
             active_start = start_time
@@ -377,6 +384,33 @@ def _detect_with_energy(
         regions.append(SpeechRegion(active_start, len(audio) / sample_rate))
 
     return regions
+
+
+def _compute_adaptive_energy_threshold(
+    audio: np.ndarray,
+    frame_size: int,
+    min_threshold: float,
+) -> float:
+    """Compute an energy threshold that separates speech from background noise floor."""
+
+    if len(audio) < frame_size:
+        return min_threshold
+
+    n_frames = len(audio) // frame_size
+    if n_frames == 0:
+        return min_threshold
+
+    frames = audio[: n_frames * frame_size].reshape(n_frames, frame_size)
+    rms_values = np.sqrt(np.mean(frames ** 2, axis=1))
+
+    p10 = float(np.percentile(rms_values, 10))
+    p95 = float(np.percentile(rms_values, 95))
+
+    if p95 > min_threshold and (p95 - p10) > min_threshold:
+        adaptive_threshold = p10 + 0.15 * (p95 - p10)
+        return max(min_threshold, adaptive_threshold)
+
+    return min_threshold
 
 
 def _float_to_pcm16(audio: np.ndarray) -> bytes:

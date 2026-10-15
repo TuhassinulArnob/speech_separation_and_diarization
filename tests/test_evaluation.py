@@ -166,6 +166,75 @@ class EvaluationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "collar"):
             DiarizationEvaluator(collar_seconds=-0.1)
 
+    def test_overlapping_speech_evaluated_with_and_without_skip_overlap(self) -> None:
+        reference = _write_rttm(
+            "overlap_ref.rttm",
+            [
+                ("rec", 0.0, 3.0, "speaker_0"),
+                ("rec", 2.0, 2.0, "speaker_1"),  # Overlap between 2.0 and 3.0
+            ],
+        )
+        hypothesis = _write_rttm(
+            "overlap_hyp.rttm",
+            [
+                ("rec", 0.0, 3.0, "speaker_0"),
+                # speaker_1 is completely missed in hypothesis
+            ],
+        )
+
+        # When skip_overlap=False, the overlapped region [2.0, 3.0] is scored
+        # Total reference duration: 3.0 + 2.0 = 5.0s
+        # speaker_1 is missed for 2.0s
+        report_with_overlap = evaluate_rttm(
+            reference, hypothesis, use_pyannote=False, skip_overlap=False
+        )
+        self.assertAlmostEqual(report_with_overlap.duration, 5.0, places=6)
+        self.assertAlmostEqual(report_with_overlap.missed_speech, 2.0, places=6)
+        self.assertAlmostEqual(report_with_overlap.der, 2.0 / 5.0, places=6)
+
+        # When skip_overlap=True, [2.0, 3.0] (where 2 speakers talk) is excluded
+        # Scored region: [0.0, 2.0] for speaker_0 (dur 2.0, correct)
+        # and [3.0, 4.0] for speaker_1 (dur 1.0, missed)
+        # Total scored duration: 2.0 + 1.0 = 3.0s, missed: 1.0s
+        report_skip_overlap = evaluate_rttm(
+            reference, hypothesis, use_pyannote=False, skip_overlap=True
+        )
+        self.assertAlmostEqual(report_skip_overlap.duration, 3.0, places=6)
+        self.assertAlmostEqual(report_skip_overlap.missed_speech, 1.0, places=6)
+        self.assertAlmostEqual(report_skip_overlap.der, 1.0 / 3.0, places=6)
+
+    def test_three_speaker_permutation_invariance(self) -> None:
+        reference = _write_rttm(
+            "perm_ref.rttm",
+            [
+                ("rec", 0.0, 1.0, "spk_A"),
+                ("rec", 1.0, 1.0, "spk_B"),
+                ("rec", 2.0, 1.0, "spk_C"),
+            ],
+        )
+        # Hypothesis permutes speaker labels: A->Y, B->Z, C->X
+        hypothesis = _write_rttm(
+            "perm_hyp.rttm",
+            [
+                ("rec", 0.0, 1.0, "hyp_Y"),
+                ("rec", 1.0, 1.0, "hyp_Z"),
+                ("rec", 2.0, 1.0, "hyp_X"),
+            ],
+        )
+
+        report = evaluate_rttm(reference, hypothesis, use_pyannote=False)
+        self.assertEqual(report.der, 0.0)
+        self.assertEqual(report.jer, 0.0)
+        self.assertEqual(report.speaker_confusion, 0.0)
+
+    def test_malformed_rttm_fails_safely(self) -> None:
+        ref_path = _fixture_path("malformed.rttm")
+        ref_path.write_text("INVALID RTTM LINE NOT ENOUGH FIELDS\n", encoding="utf-8")
+        hyp_path = _write_rttm("valid.rttm", [("rec", 0.0, 1.0, "speaker_0")])
+
+        with self.assertRaises(ValueError):
+            evaluate_rttm(ref_path, hyp_path, use_pyannote=False)
+
 
 def _perfect_report():
     """Return a simple perfect-match report."""

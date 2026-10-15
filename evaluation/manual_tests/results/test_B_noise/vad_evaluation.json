@@ -1,0 +1,142 @@
+{
+  "test": "Test B: Silence and Background Noise VAD",
+  "vad_backend": "energy (adaptive threshold fallback)",
+  "clean_baseline": {
+    "file": "clean_speech.flac",
+    "duration_seconds": 15.56,
+    "detected_speech_duration_seconds": 11.55,
+    "speech_ratio": 0.7423,
+    "segment_count": 8,
+    "segments": [
+      {
+        "start": 0.66,
+        "end": 4.95
+      },
+      {
+        "start": 5.16,
+        "end": 6.12
+      },
+      {
+        "start": 6.78,
+        "end": 7.89
+      },
+      {
+        "start": 8.19,
+        "end": 9.3
+      },
+      {
+        "start": 9.6,
+        "end": 10.47
+      },
+      {
+        "start": 10.86,
+        "end": 12.0
+      },
+      {
+        "start": 12.57,
+        "end": 14.07
+      },
+      {
+        "start": 14.34,
+        "end": 14.91
+      }
+    ]
+  },
+  "speech_silence": {
+    "file": "speech_silence.wav",
+    "total_duration_seconds": 21.56,
+    "detected_speech_duration_seconds": 11.64,
+    "speech_ratio": 0.5399,
+    "known_silence_duration_seconds": 6.0,
+    "false_speech_in_known_silence_seconds": 0.0,
+    "false_speech_in_leading_silence_seconds": 0.0,
+    "false_speech_in_trailing_silence_seconds": 0.0,
+    "segment_count": 8,
+    "segments": [
+      {
+        "start": 3.66,
+        "end": 7.95
+      },
+      {
+        "start": 8.16,
+        "end": 9.12
+      },
+      {
+        "start": 9.78,
+        "end": 10.89
+      },
+      {
+        "start": 11.19,
+        "end": 12.3
+      },
+      {
+        "start": 12.6,
+        "end": 13.47
+      },
+      {
+        "start": 13.86,
+        "end": 15.0
+      },
+      {
+        "start": 15.54,
+        "end": 17.13
+      },
+      {
+        "start": 17.34,
+        "end": 17.91
+      }
+    ]
+  },
+  "speech_noise": {
+    "file": "speech_noise.wav",
+    "snr_db": 15.0,
+    "total_duration_seconds": 15.56,
+    "detected_speech_duration_seconds": 11.25,
+    "speech_ratio": 0.723,
+    "delta_from_clean_seconds": -0.3,
+    "segment_count": 9,
+    "segments": [
+      {
+        "start": 0.66,
+        "end": 4.95
+      },
+      {
+        "start": 5.19,
+        "end": 6.12
+      },
+      {
+        "start": 6.78,
+        "end": 7.86
+      },
+      {
+        "start": 8.19,
+        "end": 9.27
+      },
+      {
+        "start": 9.6,
+        "end": 10.47
+      },
+      {
+        "start": 10.86,
+        "end": 11.43
+      },
+      {
+        "start": 11.64,
+        "end": 12.0
+      },
+      {
+        "start": 12.57,
+        "end": 14.07
+      },
+      {
+        "start": 14.34,
+        "end": 14.91
+      }
+    ]
+  },
+  "analysis_notes": {
+    "silence_discrimination": "VAD correctly distinguished the known 3.0s leading and 3.0s trailing silence without false triggers in digital silence.",
+    "noise_robustness": "Under 15 dB Gaussian noise, speech duration changed by -0.30s relative to clean baseline.",
+    "ground_truth_limitation": "LibriSpeech dev-clean-2 provides utterance-level transcripts rather than frame-level word/phone boundaries. True missed speech and false alarms can only be precisely measured on known silence regions; within the active container, clean VAD detection serves as a reference baseline."
+  }
+}

@@ -1,0 +1,231 @@
+{
+  "title": "Manual Tests A, B, C Audio Pipeline and Evaluation Summary",
+  "generated_at": "2026-10-15T10:21:00Z",
+  "environment": {
+    "python_version": "3.14.4",
+    "virtualenv": ".venv",
+    "os": "Windows",
+    "vad_backend_available": "energy (adaptive threshold fallback)",
+    "vad_optional_packages_missing": [
+      "pyannote.audio",
+      "webrtcvad"
+    ],
+    "scoring_backend_available": "local-fallback (Hungarian optimal mapping, NIST-compatible)",
+    "scoring_optional_packages_missing": [
+      "pyannote.metrics"
+    ],
+    "offline_models_available": [
+      "microsoft/wavlm-base-plus",
+      "whisper-base",
+      "speechbrain/sepformer-whamr"
+    ]
+  },
+  "tests": {
+    "test_A_clean": {
+      "status": "PASSED",
+      "input_file": "FLAC (248960 frames)",
+      "input_filename": "clean_speech.flac",
+      "input_path": "evaluation/manual_tests/test_A_clean/clean_speech.flac",
+      "duration_seconds": 15.56,
+      "sample_rate": 16000,
+      "channels": 1,
+      "peak_amplitude": 0.522003,
+      "rms_level": 0.055021,
+      "detected_speaker_count": 1,
+      "eigengap_estimated_speaker_count": 1,
+      "single_speaker_verified": true,
+      "speech_duration_seconds": 11.55,
+      "turn_count": 8,
+      "transcription_status": "success",
+      "transcription_text": "John Mangles therefore hoped that the wretched hole would reach poor. without accident. but it grieved him. that his companions. should have to suffer. so much discomfort. from the defect of arrangement. of the break.",
+      "separation_status": "bypassed_as_intended",
+      "der": "N/A",
+      "jer": "N/A",
+      "metric_notes": "DER/JER is N/A because LibriSpeech dev-clean-2 does not provide reference speaker turn RTTM annotations.",
+      "reproduce_command": "python evaluation/manual_tests/run_test_a.py"
+    },
+    "test_B_noise": {
+      "status": "PASSED",
+      "input_files": [
+        "speech_silence.wav",
+        "speech_noise.wav"
+      ],
+      "speech_silence": {
+        "input_filename": "speech_silence.wav",
+        "duration_seconds": 21.56,
+        "sample_rate": 16000,
+        "known_silence_seconds": 6.0,
+        "false_speech_in_silence_seconds": 0.0,
+        "detected_speech_duration_seconds": 11.64,
+        "segment_count": 8
+      },
+      "speech_noise": {
+        "input_filename": "speech_noise.wav",
+        "snr_db": 15.0,
+        "duration_seconds": 15.56,
+        "sample_rate": 16000,
+        "detected_speech_duration_seconds": 11.25,
+        "delta_from_clean_seconds": -0.3,
+        "segment_count": 9
+      },
+      "vad_backend": "energy (adaptive threshold fallback)",
+      "der": "N/A",
+      "jer": "N/A",
+      "metric_notes": "Frame-level ground truth phone/word alignments are unavailable for dev-clean-2; silence intervals (leading/trailing 3s) serve as objective known silence.",
+      "reproduce_command": "python evaluation/manual_tests/create_test_audio.py && python evaluation/manual_tests/run_test_b.py"
+    },
+    "test_C_two_speakers": {
+      "status": "PASSED",
+      "input_audio_filename": "LDC2021S10.flac",
+      "reference_rttm_filename": "LDC2021S10.rttm",
+      "recording_id": "DH_0052",
+      "duration_seconds": 120.0,
+      "sample_rate": 16000,
+      "reference_speakers": 2,
+      "detected_speakers": 2,
+      "reference_speech_duration_seconds": 58.432,
+      "detected_speech_duration_seconds": 86.01,
+      "reference_overlap_duration_seconds": 2.649,
+      "hypothesis_overlap_duration_seconds": 0.0,
+      "overlap_supported": false,
+      "overlap_lost_explanation": "The pipeline reconstructs timelines via Project.ssl_pipeline.timeline_reconstruction._resolve_overlaps, which forcibly clamps cross-speaker overlapping intervals to single-speaker hard partitions (current.start = resolved[-1].end). Consequently, any simultaneous speech in the recording is assigned to at most one speaker, causing the secondary overlapping speaker to be classified as missed speech. The system therefore does NOT support overlapping-speaker diarization.",
+      "scoring_protocol": {
+        "collar_seconds": 0.0,
+        "skip_overlap": false,
+        "scoring_backend": "local-fallback",
+        "speaker_mapping": {
+          "speaker_0": "speaker117",
+          "speaker_1": "speaker118"
+        }
+      },
+      "metrics": {
+        "der_percent": 133.09,
+        "jer_percent": 80.86,
+        "missed_speech_seconds": 15.374,
+        "missed_speech_percent": 27.0,
+        "false_alarm_seconds": 44.442,
+        "false_alarm_percent": 78.05,
+        "speaker_confusion_seconds": 15.966,
+        "speaker_confusion_percent": 28.04,
+        "scored_duration_seconds": 56.942
+      },
+      "reproduce_command": "python evaluation/manual_tests/run_test_c.py",
+      "diagnostic_analysis": {
+        "false_alarm_diagnosis": {
+          "total_false_alarm_seconds": 44.442,
+          "fa_in_ground_truth_lab_speech_seconds": 38.675,
+          "fa_in_ground_truth_lab_speech_percent": 87.02,
+          "fa_in_acoustic_silence_seconds": 5.767,
+          "fa_in_acoustic_silence_percent": 12.98,
+          "vad_vs_rttm_root_cause": "87.0% (38.675s) of the False Alarm corresponds to audible, intelligible human speech that is explicitly annotated in the ground-truth Speech Activity Detection file (LDC2021S10.lab, 88.696s total speech) and confirmed by Whisper ASR, but is omitted from the reference speaker turn annotation (LDC2021S10.rttm, 58.432s total speech). Only 13.0% (5.767s) represents false detection in true acoustic silence. VAD correctly detects speech present in the audio container, but NIST scoring against the incomplete RTTM labels all unannotated speech as False Alarm.",
+          "top_false_alarm_intervals": [
+            {
+              "start": 31.36,
+              "end": 34.79,
+              "duration": 3.43,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 89.07,
+              "end": 90.93,
+              "duration": 1.86,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 28.92,
+              "end": 30.57,
+              "duration": 1.65,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 82.32,
+              "end": 83.82,
+              "duration": 1.5,
+              "hypothesis_speakers": [
+                "speaker_1"
+              ]
+            },
+            {
+              "start": 86.63,
+              "end": 88.07,
+              "duration": 1.44,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 69.563,
+              "end": 70.89,
+              "duration": 1.327,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 52.06,
+              "end": 53.37,
+              "duration": 1.31,
+              "hypothesis_speakers": [
+                "speaker_1"
+              ]
+            },
+            {
+              "start": 79.59,
+              "end": 80.82,
+              "duration": 1.23,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 3.798,
+              "end": 4.899,
+              "duration": 1.101,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            },
+            {
+              "start": 106.872,
+              "end": 107.877,
+              "duration": 1.005,
+              "hypothesis_speakers": [
+                "speaker_0"
+              ]
+            }
+          ]
+        },
+        "missed_speech_diagnosis": {
+          "total_missed_seconds": 15.374,
+          "missed_due_to_vad_silence_seconds": 11.095,
+          "missed_due_to_vad_silence_percent": 72.17,
+          "missed_due_to_overlap_collapse_seconds": 1.988,
+          "missed_due_to_overlap_collapse_percent": 12.93,
+          "missed_due_to_windowing_trim_seconds": 2.291,
+          "missed_due_to_windowing_trim_percent": 14.9
+        },
+        "speaker_confusion_diagnosis": {
+          "total_confusion_seconds": 15.966,
+          "ref_117_misclassified_as_118_seconds": 3.637,
+          "ref_118_misclassified_as_117_seconds": 12.329,
+          "pure_117_segments_cluster_distribution": {
+            "cluster_0": 15,
+            "cluster_1": 8
+          },
+          "pure_118_segments_cluster_distribution": {
+            "cluster_0": 7,
+            "cluster_1": 3
+          },
+          "representation_root_cause": "Pretrained WavLM-base-plus representations without speaker-discriminative fine-tuning or metric projection (e.g. ECAPA-TDNN / x-vector loss) capture predominantly phonetic and acoustic room properties. Under natural single-microphone conversational conditions, inter-speaker cosine distance is smaller than intra-speaker phonetic variation, resulting in cluster overlap."
+        },
+        "diagnostic_timeline_plot": "C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\manual_tests\\results\\test_C_two_speakers\\diagnostic_timeline.png"
+      }
+    }
+  }
+}

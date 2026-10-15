@@ -77,6 +77,7 @@ class DiarizationEvaluator:
         *,
         collar_seconds: float | None = None,
         use_pyannote: bool | None = None,
+        skip_overlap: bool = False,
     ) -> None:
         self.config = config or load_config()
         self.collar_seconds = (
@@ -89,6 +90,7 @@ class DiarizationEvaluator:
             if use_pyannote is None
             else bool(use_pyannote)
         )
+        self.skip_overlap = bool(skip_overlap)
         if self.collar_seconds < 0.0:
             raise ValueError("evaluation_collar_seconds must be non-negative.")
 
@@ -99,8 +101,8 @@ class DiarizationEvaluator:
     ) -> EvaluationReport:
         """Evaluate one pair of RTTM files."""
 
-        reference_turns = parse_rttm(reference_rttm)
-        hypothesis_turns = parse_rttm(hypothesis_rttm)
+        reference_turns = parse_rttm(reference_rttm, allow_overlap=True)
+        hypothesis_turns = parse_rttm(hypothesis_rttm, allow_overlap=True)
         return self.evaluate_turns(reference_turns, hypothesis_turns)
 
     def evaluate_turns(
@@ -122,6 +124,7 @@ class DiarizationEvaluator:
             hypothesis,
             collar_seconds=self.collar_seconds,
             use_pyannote=self.use_pyannote,
+            skip_overlap=self.skip_overlap,
         )
         return _build_report(recordings, backend=_backend_name(self.use_pyannote))
 
@@ -133,6 +136,7 @@ def evaluate_rttm(
     config_path: str | Path | None = None,
     collar_seconds: float | None = None,
     use_pyannote: bool | None = None,
+    skip_overlap: bool = False,
 ) -> EvaluationReport:
     """Evaluate one reference/hypothesis RTTM pair."""
 
@@ -141,6 +145,7 @@ def evaluate_rttm(
         config,
         collar_seconds=collar_seconds,
         use_pyannote=use_pyannote,
+        skip_overlap=skip_overlap,
     )
     return evaluator.evaluate_files(reference_rttm, hypothesis_rttm)
 
@@ -316,6 +321,7 @@ def _evaluate_recordings(
     *,
     collar_seconds: float,
     use_pyannote: bool,
+    skip_overlap: bool = False,
 ) -> list[RecordingEvaluation]:
     """Evaluate each recording present in the reference RTTM."""
 
@@ -331,6 +337,7 @@ def _evaluate_recordings(
             recording_name,
             _apply_collar(reference, collar_seconds),
             _apply_collar(hypothesis, collar_seconds),
+            skip_overlap=skip_overlap,
         )
         recordings.append(
             _with_pyannote_metrics(
@@ -348,6 +355,8 @@ def _evaluate_one_recording(
     recording_name: str,
     reference: list[RTTMSpeakerTurn],
     hypothesis: list[RTTMSpeakerTurn],
+    *,
+    skip_overlap: bool = False,
 ) -> RecordingEvaluation:
     """Evaluate one recording using atomic time intervals."""
 
@@ -364,25 +373,32 @@ def _evaluate_one_recording(
     missed = 0.0
     false_alarm = 0.0
     confusion = 0.0
+    scored_ref_duration = 0.0
 
     for start, end in zip(boundaries, boundaries[1:]):
         if end <= start:
             continue
         midpoint = (start + end) / 2.0
         duration = end - start
-        ref_speaker = _active_speaker(reference, midpoint)
-        hyp_speaker = _active_speaker(hypothesis, midpoint)
+        ref_speakers = {turn.speaker_id for turn in reference if turn.start <= midpoint < turn.end}
+        hyp_speakers = {turn.speaker_id for turn in hypothesis if turn.start <= midpoint < turn.end}
 
-        if ref_speaker is not None and hyp_speaker is None:
-            missed += duration
-        elif ref_speaker is None and hyp_speaker is not None:
-            false_alarm += duration
-        elif ref_speaker is not None and hyp_speaker is not None:
-            mapped = mapping.get(hyp_speaker, hyp_speaker)
-            if mapped != ref_speaker:
-                confusion += duration
+        n_ref = len(ref_speakers)
+        n_hyp = len(hyp_speakers)
 
-    reference_duration = sum(turn.duration for turn in reference)
+        if skip_overlap and n_ref > 1:
+            continue
+
+        scored_ref_duration += n_ref * duration
+
+        mapped_hyp = {mapping.get(s, s) for s in hyp_speakers}
+        n_correct = len(ref_speakers & mapped_hyp)
+
+        missed += max(0, n_ref - n_hyp) * duration
+        false_alarm += max(0, n_hyp - n_ref) * duration
+        confusion += (min(n_ref, n_hyp) - n_correct) * duration
+
+    reference_duration = scored_ref_duration if skip_overlap else sum(turn.duration for turn in reference)
     if reference_duration <= 0.0:
         raise ValueError(f"Reference recording {recording_name} has zero duration.")
 
@@ -446,9 +462,28 @@ def _optimal_hypothesis_to_reference_mapping(
         for hyp in hyp_speakers
         for ref in ref_speakers
     }
-    if len(hyp_speakers) <= 8 and len(ref_speakers) <= 8:
-        return _brute_force_mapping(hyp_speakers, ref_speakers, overlaps)
-    return _greedy_mapping(hyp_speakers, ref_speakers, overlaps)
+
+    try:
+        from scipy.optimize import linear_sum_assignment
+
+        cost_matrix = np.zeros((len(hyp_speakers), len(ref_speakers)), dtype=np.float64)
+        for i, hyp in enumerate(hyp_speakers):
+            for j, ref in enumerate(ref_speakers):
+                cost_matrix[i, j] = -overlaps[(hyp, ref)]
+
+        row_ind, col_ind = linear_sum_assignment(cost_matrix)
+        mapping = {hyp_speakers[r]: ref_speakers[c] for r, c in zip(row_ind, col_ind)}
+        used_refs = set(mapping.values())
+        fallback_ref = ref_speakers[0]
+        for hyp in hyp_speakers:
+            if hyp not in mapping:
+                remaining = [ref for ref in ref_speakers if ref not in used_refs]
+                mapping[hyp] = remaining[0] if remaining else fallback_ref
+        return mapping
+    except Exception:
+        if len(hyp_speakers) <= 8 and len(ref_speakers) <= 8:
+            return _brute_force_mapping(hyp_speakers, ref_speakers, overlaps)
+        return _greedy_mapping(hyp_speakers, ref_speakers, overlaps)
 
 
 def _brute_force_mapping(

@@ -1,0 +1,29 @@
+{
+  "source_file": "clean_speech.flac",
+  "sample_rate": 16000,
+  "clean_duration_seconds": 15.56,
+  "clean_peak": 0.522003,
+  "clean_rms": 0.055021,
+  "speech_silence": {
+    "output_file": "speech_silence.wav",
+    "leading_silence_seconds": 3.0,
+    "trailing_silence_seconds": 3.0,
+    "speech_start_seconds": 3.0,
+    "speech_end_seconds": 18.56,
+    "total_duration_seconds": 21.56,
+    "peak_amplitude": 0.522003,
+    "rms_level": 0.046742,
+    "clipped": false
+  },
+  "speech_noise": {
+    "output_file": "speech_noise.wav",
+    "noise_type": "additive_gaussian_white_noise",
+    "random_seed": 42,
+    "target_snr_db": 15.0,
+    "measured_snr_db": 15.0,
+    "total_duration_seconds": 15.56,
+    "peak_amplitude": 0.527531,
+    "rms_level": 0.055916,
+    "clipped": false
+  }
+}

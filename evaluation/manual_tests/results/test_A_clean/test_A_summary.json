@@ -1,0 +1,79 @@
+{
+  "test": "Test A: Clean Single-Speaker Audio",
+  "audio_verification": {
+    "exists": true,
+    "format": "FLAC",
+    "subtype": "PCM_16",
+    "sample_rate": 16000,
+    "channels": 1,
+    "duration_seconds": 15.56,
+    "total_frames": 248960,
+    "peak_amplitude": 0.522003,
+    "rms_level": 0.055021,
+    "clipped": false,
+    "is_valid_audio": true
+  },
+  "execution_status": "success",
+  "pipeline_elapsed_seconds": 4.01,
+  "vad": {
+    "backend": "energy",
+    "region_count": 8,
+    "total_speech_seconds": 11.55
+  },
+  "segmentation": {
+    "segment_count": 10
+  },
+  "diarization": {
+    "oracle_speaker_count_configured": 1,
+    "detected_speaker_count": 1,
+    "detected_speaker_labels": [
+      "speaker_0"
+    ],
+    "eigengap_estimated_speaker_count": 1,
+    "single_speaker_verified": true,
+    "turn_count": 8,
+    "total_speech_duration_seconds": 11.55
+  },
+  "transcription": {
+    "status": "success",
+    "model": "base",
+    "device": "cpu",
+    "elapsed_seconds": 13.57,
+    "segment_count": 8,
+    "transcript_text": "John Mangles therefore hoped that the wretched hole would reach poor. without accident. but it grieved him. that his companions. should have to suffer. so much discomfort. from the defect of arrangement. of the break.",
+    "transcript_file": "transcript.txt"
+  },
+  "separation": {
+    "applicable": false,
+    "reason": "The input is a clean single-speaker recording. SpeechBrain SepFormer (trained on whamr / Libri2Mix 2-speaker mixtures) assumes multiple concurrent voices. When forced to separate a single speaker, 2-source separation models either split the spectral energy into phase-distorted sub-bands or duplicate the single voice with artificial attenuation and leakage. Single-speaker recordings bypass separation in production.",
+    "status": "bypassed_as_intended"
+  },
+  "output_files": [
+    "clustering.json",
+    "hypothesis.rttm",
+    "normalized_embeddings.npz",
+    "processed.wav",
+    "segments.json",
+    "test_A_summary.json",
+    "timeline.csv",
+    "timeline.json",
+    "timeline.txt",
+    "transcript.json",
+    "transcript.srt",
+    "transcript.txt",
+    "vad_regions.json"
+  ],
+  "logs": [
+    "Starting Test A on C:\\Users\\USER\\Desktop\\Projects\\SpeechSepatarion_and_Diarization - Final\\evaluation\\manual_tests\\test_A_clean\\clean_speech.flac",
+    "Decoded FLAC (PCM_16): 16000 Hz, 1 channel(s), 15.560s, 248960 frames",
+    "Signal levels: peak=0.522003, RMS=0.055021, clipped=False",
+    "Running end-to-end diarization pipeline...",
+    "Pipeline completed in 4.01s",
+    "Detected 1 speaker(s): ['speaker_0']",
+    "Total speech duration: 11.550s across 8 turns",
+    "Eigengap estimated speaker count: 1",
+    "Running Whisper transcription on speaker timeline...",
+    "Transcription succeeded (8 segments): John Mangles therefore hoped that the wretched hole would reach poor. without accident. but it griev...",
+    "Evaluating Speech Separation applicability on single-speaker recording..."
+  ]
+}

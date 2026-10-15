@@ -62,6 +62,48 @@ def run_diarization(args: argparse.Namespace) -> None:
     )
 
 
+def run_evaluation(args: argparse.Namespace) -> None:
+    _disable_numba_disk_cache()
+
+    from dataclasses import replace
+
+    from Project.ssl_pipeline.config import load_config
+    from Project.ssl_pipeline.dataset_evaluation import (
+        EvaluationProtocol,
+        run_dataset_evaluation,
+    )
+
+    config = load_config()
+    protocol = EvaluationProtocol.from_config(config)
+    overrides: dict[str, object] = {}
+    if args.collar is not None:
+        overrides["collar"] = args.collar
+    if args.skip_overlap is not None:
+        overrides["skip_overlap"] = args.skip_overlap
+    if args.uem_mode is not None:
+        overrides["uem_mode"] = args.uem_mode
+    if args.speaker_count_mode is not None:
+        overrides["speaker_count_mode"] = args.speaker_count_mode
+    if overrides:
+        protocol = replace(protocol, **overrides)
+
+    outcome = run_dataset_evaluation(
+        args.evaluation_dir,
+        protocol=protocol,
+        log=_flush_print,
+        only=args.only,
+        config=config,
+    )
+    if outcome.failures and not outcome.records:
+        raise SystemExit(1)
+
+
+def _flush_print(message: str) -> None:
+    """Print a log line immediately so the API can stream it."""
+
+    print(message, flush=True)
+
+
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run web-safe pipeline subprocesses.")
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -77,6 +119,14 @@ def _parse_args() -> argparse.Namespace:
     diarization.add_argument("--save-json", action=argparse.BooleanOptionalAction, default=True)
     diarization.add_argument("--save-csv", action=argparse.BooleanOptionalAction, default=True)
     diarization.add_argument("--save-rttm", action=argparse.BooleanOptionalAction, default=True)
+
+    evaluation = subparsers.add_parser("evaluation")
+    evaluation.add_argument("--evaluation-dir", required=True, type=Path)
+    evaluation.add_argument("--collar", type=float, default=None)
+    evaluation.add_argument("--skip-overlap", action=argparse.BooleanOptionalAction, default=None)
+    evaluation.add_argument("--uem-mode", choices=["full_file", "annotated"], default=None)
+    evaluation.add_argument("--speaker-count-mode", choices=["oracle", "estimated"], default=None)
+    evaluation.add_argument("--only", nargs="*", default=None)
 
     transcription = subparsers.add_parser("transcription")
     transcription.add_argument("--input", required=True, type=Path)
@@ -96,6 +146,8 @@ def main() -> None:
     args = _parse_args()
     if args.command == "diarization":
         run_diarization(args)
+    elif args.command == "evaluation":
+        run_evaluation(args)
     elif args.command == "transcription":
         run_transcription(args)
 

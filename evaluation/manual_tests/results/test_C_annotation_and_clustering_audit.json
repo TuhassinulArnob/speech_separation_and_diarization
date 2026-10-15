@@ -1,0 +1,101 @@
+{
+  "title": "Test C Annotation, VAD, and Clustering Audit",
+  "generated_at": "2026-10-15T10:55:00Z",
+  "task1_annotation_validation": {
+    "audio_duration_seconds": 120.0,
+    "raw_reference_rttm_duration_seconds": 58.432,
+    "clipped_reference_rttm_duration_seconds": 56.942,
+    "turns_past_audio_duration_seconds": 1.490,
+    "reference_union_speech_duration_seconds": 54.648,
+    "lab_speech_activity_duration_seconds": 88.696,
+    "lab_speech_missing_from_rttm_seconds": 46.992,
+    "rttm_speech_missing_from_lab_seconds": 12.944,
+    "lab_and_rttm_concordant_speech_seconds": 41.704,
+    "concordant_silence_seconds": 18.360,
+    "lab_provides_speaker_identity": false,
+    "rttm_suitable_as_complete_ground_truth": false,
+    "der_benchmark_status": "provisional_due_to_incomplete_reference_annotation"
+  },
+  "task2_der_arithmetic_verification": {
+    "total_error_seconds": 75.782,
+    "missed_speech_seconds": 15.374,
+    "false_alarm_seconds": 44.442,
+    "speaker_confusion_seconds": 15.966,
+    "scored_denominator_seconds": 56.942,
+    "computed_der": 1.330863,
+    "computed_der_percent": 133.09,
+    "internal_consistency_verified": true
+  },
+  "task3_vad_evaluation": {
+    "relative_to_lab_ground_truth": {
+      "precision_percent": 86.27,
+      "recall_percent": 85.75,
+      "f1_percent": 86.01,
+      "accuracy_percent": 79.38,
+      "true_positive_speech_seconds": 76.060,
+      "false_positive_silence_seconds": 12.110,
+      "false_negative_speech_seconds": 12.636,
+      "true_negative_silence_seconds": 19.194
+    },
+    "relative_to_rttm": {
+      "rttm_speech_detected_seconds": 42.888,
+      "vad_speech_outside_rttm_seconds": 45.282,
+      "vad_speech_outside_rttm_confirmed_by_lab_percent": 73.26,
+      "vad_speech_outside_rttm_true_noise_percent": 26.74
+    }
+  },
+  "task4_clustering_experiments": [
+    {
+      "method": "Baseline: Spectral (kmeans)",
+      "cluster_sizes": [30, 38],
+      "unambiguous_accuracy_percent": 54.55,
+      "der_percent": 133.09,
+      "jer_percent": 80.86,
+      "missed_seconds": 15.374,
+      "false_alarm_seconds": 44.442,
+      "confusion_seconds": 15.966
+    },
+    {
+      "method": "Alt 1: Spectral (discretize)",
+      "cluster_sizes": [38, 30],
+      "unambiguous_accuracy_percent": 54.55,
+      "der_percent": 133.09,
+      "jer_percent": 80.86,
+      "missed_seconds": 15.374,
+      "false_alarm_seconds": 44.442,
+      "confusion_seconds": 15.966
+    },
+    {
+      "method": "Alt 2: AHC (cosine, average)",
+      "cluster_sizes": [26, 42],
+      "unambiguous_accuracy_percent": 51.52,
+      "der_percent": 136.58,
+      "jer_percent": 82.78,
+      "missed_seconds": 15.374,
+      "false_alarm_seconds": 44.442,
+      "confusion_seconds": 17.953
+    },
+    {
+      "method": "Alt 3: AHC (cosine, complete)",
+      "cluster_sizes": [41, 27],
+      "unambiguous_accuracy_percent": 57.58,
+      "der_percent": 135.76,
+      "jer_percent": 82.68,
+      "missed_seconds": 15.374,
+      "false_alarm_seconds": 44.452,
+      "confusion_seconds": 17.477
+    },
+    {
+      "method": "Alt 4: KMeans (L2 normalized)",
+      "cluster_sizes": [31, 37],
+      "unambiguous_accuracy_percent": 54.55,
+      "der_percent": 132.03,
+      "jer_percent": 80.42,
+      "missed_seconds": 15.374,
+      "false_alarm_seconds": 44.442,
+      "confusion_seconds": 15.366
+    }
+  ],
+  "conclusion": "The high DER is driven predominantly by incomplete reference RTTM annotations that omit ~39% of the file's audible speech, causing ~73-87% of the reported False Alarm, combined with base WavLM representation limitations on same-channel conversational speech.",
+  "status": "COMPLETED"
+}

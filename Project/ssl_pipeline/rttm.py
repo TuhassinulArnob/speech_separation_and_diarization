@@ -136,8 +136,13 @@ class RTTMReader:
         text: str,
         *,
         allow_empty: bool = False,
+        allow_overlap: bool = False,
     ) -> list[RTTMSpeakerTurn]:
-        """Parse RTTM text into speaker turns."""
+        """Parse RTTM text into speaker turns.
+
+        Set ``allow_overlap`` when reading reference annotations, which may
+        legitimately mark simultaneous speakers.
+        """
 
         lines = [
             line.strip()
@@ -150,7 +155,7 @@ class RTTMReader:
             raise ValueError("RTTM content is empty.")
 
         turns = [_parse_rttm_line(line, line_number=index + 1) for index, line in enumerate(lines)]
-        validate_rttm_turns(turns, allow_empty=allow_empty)
+        validate_rttm_turns(turns, allow_empty=allow_empty, allow_overlap=allow_overlap)
         return turns
 
     def read(
@@ -158,12 +163,13 @@ class RTTMReader:
         rttm_path: str | Path,
         *,
         allow_empty: bool = False,
+        allow_overlap: bool = False,
     ) -> list[RTTMSpeakerTurn]:
         """Read RTTM speaker turns from a file."""
 
         path = Path(rttm_path)
         text = path.read_text(encoding="utf-8")
-        return self.parse_text(text, allow_empty=allow_empty)
+        return self.parse_text(text, allow_empty=allow_empty, allow_overlap=allow_overlap)
 
 
 def write_rttm(
@@ -191,20 +197,26 @@ def parse_rttm(
     rttm_path: str | Path,
     *,
     allow_empty: bool = False,
+    allow_overlap: bool = False,
 ) -> list[RTTMSpeakerTurn]:
     """Read and parse an RTTM file."""
 
-    return RTTMReader().read(rttm_path, allow_empty=allow_empty)
+    return RTTMReader().read(
+        rttm_path,
+        allow_empty=allow_empty,
+        allow_overlap=allow_overlap,
+    )
 
 
 def validate_rttm(
     rttm_path: str | Path,
     *,
     allow_empty: bool = False,
+    allow_overlap: bool = False,
 ) -> bool:
     """Validate an RTTM file, raising ValueError on invalid input."""
 
-    parse_rttm(rttm_path, allow_empty=allow_empty)
+    parse_rttm(rttm_path, allow_empty=allow_empty, allow_overlap=allow_overlap)
     return True
 
 
@@ -366,6 +378,11 @@ def _parse_args() -> argparse.Namespace:
 
     validate = subparsers.add_parser("validate", help="Validate an RTTM file.")
     validate.add_argument("rttm_path", type=Path)
+    validate.add_argument(
+        "--allow-overlap",
+        action="store_true",
+        help="Permit simultaneous speakers, as found in reference annotations.",
+    )
 
     return parser.parse_args()
 
@@ -379,7 +396,7 @@ def main() -> None:
         turns = parse_rttm(args.rttm_path)
         export_rttm_json(turns, args.json_path)
     elif args.command == "validate":
-        validate_rttm(args.rttm_path)
+        validate_rttm(args.rttm_path, allow_overlap=args.allow_overlap)
         print("RTTM is valid.")
 
 
