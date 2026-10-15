@@ -51,7 +51,24 @@ export default function Settings() {
         <section className="glass-card p-6">
           <CheckCircle2 className={health === "online" ? "text-teal-400" : "text-red-400"} />
           <h2 className="mt-4 text-xl font-semibold">Backend API</h2>
-          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Status: {health}</p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Status:{" "}
+            <span
+              className={
+                health === "online"
+                  ? "font-semibold text-teal-400"
+                  : health === "checking"
+                  ? "text-yellow-400"
+                  : "font-semibold text-red-400"
+              }
+            >
+              {health === "online"
+                ? "Connected"
+                : health === "checking"
+                ? "Checking..."
+                : "Disconnected"}
+            </span>
+          </p>
           <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Current job: {status?.status || "--"}</p>
           <button className="secondary-btn mt-5" onClick={refresh}><RefreshCw size={18} /> Refresh</button>
         </section>
